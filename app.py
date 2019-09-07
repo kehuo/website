@@ -18,10 +18,10 @@ def homepage():
 def mnist():
     if request.method == 'POST':
         predictImg = request.files['predictImg']
-        filename = str(int(time.mktime(time.localtime()))) + '.png'
-        imgurl = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        predictImg.save(imgurl)
-        result, prob = predict.mnist_predict(imgurl)
+        # filename = str(int(time.mktime(time.localtime()))) + '.png'
+        # imgurl = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        # predictImg.save(imgurl)
+        result, prob = predict.mnist_predict(predictImg)
         return str(result)
     else:
         return render_template("mnist.html")
