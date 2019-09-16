@@ -1,0 +1,23 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "the website for lucien",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucienZhang/website.git"
+  },
+  "author": "Lucien Zhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LucienZhang/website/issues"
+  },
+  "homepage": "https://github.com/LucienZhang/website#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2"
+  }
+}

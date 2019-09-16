@@ -103,4 +103,13 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# node js
+# gulp
+# Dependency directory
+node_modules
+
+
+
+
+
 tmp/

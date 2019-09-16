@@ -3,10 +3,12 @@ import os
 import time
 
 import predict
+from werewolf.werewolf_module import werewolf_api
 
 app = Flask(__name__)
 app.debug = True
 app.config['UPLOAD_FOLDER'] = 'tmp'
+app.register_blueprint(werewolf_api, url_prefix='/werewolf')
 
 
 @app.route('/')
