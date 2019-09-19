@@ -2,13 +2,16 @@ from flask import Flask, render_template, url_for, request, jsonify
 import os
 import time
 
-import predict
+
 from werewolf.werewolf_module import werewolf_api
+from ml.ml_module import ml_api
+
+import config
 
 app = Flask(__name__)
-app.debug = True
 app.config['UPLOAD_FOLDER'] = 'tmp'
 app.register_blueprint(werewolf_api, url_prefix='/werewolf')
+app.register_blueprint(ml_api,url_prefix='/ml')
 
 
 @app.route('/')
@@ -16,18 +19,9 @@ def homepage():
     return render_template("index.html")
 
 
-@app.route('/mnist', methods=['GET', 'POST'])
-def mnist():
-    if request.method == 'POST':
-        predictImg = request.files['predictImg']
-        # filename = str(int(time.mktime(time.localtime()))) + '.png'
-        # imgurl = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        # predictImg.save(imgurl)
-        result, prob = predict.mnist_predict(predictImg)
-        return str(result)
-    else:
-        return render_template("mnist.html")
+
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=config.config_debug, port=config.config_port)
+    #app.run(debug=True, port=5003)

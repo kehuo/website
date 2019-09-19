@@ -1,10 +1,12 @@
+import os
+
 import matplotlib.image as mpimg
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 
-
-model = keras.models.load_model('models/mnist.h5')
+module_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "models")
+model = keras.models.load_model(os.path.join(module_path, "mnist.h5"))
 
 
 def rgb2gray(rgb):
