@@ -1,0 +1,6 @@
+DEBUG = True
+
+if DEBUG:
+    PORT = 5000
+else:
+    PORT = 5000
