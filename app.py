@@ -11,14 +11,12 @@ import web_config
 app = Flask(__name__)
 app.config['DEBUG'] = web_config.DEBUG
 app.register_blueprint(werewolf_api, url_prefix='/werewolf')
-app.register_blueprint(ml_api,url_prefix='/ml')
+app.register_blueprint(ml_api, url_prefix='/ml')
 
 
 @app.route('/')
 def homepage():
     return render_template("index.html")
-
-
 
 
 if app.config["DEBUG"]:
@@ -30,8 +28,5 @@ if app.config["DEBUG"]:
         return response
 
 
-
 if __name__ == '__main__':
     app.run(debug=web_config.DEBUG, port=web_config.PORT)
-    #app.run(debug=True, port=5003)
-    #app.run(debug=True)
