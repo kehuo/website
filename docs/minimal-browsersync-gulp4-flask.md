@@ -101,17 +101,19 @@ There are too many problems with gulp 4, but finally, the above configuration wo
 
 The file structure is like this:
 
-.
-+-- gulpfile.js
-+-- app.py
-+-- templates
-|   +-- index.html
-+-- static
-|   +-- css
-|   +-- js
-+-- node_modules
-+-- package.json
-+-- package-lock.json
+```
+my-project
+│   gulpfile.js
+│   app.py
+|
+└───templates
+│   │   index.html
+|    
+└───static
+    │   css
+    │   js
+```
+
 
 This is how `app.py` looks like:
 ```python3
