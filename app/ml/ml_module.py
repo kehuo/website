@@ -2,10 +2,10 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-19 17:53:51
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-09-19 18:10:41
+# @Last Modified time: 2019-09-22 19:02:24
 from flask import Blueprint, render_template, request
 
-from ml import predict
+from app.ml import predict
 
 
 ml_api = Blueprint('ml_api', __name__)

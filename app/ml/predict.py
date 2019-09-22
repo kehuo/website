@@ -5,8 +5,8 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 
-module_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "models")
-model = keras.models.load_model(os.path.join(module_path, "mnist.h5"))
+model_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "tf-models")
+model = keras.models.load_model(os.path.join(model_path, "mnist.h5"))
 
 
 def rgb2gray(rgb):
