@@ -2,7 +2,7 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-19 17:46:29
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-09-22 18:24:04
+# @Last Modified time: 2019-09-30 17:23:05
 
 
 # https://www.jianshu.com/p/5694073ac858
@@ -28,6 +28,7 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     PORT = 5000
+    SECRET_KEY = '123456'
     # MAIL_SERVER = 'smtp.googlemail.com'
     # MAIL_PORT = 587
     # MAIL_USE_TLS = True
