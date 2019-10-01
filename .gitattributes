@@ -1,1 +1,2 @@
-bootstrap.* linguist-vendored=true
+bootstrap.*     linguist-vendored=true
+jquery*         linguist-vendored
