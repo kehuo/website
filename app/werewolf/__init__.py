@@ -2,10 +2,11 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-16 17:43:45
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-09-30 17:57:17
+# @Last Modified time: 2019-10-01 15:25:30
 from .werewolf_module import werewolf_api
 from flask_login import LoginManager
 from app.werewolf.user import User
+from app.werewolf.game import Game
 from app.db.query import query_by_id
 from flask import current_app
 
@@ -27,6 +28,7 @@ def load_user(uid):
     if user is not None:
         curr_user = User()
         curr_user.id = user['uid']
+        curr_user.game = Game(gid=user['gid'])
         return curr_user
     else:
         return None

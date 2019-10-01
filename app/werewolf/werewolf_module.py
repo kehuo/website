@@ -2,12 +2,15 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-16 17:44:43
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-09-30 19:51:40
+# @Last Modified time: 2019-10-01 22:50:56
 from flask import Blueprint, render_template, request, current_app, flash, redirect
 from flask_login import current_user, login_required, login_user, logout_user
 from app.db.query import query_user
 from app.werewolf.user import User
 from app.werewolf.game import Game
+from app.db.connector import GameTable
+import time
+import json
 
 werewolf_api = Blueprint('werewolf_api', __name__)
 
@@ -17,16 +20,21 @@ def home():
     return render_template("werewolf_home.html")
 
 
-@werewolf_api.route('/setup')
+@werewolf_api.route('/setup',methods=['GET','POST'])
 @login_required
 def setup():
-    return render_template("werewolf_setup.html")
+    if request.method=='GET':
+        return render_template("werewolf_setup.html")
+    else:
+        game=Game()
 
 
-@werewolf_api.route('/game')
+
+@werewolf_api.route('/game',methods=['GET','POST'])
 @login_required
 def game():
-    return render_template("werewolf_game.html", gid=current_user.game.gid)
+    if request.method=='GET':
+        return render_template("werewolf_game.html", gid=current_user.game.gid,dbtxt=Game.create_game(1,11,[1,2,3]))
 
 
 def action():
