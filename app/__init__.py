@@ -2,12 +2,11 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-22 16:08:13
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-09-30 22:40:51
+# @Last Modified time: 2019-10-02 15:43:03
 
 from flask import Flask, render_template
 from app import ml
 from app import werewolf
-from app import db
 
 from .config import config
 
@@ -30,7 +29,6 @@ def create_app(config_name=None):
 
     ml.init_app(app, '/ml')
     werewolf.init_app(app, '/werewolf')
-    db.init_app(app)
 
     @app.route('/')
     def homepage():

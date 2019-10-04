@@ -1,18 +1,33 @@
 # -*- coding: utf-8 -*-
 # @Author: Lucien Zhang
-# @Date:   2019-10-01 14:23:05
+# @Date:   2019-10-02 15:44:15
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-01 17:42:39
-
-from flask_sqlalchemy import SQLAlchemy
+# @Last Modified time: 2019-10-02 18:12:26
 from sqlalchemy.dialects.mysql import DATETIME
+from app.werewolf.db.connector import db
 
 
-db = SQLAlchemy()
+class UserTable(db.Model):
+    __tablename__ = 'user'
+    uid = db.Column(db.Integer, primary_key=True, nullable=False)
+    username = db.Column(db.String(length=255), nullable=False, unique=True, index=True)
+    password = db.Column(db.String(length=255), nullable=False)
+    login_token = db.Column(db.String(length=255),index=True)
+    name = db.Column(db.String(length=255), nullable=False)
+    avatar = db.Column(db.Integer, nullable=False)
+    gid = db.Column(db.Integer, nullable=False)
+    player = db.Column(db.String(length=255))
+    ishost= db.Column(db.Boolean, nullable=False)
+    role=db.Column(db.String(length=255))
+    position=db.Column(db.Integer, nullable=False)
+    history=db.Column(db.String(length=255))
 
-
-def init_db(app):
-    db.init_app(app)
+    # uid: int = -1  # user id
+    # name: str = "New Player"
+    # password: str = ""
+    # avatar: int = 0
+    # game: Game = None
+    # player: Player = None
 
 
 class GameTable(db.Model):
@@ -37,20 +52,6 @@ class GameTable(db.Model):
                 f'last_modified={self.last_modified},turn={self.turn},roles={self.roles}')
 
 
-# mysql=MySQL()
-
-# # cur = mysql.connection.cursor()
-# # cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
-# # mysql.connection.commit()
-# # cur.close()
-
-# def init_db(app):
-#     mysql.init_app(app)
-
-# def execute(cmd):
-#     cur = mysql.connection.cursor()
-#     cur.execute(cmd)
-#     rv = cur.fetchall()
-#     cur.close()
-#     return rv
-#     # return str(rv)
+# class PlayerTable(db.Model):
+#     __tablename__='player'
+#     nothing
