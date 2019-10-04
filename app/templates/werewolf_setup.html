@@ -12,27 +12,127 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <form id="game_form" method="post">
+            <h2>胜利模式</h2>
+            <div class="form-group" id="victoryModeGroup">
+                <!-- <label for="victoryMode">胜利模式</label> -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="victoryMode" id="killGroup" value="kill_group" checked="checked">
+                    <label class="form-check-label" for="killGroup">屠边</label>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="victoryMode" id="killAll" value="kill_all">
+                    <label class="form-check-label" for="killAll">屠城</label>
                 </div>
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+            </div>
+            <div class="form-group row">
+                <label for="villager" class="col-sm-2 col-form-label">村民数量</label>
+                <select id="villager" class="form-control col-sm-10" name="villager">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+            <h2>狼人</h2>
+            <div class="form-group row">
+                <label for="normal_wolf" class="col-sm-2 col-form-label">普通狼人</label>
+                <select id="normal_wolf" class="form-control col-sm-10" name="normal_wolf">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="white_wolf" name="single_roles" value="" disabled="disabled">
+                <label class="form-check-label" for="white_wolf">白狼王</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="raven" name="single_roles" value="raven" disabled="disabled">
+                <label class="form-check-label" for="raven">乌鸦</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="pyromaniac" name="single_roles" value="pyromaniac" disabled="disabled">
+                <label class="form-check-label" for="pyromaniac">火狼</label>
+            </div>
+            <h2>神民</h2>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="seer" name="single_roles" value="seer" checked="checked">
+                <label class="form-check-label" for="seer">预言家</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="witch" name="single_roles" value="witch" checked="checked">
+                <label class="form-check-label" for="witch">女巫</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="hunter" name="single_roles" value="hunter">
+                <label class="form-check-label" for="hunter">猎人</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="savior" name="single_roles" value="savior">
+                <label class="form-check-label" for="savior">守卫</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="idiot" name="single_roles" value="idiot">
+                <label class="form-check-label" for="idiot">白痴</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="cupid" name="single_roles" value="cupid" disabled="disabled">
+                <label class="form-check-label" for="cupid">丘比特</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="thief" name="single_roles" value="thief" disabled="disabled">
+                <label class="form-check-label" for="thief">盗贼</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="ancient" name="single_roles" value="ancient" disabled="disabled">
+                <label class="form-check-label" for="ancient">长老</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="scapegoat" name="single_roles" value="scapegoat" disabled="disabled">
+                <label class="form-check-label" for="scapegoat">替罪羊</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="two_sisters" name="single_roles" value="two_sisters" disabled="disabled">
+                <label class="form-check-label" for="two_sisters">两姐妹</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="three_brothers" name="single_roles" value="three_brothers" disabled="disabled">
+                <label class="form-check-label" for="three_brothers">三兄弟</label>
+            </div>
+            <h2>其他角色</h2>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="piper" name="single_roles" value="piper" disabled="disabled">
+                <label class="form-check-label" for="piper">吹笛者</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="little_girl" name="single_roles" value="little_girl" disabled="disabled">
+                <label class="form-check-label" for="little_girl">小女孩</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="angel" name="single_roles" value="angel" disabled="disabled">
+                <label class="form-check-label" for="angel">天使</label>
+            </div>
+            <div class="button_row">
+                <button type="submit" class="btn btn-primary">创建</button>
+            </div>
+        </form>
     </div>
     <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/werewolf_setup.js"></script>
+    <!--     <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script> -->
     <!-- <script type="text/javascript" src="../static/js/script.js"></script> -->
 </body>
 

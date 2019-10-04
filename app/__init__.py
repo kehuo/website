@@ -2,10 +2,11 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-22 16:08:13
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-02 15:43:03
+# @Last Modified time: 2019-10-04 16:03:43
 
+from __future__ import annotations
 from flask import Flask, render_template
-from app import ml
+# from app import ml
 from app import werewolf
 
 from .config import config
@@ -27,7 +28,7 @@ def create_app(config_name=None):
             response.headers["Pragma"] = "no-cache"
             return response
 
-    ml.init_app(app, '/ml')
+    # ml.init_app(app, '/ml')
     werewolf.init_app(app, '/werewolf')
 
     @app.route('/')

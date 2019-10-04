@@ -2,14 +2,15 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-28 22:05:35
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-02 18:14:12
+# @Last Modified time: 2019-10-04 18:42:51
 
 from dataclasses import dataclass
 from app.werewolf.game import Game
 # from app.werewolf.player import Player
 from flask_login import UserMixin
-from app.werewolf.db.tables import UserTable
+from app.werewolf.db.tables import UserTable, GameTable
 from app.werewolf.role import Role
+from datetime import datetime
 
 
 @dataclass
@@ -34,9 +35,8 @@ class User(UserMixin):
         user.id = user_table.login_token
         if user_table.gid != -1:
             game_table = GameTable.query.get(user_table.gid)
-            if game_table and datetime.utcnow() < datetime.strptime(game_table.end_time):
-                game = Game(gid=game_table.gid, host_id=game_table.host_id, status=GameStatus(game_table.status),
-                            victory_mode=VictoryMode(game_table.victory_mode), players=None, turn=None,
-                            roles=None, talbe=game_table)
+            # if game_table and datetime.utcnow() < datetime.strptime(game_table.end_time):
+            if game_table and datetime.utcnow() < game_table.end_time:
+                game = Game.create_game_from_table(game_table)
                 user.game = game
         return user

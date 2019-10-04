@@ -2,7 +2,7 @@
 * @Author: Lucien Zhang
 * @Date:   2019-09-29 18:02:32
 * @Last Modified by:   Lucien Zhang
-* @Last Modified time: 2019-10-02 12:39:27
+* @Last Modified time: 2019-10-04 18:43:38
 */
 var Queue = (()=>{
   const map = new WeakMap();
@@ -72,4 +72,4 @@ let audio_status='waiting';
 // //[1, 2, 342]
 
 
-setInterval(function)
+// setInterval(function)

@@ -2,15 +2,18 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-16 17:44:43
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-04 13:37:23
-from flask import Blueprint, render_template, request, current_app, flash, redirect
+# @Last Modified time: 2019-10-04 19:12:09
+from flask import Blueprint, render_template, request, current_app, flash, redirect, url_for
 from flask_login import current_user, login_required
 from app.werewolf.user import User
 from app.werewolf.game import Game
 from app.werewolf.db.tables import GameTable, UserTable
 import time
 import json
-from app.werewolf.login import do_login, do_logout,do_register
+from app.werewolf.login import do_login, do_logout, do_register
+from app.werewolf.enums import VictoryMode, RoleType
+from app.werewolf.db.connector import db
+
 
 werewolf_api = Blueprint('werewolf_api', __name__)
 
@@ -24,17 +27,37 @@ def home():
 @login_required
 def setup():
     if request.method == 'GET':
+        # TODO: ask to quick existing game if user is in a game!
         return render_template("werewolf_setup.html")
     else:
-        game = Game()
+        victory_mode = VictoryMode[request.form['victoryMode'].upper()]
+        villager_cnt = int(request.form['villager'])
+        normal_wolf_cnt = int(request.form['normal_wolf'])
+        roles = {RoleType.VILLAGER.name: villager_cnt, RoleType.NORMAL_WOLF.name: normal_wolf_cnt}
+
+        single_roles = request.form.getlist('single_roles')
+        for r in single_roles:
+            roles[r.upper()] = 1
+
+        game = Game.create_new_game(current_user.uid, victory_mode, roles)
+        db.session.add(game.table)
+        # db.session.flush()
+        db.session.commit()
+        game.gid = game.table.gid
+        current_user.game = game
+        current_user.table.gid = game.table.gid
+        # current_app.logger.info(game.gid)
+        db.session.add(current_user.table)
+        db.session.commit()
+
+        return redirect(url_for('werewolf_api.game'))
 
 
 @werewolf_api.route('/game', methods=['GET', 'POST'])
 @login_required
 def game():
     if request.method == 'GET':
-        me = GameTable.query.get(11)
-        return render_template("werewolf_game.html", gid=current_user.game.gid, dbtxt=(me, type(me)))
+        return render_template("werewolf_game.html", gid=current_user.game.gid, dbtxt=(current_user.game.table.roles))
 
 
 def action():
