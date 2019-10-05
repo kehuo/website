@@ -13,16 +13,48 @@
 <body>
     <div class="container">
         <form id="game_form" method="post">
-            <h2>胜利模式</h2>
-            <div class="form-group" id="victoryModeGroup">
-                <!-- <label for="victoryMode">胜利模式</label> -->
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="victoryMode" id="killGroup" value="kill_group" checked="checked">
-                    <label class="form-check-label" for="killGroup">屠边</label>
+            <h2>基本信息</h2>
+            <div class="form-group row" id="victoryModeGroup">
+                <label for="victoryMode" class="col-sm-2 col-form-label">胜利模式</label>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="victoryMode" id="killGroup" value="kill_group" checked="checked">
+                        <label class="form-check-label" for="killGroup">屠边</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="victoryMode" id="killAll" value="kill_all">
+                        <label class="form-check-label" for="killAll">屠城</label>
+                    </div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="victoryMode" id="killAll" value="kill_all">
-                    <label class="form-check-label" for="killAll">屠城</label>
+            </div>
+            <div class="form-group row" id="captainModeGroup">
+                <label for="captainMode" class="col-sm-2 col-form-label">警长模式</label>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="captainMode" id="with_captain" value="with_captain" checked="checked">
+                        <label class="form-check-label" for="with_captain">有警长</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="captainMode" id="without_captain" value="without_captain">
+                        <label class="form-check-label" for="without_captain">没有警长</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row" id="witchModeGroup">
+                <label for="witchMode" class="col-sm-2 col-form-label">女巫模式</label>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="witchMode" id="can_save_self" value="can_save_self" checked="checked">
+                        <label class="form-check-label" for="can_save_self">全程可以自救</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="witchMode" id="first_night_only" value="first_night_only">
+                        <label class="form-check-label" for="first_night_only">仅首夜可以自救</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="witchMode" id="cannot_save_self" value="cannot_save_self">
+                        <label class="form-check-label" for="cannot_save_self">全程不可自救</label>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
