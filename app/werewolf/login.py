@@ -2,7 +2,7 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-30 14:38:30
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-04 13:37:50
+# @Last Modified time: 2019-10-06 14:17:20
 
 from flask import render_template, request,redirect,url_for
 from flask_login import LoginManager, current_user, login_user, logout_user
@@ -10,7 +10,8 @@ from app.werewolf.user import User
 from app.werewolf.game import Game, GameStatus, VictoryMode
 # from app.werewolf.player import Player
 from flask import current_app
-from app.werewolf.db.tables import UserTable, GameTable
+from app.werewolf.user import UserTable
+from app.werewolf.game import GameTable
 from datetime import datetime
 from hashlib import sha1
 from app.werewolf.db.connector import db

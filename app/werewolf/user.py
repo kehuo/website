@@ -2,15 +2,32 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-28 22:05:35
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-04 18:42:51
+# @Last Modified time: 2019-10-06 14:36:21
 
 from dataclasses import dataclass
 from app.werewolf.game import Game
 # from app.werewolf.player import Player
 from flask_login import UserMixin
-from app.werewolf.db.tables import UserTable, GameTable
+from app.werewolf.game import GameTable
 from app.werewolf.role import Role
 from datetime import datetime
+from app.werewolf.db.connector import db
+
+
+class UserTable(db.Model):
+    __tablename__ = 'user'
+    uid = db.Column(db.Integer, primary_key=True, nullable=False)
+    username = db.Column(db.String(length=255), nullable=False, unique=True, index=True)
+    password = db.Column(db.String(length=255), nullable=False)
+    login_token = db.Column(db.String(length=255), index=True)
+    name = db.Column(db.String(length=255), nullable=False)
+    avatar = db.Column(db.Integer, nullable=False)
+    gid = db.Column(db.Integer, nullable=False)
+    player = db.Column(db.String(length=255))
+    ishost = db.Column(db.Boolean, nullable=False)
+    role = db.Column(db.String(length=255))
+    position = db.Column(db.Integer, nullable=False)
+    history = db.Column(db.String(length=255))
 
 
 @dataclass
@@ -33,10 +50,9 @@ class User(UserMixin):
         user = User(uid=user_table.uid, name=user_table.name, avatar=user_table.avatar, table=user_table,
                     ishost=user_table.ishost, role=None, position=user_table.position, history=user_table.history)
         user.id = user_table.login_token
-        if user_table.gid != -1:
-            game_table = GameTable.query.get(user_table.gid)
-            # if game_table and datetime.utcnow() < datetime.strptime(game_table.end_time):
-            if game_table and datetime.utcnow() < game_table.end_time:
-                game = Game.create_game_from_table(game_table)
-                user.game = game
+        user.game=Game.get_game_by_gid(user_table.gid)
+
         return user
+
+
+

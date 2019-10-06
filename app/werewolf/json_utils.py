@@ -2,7 +2,7 @@
 # @Author: Lucien Zhang
 # @Date:   2019-10-05 16:03:18
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-05 22:57:54
+# @Last Modified time: 2019-10-06 11:18:24
 import json
 
 from functools import singledispatch
@@ -46,10 +46,12 @@ class ExtendJSONEncoder(json.JSONEncoder):
             return super().default(obj)
 
 
-def JsonHook(d, cls=None):
-    # TODO: cls is always None, it takes only one arg
-    if cls:
-        obj = cls()
-        obj.__dict__ = d
-        return obj
-    return d
+def JsonHook(cls=None):
+    def hook(d):
+        if cls is not None:
+            obj = cls()
+            obj.__dict__ = d
+            return obj
+        else:
+            return d
+    return hook
