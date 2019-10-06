@@ -2,11 +2,12 @@
 # @Author: Lucien Zhang
 # @Date:   2019-10-05 16:03:18
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-06 11:18:24
+# @Last Modified time: 2019-10-06 15:22:04
 import json
 
 from functools import singledispatch
 from app.werewolf.turn import Turn
+from app.werewolf.role import Role
 from enum import Enum
 from flask import current_app
 
@@ -22,6 +23,11 @@ def _(o):
 
 
 @convert.register(Turn)
+def _(o):
+    return o.__dict__
+
+
+@convert.register(Role)
 def _(o):
     return o.__dict__
 
