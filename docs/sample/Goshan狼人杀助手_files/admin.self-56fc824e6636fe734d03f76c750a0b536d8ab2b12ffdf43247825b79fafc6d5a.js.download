@@ -1,0 +1,45 @@
+(function() {
+  $(document).on('turbolinks:load', function(e) {
+    var audio;
+    if ($('#easy_login_session').length !== 0 && !App.admin) {
+      audio = new Wolf.Audio();
+      return App.admin = App.cable.subscriptions.create({
+        channel: "AdminChannel",
+        f: $('#easy_login_session').attr('f')
+      }, {
+        connected: function() {
+          return console.log("connected socket channel AdminChannel");
+        },
+        disconnected: function() {
+          return console.log("disconnected socket channel GameChannel");
+        },
+        received: function(data) {
+          var content;
+          if ($('#easy_login_session').length !== 0) {
+            console.log("received admin data:");
+            console.log(data);
+            if (data.action === 'alert') {
+              return Wolf.modal.alert(data);
+            } else if (data.action === 'play') {
+              return audio.play_audio(data.audio);
+            } else if (data.action === 'deal_type') {
+              $('#deal-modal .nav-tabs li').removeClass('active');
+              $('#deal-modal .tab-content .tab-pane').removeClass('active');
+              $('#deal-modal .' + data.deal_type + '-deal-nav').addClass('active');
+              content = $('#deal-modal .' + data.deal_type + '-deal-nav a').attr('href');
+              return $('#deal-modal .tab-content ' + content).addClass('active');
+            }
+          }
+        },
+        "do": function(action, data) {
+          if (data == null) {
+            data = null;
+          }
+          console.log("admin: " + action);
+          return this.perform(action, data);
+        }
+      });
+    }
+  });
+
+}).call(this);

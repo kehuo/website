@@ -1,0 +1,156 @@
+(function() {
+  var init_players, ref,
+    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+
+  this.Wolf = (ref = this.Wolf) != null ? ref : {};
+
+  init_players = function() {
+    var i, j, player_cnt, players, ref1;
+    player_cnt = parseInt($('#all_players').attr("player_cnt"), 10);
+    players = {};
+    for (i = j = 1, ref1 = player_cnt; 1 <= ref1 ? j <= ref1 : j >= ref1; i = 1 <= ref1 ? ++j : --j) {
+      players[i] = {
+        name: "",
+        status: "alive"
+      };
+    }
+    return players;
+  };
+
+  Vue.component('player', {
+    props: ['player'],
+    template: "<div class=\"player\" :class=\"{'player-right-side': player.right}\">\n  <span v-if=\"player.right\">{{player.name}}</span>\n  <a href=\"#\" class=\"btn\" :pos=\"player.pos\" :status=\"player.status\" @click=\"onClick\">{{player.pos}}号</a>\n  <span v-if=\"player.left\">{{player.name}}</span>\n</div>",
+    methods: {
+      onClick: function(e) {
+        var ref1, ref2;
+        e.preventDefault();
+        if (this.$parent.skillParams.action === 'none') {
+          return;
+        }
+        if (!Wolf.Utils.arrayIsEmpty(this.$parent.skillParams.only) && (ref1 = this.player.pos, indexOf.call(this.$parent.skillParams.only, ref1) < 0)) {
+          return;
+        }
+        if (this.$parent.skillParams.action === 'sit') {
+          App.game["do"]('sit', this.player.pos);
+          return;
+        }
+        if (this.$parent.skillParams.select === "single") {
+          return this.$parent.selected = [this.player.pos];
+        } else if (this.$parent.skillParams.select === "multiple") {
+          if (ref2 = this.player.pos, indexOf.call(this.$parent.selected, ref2) >= 0) {
+            return this.$parent.selected = this.$parent.selected.filter((function(_this) {
+              return function(p) {
+                return p !== _this.player.pos;
+              };
+            })(this));
+          } else {
+            return this.$parent.selected.push(this.player.pos);
+          }
+        }
+      }
+    }
+  });
+
+  this.Wolf.panel = new Vue({
+    el: "#ope-panel",
+    data: {
+      players: init_players(),
+      skillName: null,
+      skillParams: {
+        action: "none"
+      },
+      buttons: [],
+      selected: []
+    },
+    computed: {
+      tip: function() {
+        return Wolf.Trans.insert_params(Wolf.Trans.Panel.panel_tip_trans[this.skillName], this.skillParams);
+      },
+      playersShow: function() {
+        var index, j, keys, len, players, pos, sep, status, val;
+        players = [];
+        keys = Object.keys(this.players);
+        sep = Math.ceil(keys.length / 2);
+        for (j = 0, len = keys.length; j < len; j++) {
+          pos = keys[j];
+          pos = parseInt(pos, 10);
+          index = pos <= sep ? pos * 2 - 1 : (pos - sep) * 2;
+          val = this.players[pos];
+          status = val.status;
+          if (val.status === "alive") {
+            if (!Wolf.Utils.varIsNull(this.skillParams.only) && indexOf.call(this.skillParams.only, pos) < 0) {
+              status = "disable";
+            } else if (this.selected.length !== 0 && indexOf.call(this.selected, pos) >= 0) {
+              status = "selected";
+            } else if (this.skillParams.action !== "none") {
+              status = this.skillName;
+            }
+          }
+          players[index - 1] = {
+            pos: pos,
+            name: val.name,
+            status: status,
+            left: index % 2 === 1,
+            right: index % 2 === 0
+          };
+        }
+        return players;
+      },
+      buttonsShow: function() {
+        var buttons, msg, ref1, target;
+        buttons = [];
+        ref1 = this.buttons;
+        for (msg in ref1) {
+          target = ref1[msg];
+          buttons.push({
+            msg: Wolf.Trans.Panel.panel_button_trans[msg][0],
+            "class": Wolf.Trans.Panel.panel_button_trans[msg][1],
+            target: target === null ? 'selected' : target
+          });
+        }
+        return buttons;
+      }
+    },
+    methods: {
+      updateWithTurn: function(turn) {
+        if (turn == null) {
+          turn = null;
+        }
+        this.skillName = null;
+        return this.skillParams = {
+          action: turn === "sitting" ? "sit" : "none"
+        };
+      },
+      updateWithData: function(data) {
+        this.skillName = data.msg;
+        data.action = "use_skill";
+        this.skillParams = data;
+        return this.buttons = data.buttons;
+      },
+      _reset: function() {
+        this.updateWithTurn();
+        this.selected = [];
+        return this.buttons = [];
+      },
+      onFinish: function(e) {
+        var target;
+        e.preventDefault();
+        if (this.skillParams.action === 'none') {
+          return;
+        }
+        target = $(e.currentTarget).attr('target');
+        if (target === "selected") {
+          if (this.skillParams.select === "single") {
+            App.game["do"](this.skillParams.action, this.selected[0]);
+          } else if (this.skillParams.select === "multiple") {
+            App.game["do"](this.skillParams.action, this.selected);
+          }
+        } else {
+          App.game["do"](this.skillParams.action, target);
+        }
+        return this._reset();
+      }
+    }
+  });
+
+}).call(this);

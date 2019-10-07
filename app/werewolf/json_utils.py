@@ -2,12 +2,12 @@
 # @Author: Lucien Zhang
 # @Date:   2019-10-05 16:03:18
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-06 15:22:04
+# @Last Modified time: 2019-10-07 16:17:46
 import json
 
 from functools import singledispatch
 from app.werewolf.turn import Turn
-from app.werewolf.role import Role
+# from app.werewolf.role import Role
 from enum import Enum
 from flask import current_app
 
@@ -27,9 +27,9 @@ def _(o):
     return o.__dict__
 
 
-@convert.register(Role)
-def _(o):
-    return o.__dict__
+# @convert.register(Role)
+# def _(o):
+#     return o.__dict__
 
 # @convert.register(datetime)
 # def _(o):
@@ -60,4 +60,7 @@ def JsonHook(cls=None):
             return obj
         else:
             return d
-    return hook
+    if cls is not None:
+        return hook
+    else:
+        return None

@@ -2,7 +2,7 @@
 * @Author: Lucien Zhang
 * @Date:   2019-09-19 16:49:13
 * @Last Modified by:   Lucien Zhang
-* @Last Modified time: 2019-09-28 17:21:38
+* @Last Modified time: 2019-10-06 21:52:41
 */
 
 body {
@@ -40,7 +40,7 @@ button {
     color: white;
 }
 
-#enter {
+#join {
     background-color: #427BFF;
     color: white;
 }

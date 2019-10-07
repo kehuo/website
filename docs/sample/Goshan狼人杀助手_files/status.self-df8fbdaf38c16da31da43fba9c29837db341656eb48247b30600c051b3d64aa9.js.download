@@ -1,0 +1,84 @@
+(function() {
+  var ref;
+
+  this.Wolf = (ref = this.Wolf) != null ? ref : {};
+
+  this.Wolf.status = new Vue({
+    el: "#info",
+    data: {
+      deal_type: "random",
+      round: 0,
+      turn: "init"
+    },
+    computed: {
+      turnTrans: function() {
+        return Wolf.Trans.Turns[this.turn];
+      },
+      showBidButton: function() {
+        return this.deal_type === 'bid';
+      }
+    },
+    methods: {
+      update: function(data) {
+        this.deal_type = data.deal_type;
+        this.round = data.round;
+        return this.turn = data.turn;
+      },
+      onClickVoteHistory: function(e) {
+        e.preventDefault();
+        return App.game["do"]('vote_history');
+      },
+      onClickCheckRole: function(e) {
+        e.preventDefault();
+        return App.game["do"]('check_role');
+      },
+      onClickBidRoles: function(e) {
+        e.preventDefault();
+        return App.game["do"]('bid_info');
+      },
+      onClickBid: function(e) {
+        var balance, dom, i, j, len, len1, need, prices, ref1, ref2, results, role;
+        e.preventDefault();
+        prices = {};
+        need = 0;
+        ref1 = $('#bid-info-modal input.role-price');
+        for (i = 0, len = ref1.length; i < len; i++) {
+          dom = ref1[i];
+          role = $(dom).attr('name');
+          prices[role] = parseInt($(dom).val(), 10) || 0;
+          if (prices[role] < 0) {
+            BootstrapDialog.alert("出价不能为负数");
+            return;
+          }
+          need += prices[role];
+        }
+        balance = parseInt($('#bid-info-modal .coin-balance-val').text(), 10) || 0;
+        if (need <= balance) {
+          App.game["do"]('bid_roles', {
+            prices: prices
+          });
+          ref2 = $('#bid-info-modal input.role-price');
+          results = [];
+          for (j = 0, len1 = ref2.length; j < len1; j++) {
+            dom = ref2[j];
+            results.push($(dom).val(''));
+          }
+          return results;
+        } else {
+          return BootstrapDialog.alert("你的下注总和超过了当前余额");
+        }
+      },
+      onClickCancelBid: function(e) {
+        e.preventDefault();
+        return App.game["do"]('cancel_bid_roles');
+      },
+      onClickSkill: function(e) {
+        e.preventDefault();
+        if (Wolf.panel.skillParams.action === 'none') {
+          return App.game["do"]('prepare_skill');
+        }
+      }
+    }
+  });
+
+}).call(this);

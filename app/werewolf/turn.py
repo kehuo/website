@@ -2,13 +2,13 @@
 # @Author: Lucien Zhang
 # @Date:   2019-10-01 13:13:52
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-05 22:32:24
+# @Last Modified time: 2019-10-07 15:36:46
 from app.werewolf.enums import RoleType, TurnStep, CaptainMode
 from collections import Counter
 
 
 class Turn(object):
-    def __init__(self, days=0, now=0, steps=None, repeat=0, role_dict=None, captain_mode=CaptainMode.UNKNOWN):
+    def __init__(self, days=0, now=0, steps=None, repeat=0, card_dict=None, captain_mode=CaptainMode.UNKNOWN):
         self.days = days
         self.now = now
         if steps is None:
@@ -16,14 +16,14 @@ class Turn(object):
         else:
             self.steps = steps
         self.repeat = repeat
-        if role_dict is not None:
-            self._reset(role_dict, captain_mode)
+        if card_dict is not None:
+            self._reset(card_dict, captain_mode)
 
-    def _reset(self, role_dict, captain_mode):
+    def _reset(self, card_dict, captain_mode):
         self.days += 1
         self.now = 0
         self.repeat = 0
-        roles = Counter(role_dict).elements()
+        roles = Counter(card_dict).elements()
         roles = [RoleType[role] for role in roles]
         self.steps.clear()
         if self.days == 1 and RoleType.THIEF in roles:
@@ -48,9 +48,9 @@ class Turn(object):
         ans = self.steps[self.now]
         return ans, ans not in [TurnStep.CHECK_VICTORY]
 
-    def go_next_step(self, role_dict, captain_mode):  # return if need to return the answer to user
+    def go_next_step(self, card_dict, captain_mode):  # return if need to return the answer to user
         if self.now == len(steps) - 1:
-            self._reset(role_dict, captain_mode)
+            self._reset(card_dict, captain_mode)
         else:
             self.now += 1
         return self.current_step()
