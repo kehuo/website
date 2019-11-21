@@ -116,3 +116,4 @@ tmp/
 instance/
 config.py
 tests/
+docs/

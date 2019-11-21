@@ -2,7 +2,7 @@
 # @Author: Lucien Zhang
 # @Date:   2019-10-04 15:43:49
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-05 15:48:54
+# @Last Modified time: 2019-10-09 13:11:33
 
 from enum import Enum, auto
 
@@ -17,11 +17,17 @@ class GameStatus(Enum):
     VOTING_FOR_CAPTAIN = auto()
     WAITING = auto()  # ?????
 
+    def __str__(self):
+        return self.name
+
 
 class VictoryMode(Enum):
     UNKNOWN = 0
     KILL_GROUP = auto()  # 屠边
     KILL_ALL = auto()  # 屠城
+
+    def __str__(self):
+        return self.name
 
 
 class CaptainMode(Enum):
@@ -29,12 +35,18 @@ class CaptainMode(Enum):
     WITH_CAPTAIN = auto()  # 有警长
     WITHOUT_CAPTAIN = auto()  # 没有警长
 
+    def __str__(self):
+        return self.name
+
 
 class WitchMode(Enum):
     UNKNOWN = 0
     CAN_SAVE_SELF = auto()  # 全程可以自救
     FIRST_NIGHT_ONLY = auto()  # 仅首夜可以自救
     CANNOT_SAVE_SELF = auto()  # 全程不可自救
+
+    def __str__(self):
+        return self.name
 
 
 class RoleType(Enum):
@@ -60,6 +72,9 @@ class RoleType(Enum):
     ANGEL = auto()
     ALL_WOLF = auto()
 
+    def __str__(self):
+        return self.name
+
 
 class GroupType(Enum):
     UNKNOWN = 0
@@ -67,6 +82,9 @@ class GroupType(Enum):
     GODS = auto()
     VILLAGERS = auto()
     THIRD_PARTY = auto()
+
+    def __str__(self):
+        return self.name
 
 
 class TurnStep(Enum):
@@ -77,3 +95,6 @@ class TurnStep(Enum):
     ELECT = auto()
     VOTE_FOR_CAPTAIN = auto()
     VOTE = auto()
+
+    def __str__(self):
+        return self.name

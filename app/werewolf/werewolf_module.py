@@ -2,7 +2,7 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-16 17:44:43
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-07 18:29:41
+# @Last Modified time: 2019-10-16 15:01:42
 from flask import Blueprint, render_template, request, current_app, flash, redirect, url_for
 from flask_login import current_user, login_required
 from app.werewolf.user import User, UserTable
@@ -13,6 +13,8 @@ import json
 from app.werewolf.login import do_login, do_logout, do_register
 from app.werewolf.enums import VictoryMode, RoleType, CaptainMode, WitchMode
 from app.werewolf.db.connector import db
+from app.werewolf.game_message import GameMessage
+from app.werewolf import game_engine
 
 
 werewolf_api = Blueprint('werewolf_api', __name__)
@@ -35,11 +37,13 @@ def setup():
         witch_mode = WitchMode[request.form['witchMode'].upper()]
         villager_cnt = int(request.form['villager'])
         normal_wolf_cnt = int(request.form['normal_wolf'])
-        card_dict = {RoleType.VILLAGER.name: villager_cnt, RoleType.NORMAL_WOLF.name: normal_wolf_cnt}
+        card_dict = {}
+        card_dict[RoleType.VILLAGER] = villager_cnt
+        card_dict[RoleType.NORMAL_WOLF] = normal_wolf_cnt
 
         single_roles = request.form.getlist('single_roles')
         for r in single_roles:
-            card_dict[r.upper()] = 1
+            card_dict[RoleType[r.upper()]] = 1
 
         new_role = Role.create_new_role(current_user.uid)
         current_user.role = new_role
@@ -63,14 +67,32 @@ def setup():
 @werewolf_api.route('/game', methods=['GET'])
 @login_required
 def game():
-    return render_template("werewolf_game.html", ishost=current_user.ishost,
-                           gid=current_user.game.gid, dbtxt=(str(current_user.game.roles) + str(type(current_user.game.roles)) + str(current_user.game.audio) + str(type(current_user.game.audio)) + '\n<br />\n' + str(current_user.game.turn.days) + str(type(current_user.game.turn))))
+    current_setting = []
+    current_game = current_user.game
+    current_setting.append('游戏模式为：' + GameMessage(current_game.victory_mode).parse())
+    current_setting.append('警长模式为：' + GameMessage(current_game.captain_mode).parse())
+    current_setting.append('女巫模式为：' + GameMessage(current_game.witch_mode).parse())
+    current_setting.append('游戏总人数为：' + str(current_game.get_seat_num()) + '人')
+    for role, cnt in current_game.card_dict.items():
+        current_setting.append(GameMessage(role).parse() + ' = ' + str(cnt))
+
+    return render_template("werewolf_game.html", ishost=current_user.ishost, name=current_user.name,
+                           gid=current_game.gid,
+                           current_setting=current_setting,
+                           role_name=GameMessage(current_user.role.role_type).parse(),
+                           role_type=current_user.role.role_type.name.lower(),
+                           seat_cnt=current_game.get_seat_num(),
+                           dbtxt=(str(current_user.game.roles) + str(type(current_user.game.roles)) + str(current_user.game.audio) + str(type(current_user.game.audio)) + '\n<br />\n' + str(current_user.game.turn.days) + str(type(current_user.game.turn))))
 
 
-@werewolf_api.route('/game_process')
+@werewolf_api.route('/get_game_info')
 @login_required
-def game_process():
-    pass
+def get_game_info():
+    content = request.args.get('content')
+    if content == 'history':
+        return game_engine.get_history()
+    elif content == 'audio':
+        return game_engine.get_audio()
 
 
 def action():

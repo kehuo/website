@@ -2,7 +2,7 @@
 # @Author: Lucien Zhang
 # @Date:   2019-10-05 16:03:18
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-07 16:17:46
+# @Last Modified time: 2019-10-09 13:14:10
 import json
 
 from functools import singledispatch
@@ -10,6 +10,7 @@ from app.werewolf.turn import Turn
 # from app.werewolf.role import Role
 from enum import Enum
 from flask import current_app
+from app.werewolf.enums import RoleType
 
 
 @singledispatch
@@ -43,6 +44,32 @@ def _(o):
 # def _(o):
 #     return o.get_value()
 
+def stringify_keys(d):
+    """Convert a dict's keys to strings if they are not."""
+    ans = {}
+    for key in d.keys():
+        # check inner dict
+        if isinstance(d[key], dict):
+            value = stringify_keys(d[key])
+        else:
+            value = d[key]
+
+        # convert nonstring to string if needed
+        if not isinstance(key, str):
+            try:
+                ans[str(key)] = value
+            except Exception:
+                try:
+                    ans[repr(key)] = value
+                except Exception:
+                    raise
+        else:
+            ans[key] = value
+
+            # delete old key
+            # del d[key]
+    return ans
+
 
 class ExtendJSONEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -54,7 +81,12 @@ class ExtendJSONEncoder(json.JSONEncoder):
 
 def JsonHook(cls=None):
     def hook(d):
-        if cls is not None:
+        if cls == 'card_dict':
+            obj = {}
+            for k, v in d.items():
+                obj[RoleType[k]] = v
+            return obj
+        elif cls is not None:
             obj = cls()
             obj.__dict__ = d
             return obj

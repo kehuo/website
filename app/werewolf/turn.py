@@ -2,7 +2,7 @@
 # @Author: Lucien Zhang
 # @Date:   2019-10-01 13:13:52
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-07 15:36:46
+# @Last Modified time: 2019-10-09 12:12:46
 from app.werewolf.enums import RoleType, TurnStep, CaptainMode
 from collections import Counter
 
@@ -24,7 +24,7 @@ class Turn(object):
         self.now = 0
         self.repeat = 0
         roles = Counter(card_dict).elements()
-        roles = [RoleType[role] for role in roles]
+        # roles = [RoleType[role] for role in roles]
         self.steps.clear()
         if self.days == 1 and RoleType.THIEF in roles:
             pass

@@ -2,7 +2,7 @@
 # @Author: Lucien Zhang
 # @Date:   2019-09-28 22:05:35
 # @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-07 18:15:19
+# @Last Modified time: 2019-10-16 16:17:38
 
 from dataclasses import dataclass
 from app.werewolf.game import Game
@@ -67,13 +67,30 @@ class User(UserMixin):
     # history: str = ""
     table: UserTable = None
 
-    def __setattr__(self, name, value):
-        if hasattr(self, 'table') and self.table is not None and name in self.__dict__ and name not in ['table', 'id', 'role']:
-            if name == 'game' and value is not None:
-                self.table.__setattr__('gid', value.gid)
-            else:
-                self.table.__setattr__(name, value)
-        return super().__setattr__(name, value)
+    def _sync_to_table(self):
+        if self.table is None:
+            return
+        self.table.uid = self.uid
+        self.table.name = self.name
+        self.table.avatar = self.avatar
+        self.table.gid = self.game.gid
+        self.table.ishost = self.ishost
+
+    def _sync_from_table(self):
+        if self.table is None:
+            return
+        self.uid = self.table.uid
+        self.name = self.table.name
+        self.avatar = self.table.avatar
+        self.ishost = self.table.ishost
+
+    # def __setattr__(self, name, value):
+    #     if hasattr(self, 'table') and self.table is not None and name in self.__dict__ and name not in ['table', 'id', 'role']:
+    #         if name == 'game' and value is not None:
+    #             self.table.__setattr__('gid', value.gid)
+    #         else:
+    #             self.table.__setattr__(name, value)
+    #     return super().__setattr__(name, value)
 
     @classmethod
     def create_user_from_table(cls, user_table, role=None):
@@ -124,10 +141,10 @@ class User(UserMixin):
         else:
             return None
 
-    def join_game(self, gid: int)->(bool, str):
+    def join_game(self, gid: int)->(bool, GameMessage):
         def func(game):
             if len(game.roles) >= game.get_seat_num():
-                return False, GameMessage('GAME_FULL', None)
+                return False, GameMessage('GAME_FULL')
             new_role = Role.create_new_role(self.uid)
             self.role = new_role
             game.roles = game.roles + [self.role]  # do not use append function here, otherwise the table won't be changed
@@ -135,22 +152,24 @@ class User(UserMixin):
 
         game = Game.get_game_by_gid(gid)
         if game is None:
-            return False, GameMessage('GAME_NOT_EXIST', None)
+            return False, GameMessage('GAME_NOT_EXIST')
         if game.get_role_by_uid(self.uid) is not None:
             # TODO: if already in, redirect to game
-            return False, GameMessage('ALREADY_IN', None)
+            return False, GameMessage('ALREADY_IN')
 
         succ, msg = game.commit(lock=True, func=func)
         if not succ:
             return succ, msg
         else:
             self.game = game
+            self.ishost = self.uid == game.host_id
             self.role.position = len(game.roles)
             self.role.commit()
             self.commit()
             return True, None
 
     def commit(self):
+        self._sync_to_table()
         db.session.add(self.table)
         db.session.commit()
 
