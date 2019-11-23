@@ -33,8 +33,8 @@ gulp.task('browser-reload', function(done) {
 });
 
 gulp.task('watch-files', function(done) {
-    gulp.watch("./app/templates/**/*.*", gulp.task('browser-reload'));
-    gulp.watch("./app/static/**/*.*", gulp.task('browser-reload'));
+    gulp.watch("./website/templates/**/*.*", gulp.task('browser-reload'));
+    gulp.watch("./website/static/**/*.*", gulp.task('browser-reload'));
     done();
     console.log(('gulp watch started'));
 });

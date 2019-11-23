@@ -1,0 +1,6 @@
+[submodule "website/blueprints/werewolf"]
+	path = website/blueprints/werewolf
+	url = git@github.com:LucienZhang/werewolf.git
+[submodule "website/blueprints/ml"]
+	path = website/blueprints/ml
+	url = git@github.com:LucienZhang/ml.git
