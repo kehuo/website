@@ -5,8 +5,9 @@
 # @Last Modified time: 2019-09-22 18:35:34
 from website import create_app
 
-app_ins = create_app('development')
-
-
-if __name__ == '__main__':
-    app_ins.run(port=app_ins.config['PORT'])
+if __name__ == "__main__":
+    # app = create_app('development')
+    app = create_app()
+    # print(app.root_path)
+    # print(app.instance_path)
+    app.run(port=app.config['PORT'])

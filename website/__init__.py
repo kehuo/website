@@ -5,19 +5,16 @@
 # @Last Modified time: 2019-10-02 15:53:05
 
 import os
-import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-from flask import Flask, redirect, url_for
-from website.blueprints.werewolf.werewolf import werewolf_api,init_app
+from flask import Flask, render_template
+from website.blueprints.werewolf.werewolf import werewolf_api, init_app as init_werewolf
+from website.blueprints.ml.ml import ml_api, init_app as init_ml
 
-from werewolf.login import init_login
-from werewolf.db import init_db
-from werewolf.config import config
+from website.config import config
 
 
 def init_app(app):
-    init_login(app)
-    init_db(app)
+    init_werewolf(app)
+    init_ml(app)
 
 
 def create_app(config_name=None):
@@ -39,10 +36,11 @@ def create_app(config_name=None):
             return response
 
     app.register_blueprint(werewolf_api, url_prefix='/werewolf')
+    app.register_blueprint(ml_api,url_prefix='/ml')
     init_app(app)
 
     @app.route('/')
     def homepage():
-        return redirect(url_for('werewolf_api.home'))
+        return render_template('index.html')
 
     return app
