@@ -7,14 +7,14 @@
 import os
 from flask import Flask, render_template
 from website.blueprints.werewolf.werewolf import werewolf_api, init_app as init_werewolf
-from website.blueprints.ml.ml import ml_api, init_app as init_ml
+#from website.blueprints.ml.ml import ml_api, init_app as init_ml
 
 from website.config import config
 
 
 def init_app(app):
     init_werewolf(app)
-    init_ml(app)
+    #init_ml(app)
 
 
 def create_app(config_name=None):
@@ -36,7 +36,7 @@ def create_app(config_name=None):
             return response
 
     app.register_blueprint(werewolf_api, url_prefix='/werewolf')
-    app.register_blueprint(ml_api,url_prefix='/ml')
+    #app.register_blueprint(ml_api,url_prefix='/ml')
     init_app(app)
 
     @app.route('/')
