@@ -1,4 +1,4 @@
--r website/blueprints/ml/requirements.txt
+#-r website/blueprints/ml/requirements.txt
 -r website/blueprints/werewolf/requirements.txt
 #python==3.8.0
 flask==1.1.1
