@@ -13,14 +13,14 @@ sys.path.append(os.path.join(blueprints_path, 'ml'))
 
 from flask import Flask, render_template  # noqa: E402
 from werewolf import werewolf_api, init_app as init_werewolf  # noqa: E402
-# from ml import ml_api, init_app as init_ml  # noqa: E402
+from ml import ml_api, init_app as init_ml  # noqa: E402
 
 from website.config import config  # noqa: E402
 
 
 def init_app(app):
     init_werewolf(app)
-    # init_ml(app)
+    init_ml(app)
 
 
 def create_app(config_name=None):
@@ -42,7 +42,7 @@ def create_app(config_name=None):
             return response
 
     app.register_blueprint(werewolf_api, url_prefix='/werewolf')
-    # app.register_blueprint(ml_api,url_prefix='/ml')
+    app.register_blueprint(ml_api,url_prefix='/ml')
     init_app(app)
 
     @app.route('/')
