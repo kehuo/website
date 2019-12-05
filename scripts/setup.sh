@@ -1,15 +1,29 @@
-usage="$(basename "$0") [-h] [-d] -- program to install and deploy the project
+usage="$(basename "$0") [-h] [-d] [-e] -- program to install and deploy the project
 
 where:
     -h  show this help text
-    -d  deploy the project"
+    -d  deploy the project
+    -e  deploy development server"
+
+domain="lucien.red"
+work_dir="/var/www/"$domain
+git_address="https://github.com/LucienZhang/website.git"
 
 function deploy() {
-    sudo apt-get update
-    sudo apt-get upgrade
+    apt-get update
+    # install conda
+
+    mkdir -p $work_dir
+    cd $work_dir
+
 }
 
-while getopts ':hd' option; do
+function develop() {
+    sudo apt-get update
+    #sudo apt-get upgrade
+}
+
+while getopts ':hde' option; do
     case "$option" in
     h)
         echo "$usage"
@@ -17,6 +31,10 @@ while getopts ':hd' option; do
         ;;
     d)
         deploy
+        exit
+        ;;
+    e)
+        develop
         exit
         ;;
     :)

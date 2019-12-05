@@ -15,6 +15,8 @@ MODEL_DIR=$(
 )
 MODEL_DIR=${MODEL_DIR%/*}"/website/blueprints/ml/ml/model_train/models/"
 
+mkdir -p "${MODEL_DIR}"
+
 declare -A models
 models=([mnist]="https://github.com/LucienZhang/ml/releases/download/v1.0/lenet_mnist.h5"
     [cifar10]="https://github.com/LucienZhang/ml/releases/download/v1.0/lenet_cifar10.h5")
@@ -34,12 +36,17 @@ function get_weights() {
             echo "Model $key got!"
         done
     else
-        address=${models[$key]}
+        address=${models[$1]}
+        if [ ! "${address}" ]; then
+            echo "Cannot find model name $1"
+            exit 1
+        fi
         file_name=${address##*/}
         echo "Getting model $1"
         wget -q "${address}" -O "${file_name}"
         echo "Model $1 got!"
     fi
+    md5sum *\.h5 -c models.md5
 }
 
 while getopts ':hai:' option; do
