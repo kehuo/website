@@ -7,39 +7,37 @@ where:
     -e  get weights file by instance name"
 
 MODEL_DIR=$(
-    # shellcheck disable=SC2164
-    cd "$(dirname "$0")"
+    cd "$(dirname "$0")" || {
+        echo "Path does not exist: $(dirname "$0")"
+        exit 1
+    }
     pwd
 )
 MODEL_DIR=${MODEL_DIR%/*}"/website/blueprints/ml/ml/model_train/models/"
 
 declare -A models
-models=([mnist]="https://github.com/LucienZhang/ml/releases/download/v1.0/lenet_mnist.h5" \
-[cifar10]="https://github.com/LucienZhang/ml/releases/download/v1.0/lenet_cifar10.h5")
+models=([mnist]="https://github.com/LucienZhang/ml/releases/download/v1.0/lenet_mnist.h5"
+    [cifar10]="https://github.com/LucienZhang/ml/releases/download/v1.0/lenet_cifar10.h5")
 
-function get_weights {
-    # shellcheck disable=SC2164
-    cd "$MODEL_DIR"
+function get_weights() {
+    cd "${MODEL_DIR}" || {
+        echo "Path does not exist: ${MODEL_DIR}"
+        exit 1
+    }
     echo "Prepare to get models in $MODEL_DIR"
     if [ "$1" = "ALL" ]; then
-        # shellcheck disable=SC2116
-        for key in $(echo "${!models[*]}")
-        do
-            # shellcheck disable=SC2125
-            address=models[$key]
+        for key in ${!models[*]}; do
+            address=${models[$key]}
             file_name=${address##*/}
             echo "Getting model $key"
-            echo "$address"
-            echo "$file_name"
+            wget -q "${address}" -O "${file_name}"
             echo "Model $key got!"
         done
     else
-        # shellcheck disable=SC2125
-        address=models[$1]
+        address=${models[$key]}
         file_name=${address##*/}
         echo "Getting model $1"
-        echo "$address"
-        echo "$file_name"
+        wget -q "${address}" -O "${file_name}"
         echo "Model $1 got!"
     fi
 }
