@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 usage="$(basename "$0") [-h] [-a] [-i] -- program to install and deploy the project
 
 where:
@@ -68,3 +69,4 @@ while getopts ':hai:' option; do
     esac
 done
 shift $((OPTIND - 1))
+echo "$usage"
