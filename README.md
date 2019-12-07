@@ -21,8 +21,8 @@ To deploy this website on your server, follow the next instructions:
    > Since this project is using other blueprints as submodules, you need to clone this repository recursively.
 
    ```bash
-   $ sudo mkdir -p /var/www/[your domain name]
-   $ cd /var/www/[your domain name]
+   $ sudo mkdir -p /var/www/[your domain name]/<your server name>
+   $ cd /var/www/[your domain name]/<your server name>
    $ git clone --recursive https://github.com/LucienZhang/website.git
    ```
 
@@ -37,7 +37,7 @@ To deploy this website on your server, follow the next instructions:
    $ conda activate website
    $ cd website
    $ pwd
-   /var/www/[your domain name]/website
+   /var/www/[your domain name]/<your server name>/website
    ``````
 
 3. Install the requirements 
@@ -46,7 +46,7 @@ To deploy this website on your server, follow the next instructions:
 
    ```bash
    $ pwd
-   /var/www/[your domain name]/website
+   /var/www/[your domain name]/<your server name>/website
    $ conda env list
    # conda environments:
    #
@@ -144,7 +144,7 @@ To deploy this website on your server, follow the next instructions:
 6. Configure project
 
    ```bash
-   $ cd /var/www/[your domain name]/website/website
+   $ cd /var/www/[your domain name]/<your server name>/website/website
    $ mkdir instance
    $ cd instance
    $ sudo vim config.py
@@ -158,14 +158,73 @@ To deploy this website on your server, follow the next instructions:
    SQLALCHEMY_TRACK_MODIFICATIONS = False
    LOGIN_SECRET_KEY = 'secret key used for flask login'
    REDIS_URL = "redis://localhost"
+   
+   
+   # Load h5 weights files from GitHub
+   $ cd /var/www/[your domain name]/<your server name>/website/scripts
+   $ chmod +x ./get_weights.sh
+   $ sudo ./get_weights.sh -a
    ```
 
-   run script to load h5 file?
+7. Install and configure Nginx
 
-   wget -q http://www.whatever.com/filename.txt -O /path/filename.txt 
+   ```bash
+   $ sudo apt-get update
+   $ sudo apt-get install nginx
+   $ sudo vim /etc/nginx/sites-available/<your server name>
+   
+   server {
+   	listen 80;
+   	server_name *.example.com;
+   	charset utf-8;
+   
+   	location / {
+   		try_files $uri @gunicorn_proxy;
+   	}
+   
+   	location @gunicorn_proxy {
+   		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   		proxy_set_header Host $http_host;
+   		proxy_redirect off;
+   		proxy_pass http://127.0.0.1:8000;
+   		proxy_connect_timeout 500s;
+   		proxy_read_timeout 500s;
+   		proxy_send_timeout 500s;
+   	}
+   }
+   
+   $ sudo ln -s /etc/nginx/sites-available/<your server name> /etc/nginx/sites-enabled/<your server name>
+   $ sudo nginx -t
+   $ sudo systemctl restart nginx
+   $ sudo systemctl status nginx
+   ```
 
-7. Install and setup supervisor
+8. Install and configure Supervisor, please refer [Supervisor](http://supervisord.org/installing.html) for details.
 
-8. Install and setup nginx
+   ```bash
+   $ pip install supervisor
+   # Gunicorn is listed in requirements.txt, it's installed when we prepare the environment by pip install.
+   $ conda list gunicorn
+   $ sudo vim /etc/supervisor/conf.d/<your server name>.conf
+   
+   [program:<your server name>]
+   directory = /var/www/[your domain name]/<your server name>/website
+   command = /home/username/miniconda3/envs/website/bin/gunicorn -w 4 -b localhost:8000 website:create_app()
+   autostart = true
+   startsecs = 5
+   autorestart = true
+   startretries = 3
+   user = root
+   redirect_stderr = true
+   stdout_logfile_maxbytes = 20MB
+   stdout_logfile_backups = 20
+   stdout_logfile = /data/logs/<your server name>_stdout.log
+   stopasgroup = true
+   killasgroup = true
+   
+   $ sudo superviosrctl reload
+   $ sudo superviosrctl start <your server name>
+   $ sudo superviosrctl status <your server name>
+   ```
 
-9. 
+9. So far we have all components set, and you can open `www.example.com` by a browser to check it!
