@@ -6,9 +6,10 @@ load_dotenv()
 
 SERVER_URL = getenv('SERVER_URL')
 SERVER_USER = getenv('SERVER_USER')
+SSH_PASSPHRASE = getenv('SSH_PASSPHRASE')
 
 connect_kwargs = {
-    'passphrase': getenv('SSH_PASSPHRASE')
+    'passphrase': SSH_PASSPHRASE
 }
 
 con = Connection(SERVER_URL, user=SERVER_USER, connect_kwargs=connect_kwargs, connect_timeout=0)
@@ -16,7 +17,7 @@ con = Connection(SERVER_URL, user=SERVER_USER, connect_kwargs=connect_kwargs, co
 
 @task
 def push(local, message):
-    local.config['passphrase'] = getenv('SSH_PASSPHRASE')
+    local.config['passphrase'] = SSH_PASSPHRASE
     local.run('git submodule foreach git pull', replace_env=False)
     local.run('git add website/blueprints/*', replace_env=False)
     local.run(f'git commit -m "{message}"', replace_env=False)
