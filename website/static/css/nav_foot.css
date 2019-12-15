@@ -4,6 +4,11 @@
 * @Last Modified by:   Lucien Zhang
 * @Last Modified time: 2019-09-21 14:23:28
 */
+
+.container{
+    margin-left: 0;
+}
+
 main>.container {
     padding: 60px 15px 0;
 }
@@ -21,3 +26,21 @@ code {
     font-size: 80%;
 }
 
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}
