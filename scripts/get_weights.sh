@@ -13,13 +13,13 @@ MODEL_DIR=$(
     }
     pwd
 )
-MODEL_DIR=${MODEL_DIR%/*}"/website/blueprints/ml/ml/model_train/models/"
+MODEL_DIR=${MODEL_DIR%/*}"/website/blueprints/ml/train/weights/"
 
 mkdir -p "${MODEL_DIR}"
 
 declare -A models
 models=([mnist]="https://github.com/LucienZhang/ml/releases/download/v1.0/lenet_mnist.h5"
-    [cifar10]="https://github.com/LucienZhang/ml/releases/download/v1.0/lenet_cifar10.h5")
+    [cifar10]="https://github.com/LucienZhang/ml/releases/download/v1.1/lenet_cifar10.h5")
 
 function get_weights() {
     cd "${MODEL_DIR}" || {
