@@ -24,18 +24,18 @@ code {
 }
 
 
-.nav_foot .dropdown-submenu {
+header .dropdown-submenu {
     position: relative;
 }
 
-.nav_foot .dropdown-submenu a::after {
+header .dropdown-submenu a::after {
     transform: rotate(-90deg);
     position: absolute;
     right: 6px;
     top: .8em;
 }
 
-.nav_foot .dropdown-submenu .dropdown-menu {
+header .dropdown-submenu .dropdown-menu {
     top: 0;
     left: 100%;
     margin-left: .1rem;
