@@ -115,3 +115,4 @@ node_modules
 tmp/
 tests/
 docs/
+*.h5

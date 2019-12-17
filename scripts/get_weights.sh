@@ -13,7 +13,7 @@ MODEL_DIR=$(
     }
     pwd
 )
-MODEL_DIR=${MODEL_DIR%/*}"/website/blueprints/ml/train/weights/"
+MODEL_DIR=${MODEL_DIR%/*}"/website/blueprints/ml/ml/weights/"
 
 mkdir -p "${MODEL_DIR}"
 
