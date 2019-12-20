@@ -46,7 +46,7 @@ function get_weights() {
         wget -q "${address}" -O "${file_name}"
         echo "Model $1 got!"
     fi
-    md5sum *\.h5 -c models.md5
+    md5sum *\.h5 -c models.md5 #todo: get md5files
 }
 
 while getopts ':hai:' option; do
