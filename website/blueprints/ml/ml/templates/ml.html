@@ -91,7 +91,9 @@
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 ml-main-content">
                     <div class="markdown-body">
                         {% block ml_content %}
-                            {{ content|markdown }}
+                            {% filter markdown %}
+                                {% include 'markdowns/ml.md' %}
+                            {% endfilter %}
                         {% endblock %}
                     </div>
                 </main>

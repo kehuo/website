@@ -6,16 +6,13 @@
 from flask import Blueprint, render_template, request, url_for
 
 from ml.predictor import predict
-from ml.markdown import get_md_dir
 
 ml_api = Blueprint('ml_api', __name__, template_folder='templates', static_folder='static')
 
 
 @ml_api.route('/')
 def home():
-    with open(get_md_dir() / 'ml.md') as f:
-        content = f.read()
-    return render_template("ml.html", content=content)
+    return render_template("ml.html")
 
 
 @ml_api.route('/mnist-canvas', methods=['GET', 'POST'])
@@ -34,6 +31,4 @@ def mnist_canvas():
 @ml_api.route('/project')
 def project():
     project_name = request.args.get('name')
-    with open(get_md_dir() / (project_name + '.md')) as f:
-        content = f.read()
-    return render_template("project.html", content=content, project_name=project_name)
+    return render_template("project.html", project_name=project_name)

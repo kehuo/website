@@ -16,6 +16,10 @@
     padding-left: 0;
 }
 
+.markdown-body {
+    margin-bottom: 50px;
+}
+
 /*.feather {*/
 /*  width: 16px;*/
 /*  height: 16px;*/
