@@ -4,9 +4,7 @@
 * @Last Modified by:   Lucien Zhang
 * @Last Modified time: 2019-09-21 17:17:58
 */
-
-var a =0;
-console.log(a=='0');
-
-let b=0;
-console.log(b=='0');
+let child = $("header nav li a:contains(Home)");
+child.html(child.html() + ' <span class="sr-only">(current)</span>');
+let parent = child.closest('li');
+parent.attr("class", parent.attr("class") + " active");

@@ -6,7 +6,9 @@
 
 from ml.ml_module import ml_api
 from ml.predictor import init_predictor
+from ml.markdown import init_md
 
 
 def init_app(app):
     init_predictor()
+    init_md(app)

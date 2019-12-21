@@ -12,6 +12,10 @@
     padding-top: 16px;
 }
 
+#ml-content .sidebar-sticky li a {
+    padding-left: 0;
+}
+
 /*.feather {*/
 /*  width: 16px;*/
 /*  height: 16px;*/
