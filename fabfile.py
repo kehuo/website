@@ -29,11 +29,7 @@ def push(local, message):
 
 
 def get_server_name(env):
-    server_name = SERVER_NAME_PREFIX
-    if env != 'prod':
-        server_name += '_' + env
-    # server_name += '/website'
-    return server_name
+    return SERVER_NAME_PREFIX + '_' + env
 
 
 def get_home_path(env):
@@ -44,7 +40,6 @@ def get_home_path(env):
 @task
 def update(local, env):
     assert env in ['prod', 'dev', 'test']
-    assert env == 'dev'
     with con.cd(SERVER_PATH + '/'):
         # con.run('ls')
         with con.cd(get_server_name(env) + '/website'):
