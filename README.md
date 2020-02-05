@@ -222,9 +222,9 @@ To deploy this website on your server, follow the next instructions:
    stopasgroup = true
    killasgroup = true
    
-   $ sudo superviosrctl reload
-   $ sudo superviosrctl start <your server name>
-   $ sudo superviosrctl status <your server name>
+   $ sudo supervisorctl reload
+   $ sudo supervisorctl start <your server name>
+   $ sudo supervisorctl status <your server name>
    ```
 
 9. So far we have all components set, and you can open `www.example.com` by a browser to check it!

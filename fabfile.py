@@ -22,6 +22,7 @@ con = Connection(SERVER_URL, user=SERVER_USER, connect_kwargs=connect_kwargs, co
 @task
 def push(local, message):
     local.config['passphrase'] = SSH_PASSPHRASE
+    local.run('git checkout dev', replace_env=False)
     local.run('git submodule foreach git pull', replace_env=False)
     local.run('git add website/blueprints/*', replace_env=False)
     local.run(f'git commit -m "{message}"', replace_env=False)
@@ -39,7 +40,8 @@ def get_home_path(env):
 
 @task
 def update(local, env):
-    assert env in ['prod', 'dev', 'test']
+    # assert env in ['prod', 'dev', 'test']
+    assert env in ['prod', 'dev']
     with con.cd(SERVER_PATH + '/'):
         # con.run('ls')
         with con.cd(get_server_name(env) + '/website'):
