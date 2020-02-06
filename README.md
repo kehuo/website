@@ -158,6 +158,7 @@ To deploy this website on your server, follow the next instructions:
    SQLALCHEMY_TRACK_MODIFICATIONS = False
    LOGIN_SECRET_KEY = 'secret key used for flask login'
    REDIS_URL = "redis://localhost"
+   GUNICORN = True
    
    
    # Load h5 weights files from GitHub

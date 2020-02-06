@@ -6,6 +6,7 @@
 
 import os
 import sys
+import logging
 
 blueprints_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'blueprints')
 sys.path.append(os.path.join(blueprints_path, 'werewolf'))
@@ -41,8 +42,13 @@ def create_app(config_name=None):
             response.headers["Pragma"] = "no-cache"
             return response
 
+    if app.config["GUNICORN"]:
+        gunicorn_logger = logging.getLogger('gunicorn.error')
+        app.logger.handlers = gunicorn_logger.handlers
+        app.logger.setLevel(gunicorn_logger.level)
+
     app.register_blueprint(werewolf_api, url_prefix='/werewolf')
-    app.register_blueprint(ml_api,url_prefix='/ml')
+    app.register_blueprint(ml_api, url_prefix='/ml')
     init_app(app)
 
     @app.route('/')
