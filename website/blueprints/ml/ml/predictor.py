@@ -11,8 +11,7 @@ model_names = ('lenet_mnist', 'lenet_cifar10')
 models = {}
 implementors = {'mnist': 'lenet_mnist'}
 
-global graph
-graph = tf.get_default_graph()
+graph = tf.Graph()
 
 
 def init_predictor():
