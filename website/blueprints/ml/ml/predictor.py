@@ -2,6 +2,7 @@ from pathlib import Path
 
 from PIL import Image
 import numpy as np
+import tensorflow as tf
 from tensorflow import keras
 from ml.utils import get_model_dir
 
@@ -9,6 +10,9 @@ model_dir = get_model_dir()
 model_names = ('lenet_mnist', 'lenet_cifar10')
 models = {}
 implementors = {'mnist': 'lenet_mnist'}
+
+global graph
+graph = tf.get_default_graph()
 
 
 def init_predictor():
@@ -28,7 +32,8 @@ def predict(task, inputs):
             img = img.reshape((-1, 28, 28, 1))
             img /= 255.0
             images = np.vstack((images, img))
-        prob_vec = model.predict(images)
+        with graph.as_default():
+            prob_vec = model.predict(images)
         results = np.argmax(prob_vec, axis=1)
         probabilities = np.max(prob_vec, axis=1)
         return results, probabilities
