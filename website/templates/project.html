@@ -1,0 +1,11 @@
+{% extends 'ml.html' %}
+{% block ml_content %}
+    <div id="project-name" value="{{ project_name }}"></div>
+    {% filter markdown %}
+        {% include 'markdowns/'+project_name+'.md' %}
+    {% endfilter %}
+{% endblock %}
+
+{% block project_js %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/project.js') }}"></script>
+{% endblock %}

@@ -1,31 +1,16 @@
-# -*- coding: utf-8 -*-
-# @Author: Lucien Zhang
-# @Date:   2019-09-16 17:43:45
-# @Last Modified by:   Lucien Zhang
-# @Last Modified time: 2019-10-02 15:53:05
-
 import os
-import sys
 import logging
-
-blueprints_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'blueprints')
-sys.path.append(os.path.join(blueprints_path, 'werewolf'))
-sys.path.append(os.path.join(blueprints_path, 'ml'))
-
-from flask import Flask, render_template  # noqa: E402
-from werewolf import werewolf_api, init_app as init_werewolf  # noqa: E402
-from ml import ml_api, init_app as init_ml  # noqa: E402
-
-from website.config import config  # noqa: E402
+from flask import Flask, render_template
+from website.config import config
+from website.ml_module import ml_api
+from website.markdown import init_md
 
 
 def init_app(app):
-    init_werewolf(app)
-    init_ml(app)
+    init_md(app)
 
 
 def create_app(config_name=None):
-    # create and configure the app
     root_path = os.path.abspath(os.path.dirname(__file__))
     app = Flask(__name__, instance_relative_config=True, root_path=root_path,
                 instance_path=os.path.join(root_path, 'instance'))
@@ -47,7 +32,6 @@ def create_app(config_name=None):
         app.logger.handlers = gunicorn_logger.handlers
         app.logger.setLevel(gunicorn_logger.level)
 
-    app.register_blueprint(werewolf_api, url_prefix='/werewolf')
     app.register_blueprint(ml_api, url_prefix='/ml')
     init_app(app)
 
