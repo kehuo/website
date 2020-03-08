@@ -1,11 +1,16 @@
 # website
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
-![Repo size](https://img.shields.io/github/repo-size/LucienZhang/website)
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg?label=Anti%20996)](https://996.icu)
+[![Repo size](https://img.shields.io/github/repo-size/LucienZhang/website?label=Repo%20Size)](https://github.com/LucienZhang/website)
+[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/lucienzhangzl/website?label=Image%20Version)](https://hub.docker.com/r/lucienzhangzl/website)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/lucienzhangzl/website?label=Image%20Size)](https://hub.docker.com/r/lucienzhangzl/website)
+[![MicroBadger Layers](https://img.shields.io/microbadger/layers/lucienzhangzl/website?label=Image%20Layers)](https://hub.docker.com/r/lucienzhangzl/website)
 
 ## Status
 [![Board Status](https://dev.azure.com/lucienzhangzl/af4df972-267e-43c6-8ea0-12b3517e4058/5be15dc3-9a52-476f-9779-5a1ec00a008d/_apis/work/boardbadge/6c9bca0e-d131-4f6e-9514-8b5fd936c7c9)](https://dev.azure.com/lucienzhangzl/af4df972-267e-43c6-8ea0-12b3517e4058/_boards/board/t/5be15dc3-9a52-476f-9779-5a1ec00a008d/Microsoft.RequirementCategory/)
 
-[![Build Status](https://dev.azure.com/lucienzhangzl/website/_apis/build/status/website.test?branchName=master)](https://dev.azure.com/lucienzhangzl/website/_build/latest?definitionId=2&branchName=master)
+| Test | Build & Release |
+|:---:|:---:|
+|[![Build Status](https://dev.azure.com/lucienzhangzl/website/_apis/build/status/website.test?branchName=master)](https://dev.azure.com/lucienzhangzl/website/_build/latest?definitionId=2&branchName=master)|[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/lucienzhangzl/website?label=Docker%20Build)](https://hub.docker.com/r/lucienzhangzl/website)|
 
 ## Guideline
 This is a repository for my [personal website](http://www.ziliang.red), using Flask framework.
@@ -34,7 +39,7 @@ To deploy this website on your server, follow the next instructions:
 
 2. Install Miniconda and create a virtual environment, please refer to [Miniconda](https://docs.conda.io/en/latest/miniconda.html) for details.
 
-   ``````bash
+   ```bash
    $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
    $ ./Miniconda3-latest-Linux-x86_64.sh
    # Install
@@ -44,7 +49,7 @@ To deploy this website on your server, follow the next instructions:
    $ cd website
    $ pwd
    /var/www/[your domain name]/<your server name>/website
-   ``````
+   ```
 
 3. Install the requirements 
 
@@ -165,7 +170,6 @@ To deploy this website on your server, follow the next instructions:
    LOGIN_SECRET_KEY = 'secret key used for flask login'
    REDIS_URL = "redis://localhost"
    GUNICORN = True
-   
    
    # Load h5 weights files from GitHub
    $ cd /var/www/[your domain name]/<your server name>/website/scripts
