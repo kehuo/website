@@ -2,6 +2,11 @@
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 ![Repo size](https://img.shields.io/github/repo-size/LucienZhang/website)
 
+## Status
+[![Board Status](https://dev.azure.com/lucienzhangzl/af4df972-267e-43c6-8ea0-12b3517e4058/5be15dc3-9a52-476f-9779-5a1ec00a008d/_apis/work/boardbadge/6c9bca0e-d131-4f6e-9514-8b5fd936c7c9)](https://dev.azure.com/lucienzhangzl/af4df972-267e-43c6-8ea0-12b3517e4058/_boards/board/t/5be15dc3-9a52-476f-9779-5a1ec00a008d/Microsoft.RequirementCategory/)
+[![Build Status](https://dev.azure.com/lucienzhangzl/website/_apis/build/status/website.test?branchName=master)](https://dev.azure.com/lucienzhangzl/website/_build/latest?definitionId=2&branchName=master)
+
+## Guideline
 This is a repository for my [personal website](http://www.ziliang.red), using Flask framework.
 
 The server is established from `manage.py` file in the root directory. The main application takes two blueprints from `website/blueprints` directory, one is a game engine for [The Werewolves of Millers Hollow]( https://en.wikipedia.org/wiki/The_Werewolves_of_Millers_Hollow), and another one is for showing some applications using machine learning or deep learning techniques.
