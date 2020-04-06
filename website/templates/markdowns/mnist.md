@@ -2,7 +2,7 @@
 
 # Handwritten Digit Recognition
 
-This is a classification project trained on [MNIST](http://yann.lecun.com/exdb/mnist/) dataset. You can try it [here]({{ url_for('ml_api.demo') }}).
+This is a classification project trained on [MNIST](http://yann.lecun.com/exdb/mnist/) dataset. You can try it [here]({{ url_for('ml_api.demo', name='mnist') }}).
 
 ## MNIST Dataset[^mnist]
 
