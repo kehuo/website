@@ -13,88 +13,90 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-<header>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="/">
-            <img src="{{ url_for('static', filename='images/small-logo.png') }}" width="100" height="50"
-                 alt="Main Logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <a class="navbar-brand" href="/">
+                <img src="{{ url_for('static', filename='images/small-logo.png') }}" width="100" height="50"
+                    alt="Main Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item" id="nav-home">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" id="nav-home">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
 
 
-                <li class="nav-item dropdown" id="nav-ml">
-                    <a class="nav-link dropdown-toggle" href="#" id="mlDropdown" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Machine Learning
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="mlDropdown">
-                        {#          <li><a class="dropdown-item" href="#">Action</a></li>#}
-                        {#          <li><a class="dropdown-item" href="#">Another action</a></li>#}
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Image Classification</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Handwritten Digit</a></li>
-                                <li><a class="dropdown-item" href="#">Cifar 10</a></li>
-                                <li><a class="dropdown-item" href="#">Fruits & Vegetables</a></li>
+                    <li class="nav-item dropdown" id="nav-ml">
+                        <a class="nav-link dropdown-toggle" href="#" id="mlDropdown" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Machine Learning
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="mlDropdown">
+                            {#          <li><a class="dropdown-item" href="#">Action</a></li>#}
+                            {#          <li><a class="dropdown-item" href="#">Another action</a></li>#}
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Image Classification</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item"
+                                            href="{{ url_for('ml_api.project',project_name='mnist') }}">Handwritten
+                                            Digit</a></li>
+                                    <li><a class="dropdown-item" href="#">Cifar 10</a></li>
+                                    <li><a class="dropdown-item" href="#">Fruits & Vegetables</a></li>
 
 
-                                {#              <li class="dropdown-submenu">#}
-                                {#                <a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>#}
-                                {#                <ul class="dropdown-menu">#}
-                                {#                  <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>#}
-                                {#                  <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>#}
-                                {#                </ul>#}
-                                {#              </li>#}
-                                {#              <li class="dropdown-submenu">#}
-                                {#                <a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu</a>#}
-                                {#                <ul class="dropdown-menu">#}
-                                {#                  <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>#}
-                                {#                  <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>#}
-                                {#                </ul>#}
-                                {#              </li>#}
+                                    {#              <li class="dropdown-submenu">#}
+                                    {#                <a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>#}
+                                    {#                <ul class="dropdown-menu">#}
+                                    {#                  <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>#}
+                                    {#                  <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>#}
+                                    {#                </ul>#}
+                                    {#              </li>#}
+                                    {#              <li class="dropdown-submenu">#}
+                                    {#                <a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu</a>#}
+                                    {#                <ul class="dropdown-menu">#}
+                                    {#                  <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>#}
+                                    {#                  <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>#}
+                                    {#                </ul>#}
+                                    {#              </li>#}
 
 
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Image Detection</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">YOLO</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Semantic Segmentation</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">FCN</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Instance Segmentation</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Mask R-CNN</a></li>
-                            </ul>
-                        </li>
-                        <div class="dropdown-divider"></div>
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Sentiment Classification</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">SA</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Image Detection</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">YOLO</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Semantic Segmentation</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">FCN</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Instance Segmentation</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Mask R-CNN</a></li>
+                                </ul>
+                            </li>
+                            <div class="dropdown-divider"></div>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Sentiment Classification</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">SA</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
 
 
-                <!--       <li class="nav-item">
+                    <!--       <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item dropdown">
@@ -111,49 +113,50 @@
   <li class="nav-item">
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
   </li> -->
-            </ul>
-            <!--     <form class="form-inline my-2 my-lg-0">
+                </ul>
+                <!--     <form class="form-inline my-2 my-lg-0">
   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 </form> -->
-        </div>
-    </nav>
-</header>
-<!-- Begin page content -->
-<main role="main" class="flex-shrink-0">
-    <div class="container nav-foot-container">
-        {% block content %}{% endblock %}
-        <!--     <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>main &gt; .container</code>.</p>
+            </div>
+        </nav>
+    </header>
+    <!-- Begin page content -->
+    <main role="main" class="flex-shrink-0">
+        <div class="container nav-foot-container">
+            {% block content %}{% endblock %}
+            <!--     <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>main &gt; .container</code>.</p>
 <p>Back to <a href="/docs/4.3/examples/sticky-footer/">the default sticky footer</a> minus the navbar.</p> -->
-    </div>
-</main>
+        </div>
+    </main>
 
 
-<footer class="footer mt-auto py-3">
-    <div class="container nav-foot-container">
-        <div class="row border-bottom">
-            <div class="col-md-6 mb-3 mb-md-0">
-                <h5>Contact Me</h5>
-                <div>
-                    <div class="d-flex"><img class="mb-3 mr-3"
-                                             src="{{ url_for('static', filename='images/icons/mail.svg') }}" alt="">
-                        <p class="text-muted">lucienzhangzl@outlook.com</p>
+    <footer class="footer mt-auto py-3">
+        <div class="container nav-foot-container">
+            <div class="row border-bottom">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5>Contact Me</h5>
+                    <div>
+                        <div class="d-flex"><img class="mb-3 mr-3"
+                                src="{{ url_for('static', filename='images/icons/mail.svg') }}" alt="">
+                            <p class="text-muted">lucienzhangzl@outlook.com</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center justify-content-md-between flex-column flex-md-row mx-3 mt-3">
-            <div class="d-flex mt-3 mt-md-0">
-                <p class="mb-0 small text-muted">&copy; 2019 ZHANG Ziliang. All right reserved.</p>
+            <div
+                class="d-flex justify-content-center align-items-center justify-content-md-between flex-column flex-md-row mx-3 mt-3">
+                <div class="d-flex mt-3 mt-md-0">
+                    <p class="mb-0 small text-muted">&copy; 2019 ZHANG Ziliang. All right reserved.</p>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-<!-- jQuery (Bootstrap JS plugins depend on it) -->
-<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/nav_foot.js') }}"></script>
-{% block js %}{% endblock %}
+    </footer>
+    <!-- jQuery (Bootstrap JS plugins depend on it) -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/nav_foot.js') }}"></script>
+    {% block js %}{% endblock %}
 </body>
 
 </html>
