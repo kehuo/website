@@ -1,0 +1,19 @@
+{
+  "name": "website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.4.0",
+    "ant-design-vue": "^1.5.3",
+    "core-js": "^2.6.11",
+    "markdown-it-footnote": "^3.0.2",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "vuepress": "^1.4.0"
+  },
+  "dependencies": {}
+}
