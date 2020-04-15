@@ -1,4 +1,19 @@
+const webpack = require('webpack');
+
 module.exports = {
+    configureWebpack: (config, isServer) => {
+        if (!isServer) {
+            return {
+                plugins: [
+                    new webpack.DefinePlugin({
+                        'process.env': {
+                            'NODE_ENV': '"production"'
+                        }
+                    })
+                ],
+            };
+        }
+    },
     markdown: {
         lineNumbers: true,
         extendMarkdown: md => {
