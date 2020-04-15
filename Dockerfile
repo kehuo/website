@@ -1,10 +1,13 @@
-FROM node:10
-COPY ./ /app
+FROM node:13 as build-stage
 WORKDIR /app
-RUN yarn install && yarn docs:build
+COPY . .
+RUN yarn install && yarn build
 
 FROM nginx
-RUN mkdir /app
-COPY --from=0 /app/docs/.vuepress/dist /app
+RUN mkdir /app && \
+    rm /etc/nginx/nginx.conf
+COPY --from=build-stage /app/docs/.vuepress/dist /app
 
+EXPOSE 80
 VOLUME [ "/etc/nginx/nginx.conf" ]
+CMD ["nginx", "-g", "daemon off;"]
