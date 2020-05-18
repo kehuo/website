@@ -23,13 +23,13 @@ module.exports = {
     locales: {
         '/': {
             lang: 'en-US',
-            title: 'English Title',
-            description: 'English Description'
+            title: 'Pseudocoder',
+            description: 'Not Only a Coder'
         },
         '/zh/': {
             lang: 'zh-CN',
-            title: '中文标题',
-            description: '中文描述'
+            title: '张子良的个人站点',
+            description: '不仅是程序员'
         }
     },
     themeConfig: {

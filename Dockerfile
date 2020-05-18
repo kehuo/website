@@ -4,9 +4,9 @@ COPY . .
 RUN yarn install && yarn build
 
 FROM nginx
-RUN mkdir /app && \
+RUN mkdir -p /data/app_static/home && \
     rm /etc/nginx/nginx.conf
-COPY --from=build-stage /app/docs/.vuepress/dist /app
+COPY --from=build-stage /app/docs/.vuepress/dist /data/app_static/home
 
 EXPOSE 80
 VOLUME [ "/etc/nginx/nginx.conf" ]

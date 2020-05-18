@@ -1,9 +1,9 @@
 <template>
   <div id="global-layout">
     <component :is="layout" />
-    <footer>
+    <!-- <footer>
       <h1>Footer</h1>
-    </footer>
+    </footer> -->
   </div>
 </template>
 
