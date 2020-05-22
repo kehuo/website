@@ -14,6 +14,7 @@ module.exports = {
       };
     }
   },
+  plugins: [["vuepress-plugin-mathjax", {}]],
   markdown: {
     lineNumbers: true,
     extendMarkdown: (md) => {
@@ -51,6 +52,7 @@ module.exports = {
         nav: [
           { text: "Machine Learning", link: "/ml/" },
           { text: "Projects", link: "/projects/" },
+          { text: "Algorithms", link: "/algorithms/" },
         ],
         // sidebar: 'auto',
         // sidebar: [
@@ -76,6 +78,13 @@ module.exports = {
             //         '/projects/games/werewolf',
             //     ]
             // },
+          ],
+          "/algorithms/": [
+            {
+              title: "NP-Hard",
+              path: "/algorithms/np-hard/",
+              children: ["/algorithms/np-hard/knapsack"],
+            },
           ],
         },
         lastUpdated: "Last Updated",
