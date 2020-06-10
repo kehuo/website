@@ -68,7 +68,7 @@ export default {
       let orign = this.mnistPad.toData();
 
       for (let i = 0; i < orign.length; i++) {
-        const orignChild = orign[i];
+        const orignChild = orign[i].points;
 
         for (let j = 0; j < orignChild.length; j++) {
           xs.push(orignChild[j].x);
@@ -169,7 +169,7 @@ export default {
     img2text(b64img) {
       let formData = new FormData();
       let blob = this.dataURItoBlob(b64img);
-      formData.append("predictImg", blob);
+      formData.append("img", blob);
       mlApi
         .post("/mnist", formData)
         .then(res => {
@@ -177,8 +177,8 @@ export default {
             this.$message.error("未知错误");
             console.log(res);
           } else {
-            this.result = data.result;
-            this.prob = data.prob;
+            this.result = res.data.result;
+            this.prob = res.data.prob;
           }
         })
         .catch(res => {

@@ -9,7 +9,7 @@ module.exports = {
             "process.env": {
               NODE_ENV: '"production"',
               VUE_APP_ML_API_URL: '"http://ziliang.red/ml-api"',
-              VUE_APP_DEBUG: true,
+              VUE_APP_DEBUG: false,
             },
           }),
         ],
