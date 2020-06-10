@@ -48,7 +48,7 @@ If this assumption doesn't hold, we can just pick those over-weight out beforeha
 
 This is a 0.5-approximation algorithm, i.e., $SOL \ge 0.5 \ OPT$ for any input.
 
-### proof
+### Proof
 
 ---
 
