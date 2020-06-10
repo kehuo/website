@@ -9,4 +9,4 @@ for i in range(5):
     print(i)
 ```
 
-<a-button type="primary">Primary</a-button>
+<!-- <a-button type="primary">Primary</a-button> -->

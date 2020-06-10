@@ -8,6 +8,8 @@ module.exports = {
           new webpack.DefinePlugin({
             "process.env": {
               NODE_ENV: '"production"',
+              VUE_APP_ML_API_URL: '"http://ziliang.red/ml-api"',
+              VUE_APP_DEBUG: true,
             },
           }),
         ],
@@ -15,6 +17,26 @@ module.exports = {
     }
   },
   plugins: [["vuepress-plugin-mathjax", {}]],
+  chainWebpack: (config, isServer) => {
+    config.module
+      .rule("js") // Find the rule.
+      .use("babel-loader") // Find the loader
+      .tap((options) =>
+        Object.assign(options, {
+          // Modifying options
+          plugins: [
+            [
+              "import",
+              {
+                libraryName: "ant-design-vue",
+                libraryDirectory: "es",
+                style: "css",
+              },
+            ],
+          ],
+        })
+      );
+  },
   markdown: {
     lineNumbers: true,
     extendMarkdown: (md) => {
