@@ -199,10 +199,9 @@ export default {
     this.mnistPad = mnistPad;
 
     function resizeCanvas() {
-      let ratio = Math.max(window.devicePixelRatio || 1, 1);
-      canvas.width = canvas.offsetWidth * ratio;
-      canvas.height = canvas.offsetHeight * ratio;
-      canvas.getContext("2d").scale(ratio, ratio);
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      canvas.getContext("2d").scale(1, 1);
       mnistPad.clear(); // otherwise isEmpty() might return incorrect value
     }
     window.addEventListener("resize", resizeCanvas);
