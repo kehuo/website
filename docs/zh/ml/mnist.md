@@ -1,6 +1,6 @@
 # 手写数字识别
 
-这是一个基于[MNIST](http://yann.lecun.com/exdb/mnist/)数据集的分类任务模型，你可以在[这里](/zh/ml/demo/mnist/)尝试它的效果。
+这是一个基于[MNIST](http://yann.lecun.com/exdb/mnist/)数据集的分类任务模型，你可以在[文章的最后](#演示)尝试它的效果。
 
 ## MNIST 数据集
 

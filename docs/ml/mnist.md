@@ -1,6 +1,6 @@
 # Handwritten Digit Recognition
 
-This is a classification project trained on [MNIST](http://yann.lecun.com/exdb/mnist/) dataset. You can try it [here](/ml/demo/mnist/).
+This is a classification project trained on [MNIST](http://yann.lecun.com/exdb/mnist/) dataset. You can try it at [the end of this article](#demo).
 
 ## MNIST Dataset
 
