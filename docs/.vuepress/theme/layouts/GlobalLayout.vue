@@ -3,7 +3,7 @@
     <component :is="layout" />
     <!-- <footer>
       <h1>Footer</h1>
-    </footer> -->
+    </footer>-->
   </div>
 </template>
 
@@ -40,3 +40,14 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.ant-message-notice {
+  .ant-message-notice-content {
+    .anticon {
+      vertical-align: 0px;
+      top: -1px;
+    }
+  }
+}
+</style>

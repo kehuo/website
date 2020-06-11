@@ -4,16 +4,16 @@
     <div class="container-fluid">
       <div class="row text-center">
         <div class="col-2 col-btn">
-          <button class="btn btn-info float-left" @click="clear">Clear</button>
+          <button class="btn btn-info float-left" @click="clear">{{clearBtnName}}</button>
         </div>
         <div class="col-8">
           <div v-if="result!==''">
-            <p>Result: {{result}}</p>
-            <p>Probability: {{prob}}</p>
+            <p>{{resultTag}}: {{result}}</p>
+            <p>{{probTag}}: {{prob}}</p>
           </div>
         </div>
         <div class="col-2 col-btn">
-          <button class="btn btn-success float-right" @click="recognize">Recognize</button>
+          <button class="btn btn-success float-right" @click="recognize">{{recognizeBtnName}}</button>
         </div>
       </div>
     </div>
@@ -25,6 +25,33 @@ import SignaturePad from "signature_pad";
 import mlApi from "../axios-ml";
 
 export default {
+  props: {
+    clearBtnName: {
+      type: String,
+      required: false,
+      default: "Clear"
+    },
+    recognizeBtnName: {
+      type: String,
+      required: false,
+      default: "Recognize"
+    },
+    resultTag: {
+      type: String,
+      required: false,
+      default: "Result"
+    },
+    probTag: {
+      type: String,
+      required: false,
+      default: "Probability"
+    },
+    warningMsg: {
+      type: String,
+      required: false,
+      default: "Please write down a digit!"
+    }
+  },
   data() {
     return {
       result: "",
@@ -40,7 +67,7 @@ export default {
     },
     recognize() {
       if (this.mnistPad.isEmpty()) {
-        this.$message.error("Please write down a digit!");
+        this.$message.warning(this.warningMsg);
       } else {
         this.getMNISTGridBySize(process.env.VUE_APP_DEBUG, 28, this.img2text);
       }
@@ -227,17 +254,6 @@ export default {
   }
   .col-btn {
     padding: 0;
-  }
-}
-</style>
-
-<style lang="scss">
-.ant-message-notice {
-  .ant-message-notice-content {
-    .anticon {
-      vertical-align: 0px;
-      top: -1px;
-    }
   }
 }
 </style>

@@ -16,7 +16,17 @@ module.exports = {
       };
     }
   },
-  plugins: [["vuepress-plugin-mathjax", {}]],
+  plugins: [
+    ["vuepress-plugin-mathjax", {}],
+    [
+      "vuepress-plugin-code-copy",
+      {
+        color: "#ffffff",
+        staticIcon: true,
+      },
+    ],
+    ["tabs", {}],
+  ],
   chainWebpack: (config, isServer) => {
     config.module
       .rule("js") // Find the rule.

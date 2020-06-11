@@ -16,6 +16,12 @@ MNIST[^mnist]是一个手写体数字数据集，包含 55,000 个训练样本�
 
 ## LeNet-5
 
-Yann LeCun, Leon Bottou, Yosuha Bengio and Patrick Haffner proposed a neural network architecture for handwritten and machine-printed character recognition in 1990's which they called LeNet-5[^lenet]. Though the architecture is straightforward and simple to understand, it's an important milestone for Convolutional Neural Network (CNN) and Image Classification. Before it was invented, character recognition had been done mostly by using feature engineering by hand, followed by a machine learning model to learn to classify hand engineered features. LeNet made hand engineering features redundant, because the network learns the best internal representation from raw images automatically.
+Yann LeCun, Leon Bottou, Yosuha Bengio 和 Patrick Haffner 在 20 世纪 90 年代提出了一种用于手写和机器打印字符识别的神经网络架构，他们将其称为 LeNet-5[^lenet]。尽管该架构简单易懂，但这对于卷积神经网络（CNN）和图像分类是一个重要的里程碑。在其发明之前，字符识别主要是通过两个步骤来完成：先利用手动特征工程抽取特征，再用机器学习模型来学习基于这些特征的分类任务。LeNet 使手动特征工程步骤变得多余，因为网络会自动从原始图像中学习最佳内在表示。
 
 [^lenet]: http://yann.lecun.com/exdb/lenet/
+
+## 演示
+
+亲自尝试一下吧！写一个数字，按下`识别`即可！
+
+<DemoMnist clearBtnName="清除" recognizeBtnName="识别" resultTag="结果" probTag="概率" warningMsg="请写下一个数字！"/>
