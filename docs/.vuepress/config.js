@@ -1,21 +1,21 @@
 const webpack = require("webpack");
 
 module.exports = {
-  configureWebpack: (config, isServer) => {
-    if (!isServer) {
-      return {
-        plugins: [
-          new webpack.DefinePlugin({
-            "process.env": {
-              NODE_ENV: '"production"',
-              VUE_APP_ML_API_URL: '"http://ziliang.red/ml-api"',
-              VUE_APP_DEBUG: false,
-            },
-          }),
-        ],
-      };
-    }
-  },
+  // configureWebpack: (config, isServer) => {
+  //   if (!isServer) {
+  //     return {
+  //       plugins: [
+  //         new webpack.DefinePlugin({
+  //           "process.env": {
+  //             NODE_ENV: '"production"',
+  //             VUE_APP_ML_API_URL: '"http://ziliang.red/ml-api"',
+  //             VUE_APP_DEBUG: false,
+  //           },
+  //         }),
+  //       ],
+  //     };
+  //   }
+  // },
   plugins: [
     ["vuepress-plugin-mathjax", {}],
     [
