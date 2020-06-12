@@ -26,6 +26,7 @@ module.exports = {
       },
     ],
     ["tabs", {}],
+    ["check-md", {}],
   ],
   chainWebpack: (config, isServer) => {
     config.module
