@@ -40,14 +40,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.ant-message-notice {
-  .ant-message-notice-content {
-    .anticon {
-      vertical-align: 0px;
-      top: -1px;
-    }
-  }
-}
-</style>
