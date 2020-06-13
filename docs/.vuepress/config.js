@@ -21,7 +21,7 @@ module.exports = {
     [
       "vuepress-plugin-code-copy",
       {
-        color: "#ffffff",
+        color: "#757575",
         staticIcon: true,
       },
     ],

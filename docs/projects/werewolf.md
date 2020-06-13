@@ -1,10 +1,23 @@
 # werewolf game
 
-```python 3
+```python {4}
 a=0
 b=1
 for i in range(5):
     print(i)
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+
+class Item(BaseModel):
+    name: str
+    description: str = None
+    price: float
+    tax: float = None
+
 ```
 
 <!-- <a-button type="primary">Primary</a-button> -->
