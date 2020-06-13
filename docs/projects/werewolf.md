@@ -1,6 +1,6 @@
 # werewolf game
 
-```python {4}
+```python {4-6,9}
 a=0
 b=1
 for i in range(5):
