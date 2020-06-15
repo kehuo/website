@@ -1,4 +1,4 @@
-# Programming Language Basics
+# Basics
 
 :::: tabs
 
@@ -11,5 +11,7 @@
 ::: tab java
 
 :::
+
+<Jupyter filePath="basics/java.ipynb" />
 
 ::::

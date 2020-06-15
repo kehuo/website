@@ -83,6 +83,7 @@ module.exports = {
         // },
         // algolia: {},
         nav: [
+          { text: "Programming Languages", link: "/prog-lang/" },
           { text: "Machine Learning", link: "/ml/" },
           { text: "Projects", link: "/projects/" },
           { text: "Algorithms", link: "/algorithms/" },
@@ -92,6 +93,21 @@ module.exports = {
         //     ['/ml/', 'ML & DL Applications']
         // ],
         sidebar: {
+          "/prog-lang/": [
+            {
+              title: "Programming Languages",
+              children: ["/prog-lang/basics",
+              "/prog-lang/collections",
+              "/prog-lang/controls",
+              "/prog-lang/function",
+              "/prog-lang/modules",
+              "/prog-lang/io",
+              "/prog-lang/exceptions",
+              "/prog-lang/ood",
+              "/prog-lang/scope",
+            ],
+            }
+          ],
           "/ml/": [
             {
               title: "ML & DL Applications",
