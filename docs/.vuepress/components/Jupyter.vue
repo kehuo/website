@@ -2,7 +2,7 @@
   <div class="jupyter-content">
     <p>
       <a
-        :href="'https://mybinder.org/v2/gh/LucienZhang/website/master?filepath=notebooks/'+filePath"
+        :href="'https://mybinder.org/v2/gh/LucienZhang/website-binder/master?filepath=notebooks/'+filePath"
       >
         <img src="https://mybinder.org/badge_logo.svg" alt="Binder" />
       </a>
