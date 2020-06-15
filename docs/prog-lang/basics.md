@@ -4,10 +4,7 @@
 
 ::: tab python3
 
-```jupyter
-yes
-good
-```
+<Jupyter filePath="basics/python.ipynb" />
 
 :::
 
@@ -16,4 +13,3 @@ good
 :::
 
 ::::
-[fake](/fake/path)
