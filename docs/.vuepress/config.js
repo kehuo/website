@@ -100,7 +100,7 @@ module.exports = {
               "/prog-lang/collections",
               "/prog-lang/controls",
               "/prog-lang/function",
-              "/prog-lang/modules",
+              "/prog-lang/libs",
               "/prog-lang/io",
               "/prog-lang/exceptions",
               "/prog-lang/ood",
