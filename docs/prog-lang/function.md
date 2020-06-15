@@ -10,8 +10,8 @@
 
 ::: tab java
 
-:::
-
 <Jupyter filePath="function/java.ipynb" />
+
+:::
 
 ::::
