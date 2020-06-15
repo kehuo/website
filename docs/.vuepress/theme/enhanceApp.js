@@ -1,4 +1,5 @@
 import { message } from "ant-design-vue";
+import Tabs from "vue-tabs-component";
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app
@@ -10,6 +11,7 @@ export default ({
   // ...apply enhancements to the app
   Vue.config.productionTip = false;
   Vue.prototype.$message = message;
+  Vue.use(Tabs);
   // Vue.use(Button);
   // Vue.use(Upload);
   // Vue.use(Icon);
