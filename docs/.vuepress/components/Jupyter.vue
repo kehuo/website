@@ -1,5 +1,12 @@
 <template>
   <div class="jupyter-content">
+    <p>
+      <a
+        :href="'https://mybinder.org/v2/gh/LucienZhang/website/master?filepath=notebooks/'+filePath"
+      >
+        <img src="https://mybinder.org/badge_logo.svg" alt="Binder" />
+      </a>
+    </p>
     <tabs v-if="fileList" @changed="tabChanged">
       <tab v-for="(file, index) in fileList" :key="index" :name="file.name"></tab>
     </tabs>
