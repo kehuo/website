@@ -15,11 +15,11 @@
           scrolling="no"
           :src="'/nbviewer/localfile/'+filePath"
           :ref="'iframe-'+index"
-          @load="resizeIframe(index)"
+          @load="resizeIframe"
         ></iframe>
       </tab>
     </tabs>
-    <tabs v-else-if="srcPrefix" @changed="filePath=srcPrefix + '/' + $event.tab.name + '.ipynb'">
+    <tabs v-else-if="srcPrefix" @changed="tabChanged">
       <tab v-for="(name, index) in ['python','java']" :key="index" :name="name">
         <iframe
           v-if="filePath!==''"
@@ -27,7 +27,7 @@
           scrolling="no"
           :src="'/nbviewer/localfile/'+filePath"
           :ref="'iframe-'+index"
-          @load="resizeIframe(index)"
+          @load="resizeIframe"
         ></iframe>
       </tab>
     </tabs>
@@ -53,10 +53,8 @@ export default {
     };
   },
   methods: {
-    resizeIframe(index) {
-      if (index === undefined) {
-        index = this.activeIndex;
-      }
+    resizeIframe() {
+      let index = this.activeIndex;
       if (index === null) {
         return;
       }
@@ -65,12 +63,17 @@ export default {
         e.contentWindow.document.documentElement.scrollHeight + "px";
     },
     tabChanged(selectedTab) {
-      for (const file of this.fileList) {
-        if (file.name === selectedTab.tab.name) {
-          this.filePath = file.path;
-          this.activeIndex = selectedTab.tab.$vnode.data.key;
-          break;
+      if (this.fileList) {
+        for (const file of this.fileList) {
+          if (file.name === selectedTab.tab.name) {
+            this.filePath = file.path;
+            this.activeIndex = selectedTab.tab.$vnode.data.key;
+            break;
+          }
         }
+      } else if (this.srcPrefix) {
+        this.filePath = this.srcPrefix + "/" + selectedTab.tab.name + ".ipynb";
+        this.activeIndex = selectedTab.tab.$vnode.data.key;
       }
     }
   },
