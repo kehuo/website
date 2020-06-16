@@ -52,6 +52,7 @@ module.exports = {
     lineNumbers: true,
     extendMarkdown: (md) => {
       md.use(require("markdown-it-footnote"));
+      md.use(require("markdown-it-pangu"));
     },
   },
   locales: {
@@ -96,17 +97,19 @@ module.exports = {
           "/prog-lang/": [
             {
               title: "Programming Languages",
-              children: ["/prog-lang/basics",
-              "/prog-lang/collections",
-              "/prog-lang/controls",
-              "/prog-lang/function",
-              "/prog-lang/libs",
-              "/prog-lang/io",
-              "/prog-lang/exceptions",
-              "/prog-lang/ood",
-              "/prog-lang/scope",
-            ],
-            }
+              path: "/prog-lang/",
+              children: [
+                "/prog-lang/basics",
+                "/prog-lang/collections",
+                "/prog-lang/controls",
+                "/prog-lang/function",
+                "/prog-lang/libs",
+                "/prog-lang/io",
+                "/prog-lang/exceptions",
+                "/prog-lang/ood",
+                "/prog-lang/scope",
+              ],
+            },
           ],
           "/ml/": [
             {
