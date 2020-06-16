@@ -3,6 +3,7 @@
     <p>
       <a
         :href="'https://mybinder.org/v2/gh/LucienZhang/website-binder/master?filepath=notebooks/'+filePath"
+        target="_blank"
       >
         <img src="https://mybinder.org/badge_logo.svg" alt="Binder" />
       </a>
