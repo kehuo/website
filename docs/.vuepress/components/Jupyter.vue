@@ -10,6 +10,7 @@
     <tabs v-if="fileList" @changed="tabChanged">
       <tab v-for="(file, index) in fileList" :key="index" :name="file.name">
         <iframe
+          v-if="filePath!==''"
           frameborder="no"
           scrolling="no"
           :src="'/nbviewer/localfile/'+filePath"
@@ -21,6 +22,7 @@
     <tabs v-else-if="srcPrefix" @changed="filePath=srcPrefix + '/' + $event.tab.name + '.ipynb'">
       <tab v-for="(name, index) in ['python','java']" :key="index" :name="name">
         <iframe
+          v-if="filePath!==''"
           frameborder="no"
           scrolling="no"
           :src="'/nbviewer/localfile/'+filePath"
@@ -58,7 +60,7 @@ export default {
       if (index === null) {
         return;
       }
-      let e = this.$refs["iframe-" + index];
+      let e = this.$refs["iframe-" + index][0];
       e.style.height =
         e.contentWindow.document.documentElement.scrollHeight + "px";
     },
