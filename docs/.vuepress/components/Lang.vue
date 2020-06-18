@@ -1,6 +1,7 @@
 <template>
   <div class="tiobe">
     <highcharts v-if="chartOptions.series.length>0" :options="chartOptions"></highcharts>
+    <Content slot-key="between" />
     <table v-if="top20.tbody" class="table-top20">
       <thead v-html="top20.thead"></thead>
       <tbody>
