@@ -25,3 +25,11 @@ Yann LeCun, Leon Bottou, Yosuha Bengio and Patrick Haffner proposed a neural net
 Write down a digit and press `Recognize` to try it yourself!
 
 <DemoMnist/>
+
+<style lang="scss" scoped>
+table {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

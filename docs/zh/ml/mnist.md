@@ -25,3 +25,11 @@ Yann LeCun, Leon Bottou, Yosuha Bengio 和 Patrick Haffner 在 20 世纪 90 年�
 亲自尝试一下吧！写一个数字，按下`识别`即可！
 
 <DemoMnist clearBtnName="清除" recognizeBtnName="识别" resultTag="结果" probTag="概率" warningMsg="请写下一个数字！"/>
+
+<style lang="scss" scoped>
+table {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

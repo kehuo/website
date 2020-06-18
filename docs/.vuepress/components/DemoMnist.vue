@@ -238,7 +238,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "bootstrap";
+@import "bootstrap"; //todo change to neccessary components!
 
 .mnist {
   #mnist-canvas {
