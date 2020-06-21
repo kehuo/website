@@ -238,7 +238,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "bootstrap"; //todo change to neccessary components!
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/utilities";
 
 .mnist {
   #mnist-canvas {
