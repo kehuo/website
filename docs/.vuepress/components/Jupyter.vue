@@ -8,14 +8,16 @@
         <img src="https://mybinder.org/badge_logo.svg" alt="Binder" />
       </a>
     </p>
-    <lazy-component>
-      <iframe
-        frameborder="no"
-        scrolling="no"
-        :src="'/nbviewer/localfile/'+filePath"
-        @load="resizeIframe"
-      ></iframe>
-    </lazy-component>
+    <a-spin size="large" tip="Loading..." :spinning="spinning">
+      <lazy-component>
+        <iframe
+          frameborder="no"
+          scrolling="no"
+          :src="'/nbviewer/localfile/'+filePath"
+          @load="resizeIframe"
+        ></iframe>
+      </lazy-component>
+    </a-spin>
   </div>
 </template>
 
@@ -27,11 +29,17 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      spinning: true
+    };
+  },
   methods: {
     resizeIframe(event) {
       let e = event.path[0];
       e.style.height =
         e.contentWindow.document.documentElement.scrollHeight + "px";
+      this.spinning = false;
     }
   }
 };

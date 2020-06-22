@@ -1,22 +1,26 @@
 <template>
   <div class="tiobe">
-    <highcharts v-if="chartOptions.series.length>0" :options="chartOptions"></highcharts>
+    <a-spin size="large" tip="Loading..." :spinning="chartOptions.series.length<=0">
+      <highcharts v-if="chartOptions.series.length>0" :options="chartOptions"></highcharts>
+    </a-spin>
     <Content slot-key="between" />
-    <table v-if="top20.tbody" class="table-top20">
-      <thead v-html="top20.thead"></thead>
-      <tbody>
-        <tr v-for="(row, index) in top20.tbody" :key="index" @click="onClickTableRow(row.link)">
-          <td>{{row.now}}</td>
-          <td>{{row.pre}}</td>
-          <td>
-            <img v-if="row.changeIcon" :src="row.changeIcon" alt="change" />
-          </td>
-          <td>{{row.name}}</td>
-          <td>{{row.rating}}</td>
-          <td>{{row.change}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <a-spin size="large" tip="Loading..." :spinning="!top20.tbody">
+      <table v-if="top20.tbody" class="table-top20">
+        <thead v-html="top20.thead"></thead>
+        <tbody>
+          <tr v-for="(row, index) in top20.tbody" :key="index" @click="onClickTableRow(row.link)">
+            <td>{{row.now}}</td>
+            <td>{{row.pre}}</td>
+            <td>
+              <img v-if="row.changeIcon" :src="row.changeIcon" alt="change" />
+            </td>
+            <td>{{row.name}}</td>
+            <td>{{row.rating}}</td>
+            <td>{{row.change}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </a-spin>
   </div>
 </template>
 

@@ -8,7 +8,7 @@ MNIST[^mnist]是一个手写体数字数据集，包含 55,000 个训练样本�
 
 [^mnist]: http://yann.lecun.com/exdb/mnist/
 
-| ![Mnist Examples](../../assets/img/MnistExamples.png)  |
+|  ![Mnist Examples](@assets/img/ml/MnistExamples.png)   |
 | :----------------------------------------------------: |
 | _Sample images from MNIST test dataset_[^mnist_sample] |
 

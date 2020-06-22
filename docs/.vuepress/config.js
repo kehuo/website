@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
   // configureWebpack: (config, isServer) => {
@@ -16,6 +17,9 @@ module.exports = {
   //     };
   //   }
   // },
+  alias: {
+    "@assets": path.join(__dirname, "../assets"),
+  },
   plugins: [
     ["vuepress-plugin-mathjax", {}],
     [
@@ -140,30 +144,39 @@ module.exports = {
         // },
         // algolia: {},
         nav: [
-          { text: "机器学习", link: "/zh/ml/" },
+          { text: "编程", link: "/zh/programming/prog-lang/overview" },
+          { text: "机器学习", link: "/zh/ml/overview" },
           { text: "其他项目", link: "/zh/projects/" },
         ],
         sidebar: {
+          // "/zh/programming/": [
+          //   {
+          //     title: "编程语言",
+          //     children: [
+          //       ["/zh/programming/prog-lang/overview", "概览"],
+          //       "/zh/programming/prog-lang/basics",
+          //       "/zh/programming/prog-lang/collections",
+          //       "/zh/programming/prog-lang/controls",
+          //       "/zh/programming/prog-lang/function",
+          //       "/zh/programming/prog-lang/libs",
+          //       "/zh/programming/prog-lang/io",
+          //       "/zh/programming/prog-lang/exceptions",
+          //       "/zh/programming/prog-lang/ood",
+          //       "/zh/programming/prog-lang/scope",
+          //     ],
+          //   },
+          //   {
+          //     title: "算法",
+          //     children: [["/zh/programming/algorithms/overview", "概览"], "/zh/programming/algorithms/np-hard/knapsack"],
+          //   },
+          // ],
           "/zh/ml/": [
             {
-              title: "机器学习项目",
-              path: "/zh/ml/",
-              children: ["/zh/ml/mnist"],
-            },
-            {
-              title: "演示",
-              children: ["/zh/ml/demo/mnist"],
+              title: "机器学习",
+              children: [["/zh/ml/overview", "概览"], "/zh/ml/mnist"],
             },
           ],
-          "/zh/projects/": [
-            "/zh/projects/werewolf",
-            // {
-            //     title: '游戏',
-            //     children: [
-            //         '/zh/projects/games/werewolf',
-            //     ]
-            // },
-          ],
+          // "/zh/projects/": ["/zh/projects/werewolf"],
         },
         lastUpdated: "上次更新",
       },
