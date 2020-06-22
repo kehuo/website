@@ -169,9 +169,6 @@ export default {
 .tiobe {
   table.table-top20 {
     text-align: center;
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
 
     tbody tr:hover td {
       background-color: lightgrey;
