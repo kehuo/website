@@ -67,7 +67,7 @@ module.exports = {
     },
     "/zh/": {
       lang: "zh-CN",
-      title: "张子良的个人站点",
+      title: "张之站",
       description: "不仅是程序员",
     },
   },
