@@ -1,10 +1,12 @@
 <template>
-  <div ref="pseudo-content">
+  <pre ref="pseudo-content">
     <slot></slot>
-  </div>
+  </pre>
 </template>
 
 <script>
+import pseudocode from "pseudocode";
+
 export default {
   mounted() {
     pseudocode.renderElement(this.$refs["pseudo-content"], {
@@ -14,3 +16,7 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+@import "~pseudocode/build/pseudocode.min.css";
+</style>

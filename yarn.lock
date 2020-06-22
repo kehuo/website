@@ -6575,6 +6575,11 @@ prr@~1.0.1:
   resolved "https://registry.yarnpkg.com/prr/-/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
   integrity sha1-0/wRS6BplaRexok/SEzrHXj19HY=
 
+pseudocode@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/pseudocode/-/pseudocode-2.2.0.tgz#47639f4b7ace050fcbc55f36f7766faab2ab3ca1"
+  integrity sha512-ZA2Tbrxntmwg2bywYbu5Ay4iWrb0F7104GoOqXaJ39lSZ2alE+xlLnLiJwkG+ztmLwKWI/brc3nAM7qk2kV90A==
+
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
