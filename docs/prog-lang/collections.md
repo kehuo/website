@@ -1,3 +1,0 @@
-# Collections
-
-<Jupyter srcPrefix="collections" />

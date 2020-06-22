@@ -8,7 +8,7 @@ MNIST[^mnist]是一个手写体数字数据集，包含 55,000 个训练样本�
 
 [^mnist]: http://yann.lecun.com/exdb/mnist/
 
-| ![Mnist Examples](../../assets/img/MnistExamples.png)  |
+|  ![Mnist Examples](@assets/img/ml/MnistExamples.png)   |
 | :----------------------------------------------------: |
 | _Sample images from MNIST test dataset_[^mnist_sample] |
 
@@ -25,11 +25,3 @@ Yann LeCun, Leon Bottou, Yosuha Bengio 和 Patrick Haffner 在 20 世纪 90 年�
 亲自尝试一下吧！写一个数字，按下`识别`即可！
 
 <DemoMnist clearBtnName="清除" recognizeBtnName="识别" resultTag="结果" probTag="概率" warningMsg="请写下一个数字！"/>
-
-<style lang="scss" scoped>
-table {
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>

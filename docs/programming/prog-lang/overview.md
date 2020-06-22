@@ -10,4 +10,4 @@ The chart below shows the changes in the popularity of the top 10 programming la
 The below table shows the current top 20 most popular programming languages.
 :::
 
-Though we have many languages with different feature, the core concepts and implementations of programming languages never changed a lot. The following sections in this tutorial will show you how to implement these same ideas in different programming languages.
+Though we have many languages with different feature, the core concepts and implementations of programming languages never changed a lot. The following sections show my notes of implementing these same ideas in different programming languages.

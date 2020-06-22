@@ -8,81 +8,39 @@
         <img src="https://mybinder.org/badge_logo.svg" alt="Binder" />
       </a>
     </p>
-    <tabs v-if="fileList" @changed="tabChanged">
-      <tab v-for="(file, index) in fileList" :key="index" :name="file.name">
+    <a-spin size="large" tip="Loading..." :spinning="spinning">
+      <lazy-component>
         <iframe
-          v-if="filePath!==''"
           frameborder="no"
           scrolling="no"
           :src="'/nbviewer/localfile/'+filePath"
-          :ref="'iframe-'+index"
           @load="resizeIframe"
         ></iframe>
-      </tab>
-    </tabs>
-    <tabs v-else-if="srcPrefix" @changed="tabChanged">
-      <tab v-for="(name, index) in ['python','java']" :key="index" :name="name">
-        <iframe
-          v-if="filePath!==''"
-          frameborder="no"
-          scrolling="no"
-          :src="'/nbviewer/localfile/'+filePath"
-          :ref="'iframe-'+index"
-          @load="resizeIframe"
-        ></iframe>
-      </tab>
-    </tabs>
+      </lazy-component>
+    </a-spin>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    fileList: {
-      type: Array, // [{name:name,path:path}]
-      required: false
-    },
-    srcPrefix: {
+    filePath: {
       type: String,
-      required: false
+      required: true
     }
   },
   data() {
     return {
-      filePath: "",
-      activeIndex: null
+      spinning: true
     };
   },
   methods: {
-    resizeIframe() {
-      let index = this.activeIndex;
-      if (index === null) {
-        return;
-      }
-      let e = this.$refs["iframe-" + index][0];
+    resizeIframe(event) {
+      let e = event.path[0];
       e.style.height =
         e.contentWindow.document.documentElement.scrollHeight + "px";
-    },
-    tabChanged(selectedTab) {
-      if (this.fileList) {
-        for (const file of this.fileList) {
-          if (file.name === selectedTab.tab.name) {
-            this.filePath = file.path;
-            this.activeIndex = selectedTab.tab.$vnode.data.key;
-            break;
-          }
-        }
-      } else if (this.srcPrefix) {
-        this.filePath = this.srcPrefix + "/" + selectedTab.tab.name + ".ipynb";
-        this.activeIndex = selectedTab.tab.$vnode.data.key;
-      }
+      this.spinning = false;
     }
-  },
-  mounted() {
-    window.addEventListener("resize", this.resizeIframe);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.resizeIframe);
   }
 };
 </script>

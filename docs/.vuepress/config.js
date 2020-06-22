@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
   // configureWebpack: (config, isServer) => {
@@ -16,6 +17,9 @@ module.exports = {
   //     };
   //   }
   // },
+  alias: {
+    "@assets": path.join(__dirname, "../assets"),
+  },
   plugins: [
     ["vuepress-plugin-mathjax", {}],
     [
@@ -63,7 +67,7 @@ module.exports = {
     },
     "/zh/": {
       lang: "zh-CN",
-      title: "张子良的个人站点",
+      title: "张之站",
       description: "不仅是程序员",
     },
   },
@@ -84,42 +88,36 @@ module.exports = {
         // },
         // algolia: {},
         nav: [
-          { text: "Programming Languages", link: "/prog-lang/" },
-          { text: "Machine Learning", link: "/ml/" },
+          { text: "Programming", link: "/programming/prog-lang/overview" },
+          { text: "Machine Learning", link: "/ml/overview" },
           { text: "Projects", link: "/projects/" },
-          { text: "Algorithms", link: "/algorithms/" },
         ],
-        // sidebar: 'auto',
-        // sidebar: [
-        //     ['/ml/', 'ML & DL Applications']
-        // ],
         sidebar: {
-          "/prog-lang/": [
+          "/programming/": [
             {
               title: "Programming Languages",
-              path: "/prog-lang/",
               children: [
-                "/prog-lang/basics",
-                "/prog-lang/collections",
-                "/prog-lang/controls",
-                "/prog-lang/function",
-                "/prog-lang/libs",
-                "/prog-lang/io",
-                "/prog-lang/exceptions",
-                "/prog-lang/ood",
-                "/prog-lang/scope",
+                ["/programming/prog-lang/overview", "Overview"],
+                "/programming/prog-lang/basics",
+                "/programming/prog-lang/collections",
+                "/programming/prog-lang/controls",
+                "/programming/prog-lang/function",
+                "/programming/prog-lang/libs",
+                "/programming/prog-lang/io",
+                "/programming/prog-lang/exceptions",
+                "/programming/prog-lang/ood",
+                "/programming/prog-lang/scope",
               ],
+            },
+            {
+              title: "Algorithms",
+              children: [["/programming/algorithms/overview", "Overview"], "/programming/algorithms/np-hard/knapsack"],
             },
           ],
           "/ml/": [
             {
-              title: "ML & DL Applications",
-              path: "/ml/",
-              children: ["/ml/mnist"],
-            },
-            {
-              title: "Demo",
-              children: ["/ml/demo/mnist"],
+              title: "ML & DL",
+              children: [["/ml/overview", "Overview"], "/ml/mnist"],
             },
           ],
           "/projects/": [
@@ -131,20 +129,8 @@ module.exports = {
             //     ]
             // },
           ],
-          "/algorithms/": [
-            {
-              title: "NP-Hard",
-              path: "/algorithms/np-hard/",
-              children: ["/algorithms/np-hard/knapsack"],
-            },
-          ],
         },
         lastUpdated: "Last Updated",
-        // sidebar: {
-        //     '/': [/* ... */],
-        //     '/ml/': [/* ... */],
-        //     '/games/': [/* ... */],
-        // }
       },
       "/zh/": {
         selectText: "选择语言",
@@ -158,30 +144,39 @@ module.exports = {
         // },
         // algolia: {},
         nav: [
-          { text: "机器学习", link: "/zh/ml/" },
+          { text: "编程", link: "/zh/programming/prog-lang/overview" },
+          { text: "机器学习", link: "/zh/ml/overview" },
           { text: "其他项目", link: "/zh/projects/" },
         ],
         sidebar: {
+          // "/zh/programming/": [
+          //   {
+          //     title: "编程语言",
+          //     children: [
+          //       ["/zh/programming/prog-lang/overview", "概览"],
+          //       "/zh/programming/prog-lang/basics",
+          //       "/zh/programming/prog-lang/collections",
+          //       "/zh/programming/prog-lang/controls",
+          //       "/zh/programming/prog-lang/function",
+          //       "/zh/programming/prog-lang/libs",
+          //       "/zh/programming/prog-lang/io",
+          //       "/zh/programming/prog-lang/exceptions",
+          //       "/zh/programming/prog-lang/ood",
+          //       "/zh/programming/prog-lang/scope",
+          //     ],
+          //   },
+          //   {
+          //     title: "算法",
+          //     children: [["/zh/programming/algorithms/overview", "概览"], "/zh/programming/algorithms/np-hard/knapsack"],
+          //   },
+          // ],
           "/zh/ml/": [
             {
-              title: "机器学习项目",
-              path: "/zh/ml/",
-              children: ["/zh/ml/mnist"],
-            },
-            {
-              title: "演示",
-              children: ["/zh/ml/demo/mnist"],
+              title: "机器学习",
+              children: [["/zh/ml/overview", "概览"], "/zh/ml/mnist"],
             },
           ],
-          "/zh/projects/": [
-            "/zh/projects/werewolf",
-            // {
-            //     title: '游戏',
-            //     children: [
-            //         '/zh/projects/games/werewolf',
-            //     ]
-            // },
-          ],
+          // "/zh/projects/": ["/zh/projects/werewolf"],
         },
         lastUpdated: "上次更新",
       },

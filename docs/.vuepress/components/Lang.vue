@@ -1,22 +1,26 @@
 <template>
   <div class="tiobe">
-    <highcharts v-if="chartOptions.series.length>0" :options="chartOptions"></highcharts>
+    <a-spin size="large" tip="Loading..." :spinning="chartOptions.series.length<=0">
+      <highcharts v-if="chartOptions.series.length>0" :options="chartOptions"></highcharts>
+    </a-spin>
     <Content slot-key="between" />
-    <table v-if="top20.tbody" class="table-top20">
-      <thead v-html="top20.thead"></thead>
-      <tbody>
-        <tr v-for="(row, index) in top20.tbody" :key="index" @click="onClickTableRow(row.link)">
-          <td>{{row.now}}</td>
-          <td>{{row.pre}}</td>
-          <td>
-            <img v-if="row.changeIcon" :src="row.changeIcon" alt="change" />
-          </td>
-          <td>{{row.name}}</td>
-          <td>{{row.rating}}</td>
-          <td>{{row.change}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <a-spin size="large" tip="Loading..." :spinning="!top20.tbody">
+      <table v-if="top20.tbody" class="table-top20">
+        <thead v-html="top20.thead"></thead>
+        <tbody>
+          <tr v-for="(row, index) in top20.tbody" :key="index" @click="onClickTableRow(row.link)">
+            <td>{{row.now}}</td>
+            <td>{{row.pre}}</td>
+            <td>
+              <img v-if="row.changeIcon" :src="row.changeIcon" alt="change" />
+            </td>
+            <td>{{row.name}}</td>
+            <td>{{row.rating}}</td>
+            <td>{{row.change}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </a-spin>
   </div>
 </template>
 
@@ -147,7 +151,7 @@ export default {
             )
           };
           if (tr.children[2].children.length === 1) {
-            row.changeIcon = require("../../assets/img/tiobe/" +
+            row.changeIcon = require("./assets/tiobe/" +
               tr.children[2].children[0].attribs.src.split("/")[2]);
           }
           tbody.push(row);
@@ -165,9 +169,6 @@ export default {
 .tiobe {
   table.table-top20 {
     text-align: center;
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
 
     tbody tr:hover td {
       background-color: lightgrey;

@@ -8,7 +8,7 @@ MNIST[^mnist] is a dataset of handwritten digits, including 55,000 training samp
 
 [^mnist]: http://yann.lecun.com/exdb/mnist/
 
-|   ![Mnist Examples](../assets/img/MnistExamples.png)   |
+|  ![Mnist Examples](@assets/img/ml/MnistExamples.png)   |
 | :----------------------------------------------------: |
 | _Sample images from MNIST test dataset_[^mnist_sample] |
 
@@ -25,11 +25,3 @@ Yann LeCun, Leon Bottou, Yosuha Bengio and Patrick Haffner proposed a neural net
 Write down a digit and press `Recognize` to try it yourself!
 
 <DemoMnist/>
-
-<style lang="scss" scoped>
-table {
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>

@@ -1,9 +1,11 @@
 <template>
   <div class="leetcode">
-    <p v-if="ranking" id="ranking">{{rankingName}}: {{ranking}}</p>
-    <div id="chart">
-      <svg />
-    </div>
+    <a-spin size="large" tip="Loading..." :spinning="!ranking">
+      <p v-if="ranking" id="ranking">{{rankingName}}: {{ranking}}</p>
+      <div id="chart">
+        <svg />
+      </div>
+    </a-spin>
   </div>
 </template>
 
