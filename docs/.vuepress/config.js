@@ -84,42 +84,36 @@ module.exports = {
         // },
         // algolia: {},
         nav: [
-          { text: "Programming Languages", link: "/prog-lang/" },
-          { text: "Machine Learning", link: "/ml/" },
+          { text: "Programming", link: "/programming/prog-lang/overview" },
+          { text: "Machine Learning", link: "/ml/overview" },
           { text: "Projects", link: "/projects/" },
-          { text: "Algorithms", link: "/algorithms/" },
         ],
-        // sidebar: 'auto',
-        // sidebar: [
-        //     ['/ml/', 'ML & DL Applications']
-        // ],
         sidebar: {
-          "/prog-lang/": [
+          "/programming/": [
             {
               title: "Programming Languages",
-              path: "/prog-lang/",
               children: [
-                "/prog-lang/basics",
-                "/prog-lang/collections",
-                "/prog-lang/controls",
-                "/prog-lang/function",
-                "/prog-lang/libs",
-                "/prog-lang/io",
-                "/prog-lang/exceptions",
-                "/prog-lang/ood",
-                "/prog-lang/scope",
+                ["/programming/prog-lang/overview", "Overview"],
+                "/programming/prog-lang/basics",
+                "/programming/prog-lang/collections",
+                "/programming/prog-lang/controls",
+                "/programming/prog-lang/function",
+                "/programming/prog-lang/libs",
+                "/programming/prog-lang/io",
+                "/programming/prog-lang/exceptions",
+                "/programming/prog-lang/ood",
+                "/programming/prog-lang/scope",
               ],
+            },
+            {
+              title: "Algorithms",
+              children: [["/programming/algorithms/overview", "Overview"], "/programming/algorithms/np-hard/knapsack"],
             },
           ],
           "/ml/": [
             {
-              title: "ML & DL Applications",
-              path: "/ml/",
-              children: ["/ml/mnist"],
-            },
-            {
-              title: "Demo",
-              children: ["/ml/demo/mnist"],
+              title: "ML & DL",
+              children: [["/ml/overview", "Overview"], "/ml/mnist"],
             },
           ],
           "/projects/": [
@@ -131,20 +125,8 @@ module.exports = {
             //     ]
             // },
           ],
-          "/algorithms/": [
-            {
-              title: "NP-Hard",
-              path: "/algorithms/np-hard/",
-              children: ["/algorithms/np-hard/knapsack"],
-            },
-          ],
         },
         lastUpdated: "Last Updated",
-        // sidebar: {
-        //     '/': [/* ... */],
-        //     '/ml/': [/* ... */],
-        //     '/games/': [/* ... */],
-        // }
       },
       "/zh/": {
         selectText: "选择语言",

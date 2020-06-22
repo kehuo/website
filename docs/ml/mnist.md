@@ -8,7 +8,7 @@ MNIST[^mnist] is a dataset of handwritten digits, including 55,000 training samp
 
 [^mnist]: http://yann.lecun.com/exdb/mnist/
 
-|   ![Mnist Examples](../assets/img/MnistExamples.png)   |
+|     ![Mnist Examples](./assets/MnistExamples.png)      |
 | :----------------------------------------------------: |
 | _Sample images from MNIST test dataset_[^mnist_sample] |
 

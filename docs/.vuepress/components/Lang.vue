@@ -147,7 +147,7 @@ export default {
             )
           };
           if (tr.children[2].children.length === 1) {
-            row.changeIcon = require("../../assets/img/tiobe/" +
+            row.changeIcon = require("./assets/tiobe/" +
               tr.children[2].children[0].attribs.src.split("/")[2]);
           }
           tbody.push(row);
