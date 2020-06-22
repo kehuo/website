@@ -30,6 +30,7 @@
     "nvd3": "^1.8.6",
     "pseudocode": "^2.2.0",
     "signature_pad": "^3.0.0-beta.3",
+    "vue-lazyload": "^1.3.3",
     "vue-tabs-component": "^1.5.0",
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-tabs": "^0.3.0"

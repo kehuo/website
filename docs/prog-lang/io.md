@@ -1,3 +1,17 @@
 # IO, File, and OS
 
-<Jupyter srcPrefix="io" />
+:::: tabs
+
+::: tab python
+
+<Jupyter filePath="io/python.ipynb" />
+
+:::
+
+::: tab java
+
+<Jupyter filePath="io/java.ipynb" />
+
+:::
+
+::::

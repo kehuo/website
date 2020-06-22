@@ -1,3 +1,17 @@
 # Flow Control Statements
 
-<Jupyter srcPrefix="controls" />
+:::: tabs
+
+::: tab python
+
+<Jupyter filePath="controls/python.ipynb" />
+
+:::
+
+::: tab java
+
+<Jupyter filePath="controls/java.ipynb" />
+
+:::
+
+::::

@@ -1,3 +1,17 @@
 # Basics
 
-<Jupyter srcPrefix="basics" />
+:::: tabs
+
+::: tab python
+
+<Jupyter filePath="basics/python.ipynb" />
+
+:::
+
+::: tab java
+
+<Jupyter filePath="basics/java.ipynb" />
+
+:::
+
+::::

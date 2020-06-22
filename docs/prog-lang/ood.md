@@ -1,3 +1,17 @@
 # Object-Oriented Design
 
-<Jupyter srcPrefix="ood" />
+:::: tabs
+
+::: tab python
+
+<Jupyter filePath="ood/python.ipynb" />
+
+:::
+
+::: tab java
+
+<Jupyter filePath="ood/java.ipynb" />
+
+:::
+
+::::

@@ -1,3 +1,17 @@
 # Libraries and Modules
 
-<Jupyter srcPrefix="libs" />
+:::: tabs
+
+::: tab python
+
+<Jupyter filePath="libs/python.ipynb" />
+
+:::
+
+::: tab java
+
+<Jupyter filePath="libs/java.ipynb" />
+
+:::
+
+::::

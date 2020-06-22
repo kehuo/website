@@ -1,3 +1,17 @@
 # Errors and Exceptions
 
-<Jupyter srcPrefix="exceptions" />
+:::: tabs
+
+::: tab python
+
+<Jupyter filePath="exceptions/python.ipynb" />
+
+:::
+
+::: tab java
+
+<Jupyter filePath="exceptions/java.ipynb" />
+
+:::
+
+::::
