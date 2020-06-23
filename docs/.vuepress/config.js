@@ -62,12 +62,12 @@ module.exports = {
   locales: {
     "/": {
       lang: "en-US",
-      title: "Pseudocoder",
+      title: "Ziliang",
       description: "Not Only a Coder",
     },
     "/zh/": {
       lang: "zh-CN",
-      title: "张之站",
+      title: "张本人",
       description: "不仅是程序员",
     },
   },

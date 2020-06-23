@@ -1,4 +1,4 @@
-import { message, Spin } from "ant-design-vue";
+import { message, Spin, Modal } from "ant-design-vue";
 import Tabs from "vue-tabs-component";
 import VueLazyload from "vue-lazyload";
 
@@ -13,6 +13,7 @@ export default ({
   Vue.config.productionTip = false;
   Vue.prototype.$message = message;
   Vue.use(Spin);
+  Vue.use(Modal);
   Vue.use(Tabs);
   Vue.use(VueLazyload, {
     lazyComponent: true,

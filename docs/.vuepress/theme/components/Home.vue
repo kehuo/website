@@ -8,9 +8,11 @@
           <img src="./assets/images/avatar.jpg" alt="Avatar" />
         </a>
         <h1>
-          <strong>I am Zhang Ziliang</strong>
+          <strong v-if="pageData.lang==='EN'">I am Zhang Ziliang</strong>
+          <strong v-else>我是张子良</strong>
           <div>
-            I like
+            <span v-if="pageData.lang==='EN'">I like</span>
+            <span v-else>我喜欢</span>
             <span id="typed"></span>
           </div>
         </h1>
@@ -22,15 +24,40 @@
       <!-- One -->
       <section id="one">
         <header class="major">
-          <h2>
-            Ipsum lorem dolor aliquam ante commodo
-            <br />magna sed accumsan arcu neque.
+          <h2 v-if="pageData.lang==='EN'">
+            If I have any hobbies,
+            <br />it is creating.
+          </h2>
+          <h2 v-else>
+            如果说我有什么爱好的话，
+            <br />那便是创造。
           </h2>
         </header>
-        <p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p>
+        <p v-if="pageData.lang==='EN'">
+          I am a server-side developer, and I'm also interested in machine learning and game development.
+          During the quarantine of the
+          <a
+            href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019"
+            target="_blank"
+          >COVID-19</a>, I was completely obsessed with cooking.
+          If programming and cooking have anything in common, I would say it's the fun of creating.
+        </p>
+        <p v-else>
+          我是一名服务端开发者，同时我也对机器学习和游戏开发感兴趣。
+          在
+          <a
+            href="https://zh.wikipedia.org/wiki/2019%E5%86%A0%E7%8A%B6%E7%97%85%E6%AF%92%E7%97%85"
+            target="_blank"
+          >COVID-19</a>
+          疫情隔离期间，我学会了做菜。如果说写代码和做菜之间有什么共同点的话，那便是创造的乐趣。
+        </p>
         <ul class="actions">
           <li>
-            <a href="#" class="button">Learn More</a>
+            <a
+              href="https://www.linkedin.com/in/zhang-ziliang/"
+              class="button"
+              target="_blank"
+            >{{pageData.lang==='EN'?'My LinkedIn':'我的领英'}}</a>
           </li>
         </ul>
       </section>
@@ -115,28 +142,32 @@
       <div class="inner">
         <ul class="icons">
           <li>
-            <a href="#" class="icon brands fa-twitter">
-              <span class="label">Twitter</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="icon brands fa-github">
+            <a href="https://github.com/LucienZhang" target="_blank" class="icon brands fa-github">
               <span class="label">Github</span>
             </a>
           </li>
           <li>
-            <a href="#" class="icon brands fa-dribbble">
-              <span class="label">Dribbble</span>
+            <a
+              href="https://www.linkedin.com/in/zhang-ziliang/"
+              target="_blank"
+              class="icon brands fa-linkedin"
+            >
+              <span class="label">LinkedIn</span>
             </a>
           </li>
           <li>
-            <a href="#" class="icon solid fa-envelope">
+            <a class="icon brands fa-weixin" @click="qrcode=true">
+              <span class="label">WeChat</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:lucienzhangzl@outlook.com" class="icon solid fa-envelope">
               <span class="label">Email</span>
             </a>
           </li>
         </ul>
         <ul class="copyright">
-          <li>&copy; Untitled</li>
+          <li>&copy; ZHANG Ziliang</li>
           <li>
             Design:
             <a href="http://html5up.net">HTML5 UP</a>
@@ -145,6 +176,17 @@
       </div>
     </footer>
   </body>
+  <a-modal
+    :visible="qrcode"
+    :centered="true"
+    :closable="false"
+    :footer="null"
+    @cancel="qrcode=false"
+  >
+    <div class="square">
+      <img :src="require('./assets/images/wechat.jpg')" alt="QR Code" width="100%" height="100%" />
+    </div>
+  </a-modal>
 </main>
 </template>
 
@@ -157,20 +199,48 @@ require("./assets/js/util.js");
 
 export default {
   name: "Home",
+  data() {
+    return {
+      typed: null,
+      qrcode: false
+    };
+  },
   computed: {
-    data() {
+    pageData() {
       return this.$page.frontmatter;
     }
   },
+  methods: {
+    restartTyped() {
+      let strings = [
+        "coding",
+        "cooking",
+        "hiking",
+        "mountaineering",
+        "board games"
+      ];
+      if (this.pageData.lang === "CN") {
+        strings = ["编程", "做菜", "徒步", "登山", "桌游"];
+      }
+      if (this.typed) {
+        this.typed.destroy();
+      }
+      this.typed = new Typed(".home #typed", {
+        strings: strings,
+        typeSpeed: 40,
+        shuffle: true,
+        loop: true
+      });
+    }
+  },
   mounted() {
-    new Typed(".home #typed", {
-      strings: ["coding", "cooking", "hiking"],
-      typeSpeed: 40,
-      shuffle: true,
-      loop: true
-    });
-
     require("./assets/js/main.js");
+    this.restartTyped();
+  },
+  watch: {
+    pageData() {
+      this.restartTyped();
+    }
   }
 };
 </script>
@@ -196,6 +266,20 @@ export default {
 @media screen and (max-width: 980px) {
   .home #header {
     padding-top: 6em + $navbarHeight;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.home {
+  .square {
+    width: 100%;
+    max-width: 500px;
+  }
+  .square::after {
+    content: "";
+    display: block;
+    margin-top: 100%;
   }
 }
 </style>
