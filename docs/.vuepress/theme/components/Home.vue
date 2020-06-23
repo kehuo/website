@@ -144,20 +144,16 @@
         </ul>
       </div>
     </footer>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.poptrox.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
   </body>
 </main>
 </template>
 
 <script>
 import Typed from "typed.js";
+import "expose-loader?$!expose-loader?jQuery!jquery";
+require("./assets/js/jquery.poptrox.min.js");
+import "expose-loader?browser!browser";
+require("./assets/js/util.js");
 
 export default {
   name: "Home",
@@ -173,6 +169,8 @@ export default {
       shuffle: true,
       loop: true
     });
+
+    require("./assets/js/main.js");
   }
 };
 </script>
@@ -187,5 +185,17 @@ export default {
   max-width: $homePageWidth;
   margin: 0px auto;
   display: block;
+}
+
+@media screen and (max-width: 1280px) {
+  .home #header {
+    padding-top: 6em + $navbarHeight;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .home #header {
+    padding-top: 6em + $navbarHeight;
+  }
 }
 </style>
