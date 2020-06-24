@@ -233,8 +233,6 @@
 
 <script>
 import Typed from "typed.js";
-import Breakpoints from "breakpoints-js";
-import browser from "./assets/js/browser.min.js";
 
 export default {
   name: "Home",
@@ -275,42 +273,45 @@ export default {
       });
     }
   },
-  created() {
-    let that = this;
-    if (browser.touch) {
-      that.isTouch = true;
-    }
-
-    Breakpoints({
-      small: {
-        min: 0,
-        max: 736
-      },
-      medium: {
-        min: 737,
-        max: Infinity
-      }
-    });
-
-    Breakpoints.get("medium").on({
-      enter: function() {
-        that.largeScreen = true;
-      }
-    });
-    Breakpoints.get("small").on({
-      enter: function() {
-        that.largeScreen = false;
-      }
-    });
-  },
   mounted() {
     let that = this;
+    import("./assets/js/browser.min.js").then(browser => {
+      browser = browser.default;
+      if (!browser.touch) {
+        that.isTouch = false;
+      }
+    });
+
     that.restartTyped();
 
     setTimeout(() => {
       that.isPreload = false;
     }, 100);
 
+    import("breakpoints-js").then(Breakpoints => {
+      Breakpoints = Breakpoints.default;
+      Breakpoints({
+        small: {
+          min: 0,
+          max: 736
+        },
+        medium: {
+          min: 737,
+          max: Infinity
+        }
+      });
+
+      Breakpoints.get("medium").on({
+        enter: function() {
+          that.largeScreen = true;
+        }
+      });
+      Breakpoints.get("small").on({
+        enter: function() {
+          that.largeScreen = false;
+        }
+      });
+    });
     //    $window.on("load", function() {
     //   $("#two").poptrox({
     //     caption: function($a) {
