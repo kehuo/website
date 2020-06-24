@@ -1,6 +1,6 @@
 <template>
 <main class="home" aria-labelledby="main-title">
-  <body class="is-preload">
+  <body :class="{'is-preload':isPreload,'is-touch':isTouch}">
     <!-- Header -->
     <header id="header">
       <div class="inner">
@@ -192,17 +192,16 @@
 
 <script>
 import Typed from "typed.js";
-import "expose-loader?$!expose-loader?jQuery!jquery";
-require("./assets/js/jquery.poptrox.min.js");
-import "expose-loader?browser!browser";
-require("./assets/js/util.js");
+import browser from "browser";
 
 export default {
   name: "Home",
   data() {
     return {
       typed: null,
-      qrcode: false
+      qrcode: false,
+      isPreload: true,
+      isTouch: false
     };
   },
   computed: {
@@ -233,9 +232,17 @@ export default {
       });
     }
   },
+  beforeCreate() {
+    if (browser.mobile) {
+      this.isTouch = true;
+    }
+  },
   mounted() {
-    require("./assets/js/main.js");
     this.restartTyped();
+
+    setTimeout(() => {
+      this.isPreload = false;
+    }, 100);
   },
   watch: {
     pageData() {
