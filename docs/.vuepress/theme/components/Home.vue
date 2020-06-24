@@ -17,6 +17,47 @@
           </div>
         </h1>
       </div>
+      <footer v-if="largeScreen" id="footer">
+        <div class="inner">
+          <ul class="icons">
+            <li>
+              <a
+                href="https://github.com/LucienZhang"
+                target="_blank"
+                class="icon brands fa-github"
+              >
+                <span class="label">Github</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/zhang-ziliang/"
+                target="_blank"
+                class="icon brands fa-linkedin"
+              >
+                <span class="label">LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a class="icon brands fa-weixin" @click="qrcode=true">
+                <span class="label">WeChat</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:lucienzhangzl@outlook.com" class="icon solid fa-envelope">
+                <span class="label">Email</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="copyright">
+            <li>&copy; ZHANG Ziliang</li>
+            <li>
+              Design:
+              <a href="http://html5up.net">HTML5 UP</a>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </header>
 
     <!-- Main -->
@@ -138,7 +179,7 @@
         </div>
       </section>-->
     </div>
-    <footer id="footer">
+    <footer v-if="!largeScreen" id="footer">
       <div class="inner">
         <ul class="icons">
           <li>
@@ -192,7 +233,8 @@
 
 <script>
 import Typed from "typed.js";
-import browser from "browser";
+import Breakpoints from "breakpoints-js";
+import browser from "./assets/js/browser.min.js";
 
 export default {
   name: "Home",
@@ -201,7 +243,8 @@ export default {
       typed: null,
       qrcode: false,
       isPreload: true,
-      isTouch: false
+      isTouch: true,
+      largeScreen: false
     };
   },
   computed: {
@@ -232,17 +275,59 @@ export default {
       });
     }
   },
-  beforeCreate() {
-    if (browser.mobile) {
-      this.isTouch = true;
+  created() {
+    let that = this;
+    if (browser.touch) {
+      that.isTouch = true;
     }
+
+    Breakpoints({
+      small: {
+        min: 0,
+        max: 736
+      },
+      medium: {
+        min: 737,
+        max: Infinity
+      }
+    });
+
+    Breakpoints.get("medium").on({
+      enter: function() {
+        that.largeScreen = true;
+      }
+    });
+    Breakpoints.get("small").on({
+      enter: function() {
+        that.largeScreen = false;
+      }
+    });
   },
   mounted() {
-    this.restartTyped();
+    let that = this;
+    that.restartTyped();
 
     setTimeout(() => {
-      this.isPreload = false;
+      that.isPreload = false;
     }, 100);
+
+    //    $window.on("load", function() {
+    //   $("#two").poptrox({
+    //     caption: function($a) {
+    //       return $a.next("h3").text();
+    //     },
+    //     overlayColor: "#2c2c2c",
+    //     overlayOpacity: 0.85,
+    //     popupCloserText: "",
+    //     popupLoaderText: "",
+    //     selector: ".work-item a.image",
+    //     usePopupCaption: true,
+    //     usePopupDefaultStyling: false,
+    //     usePopupEasyClose: false,
+    //     usePopupNav: true,
+    //     windowMargin: breakpoints.active("<=small") ? 0 : 50,
+    //   });
+    // });
   },
   watch: {
     pageData() {

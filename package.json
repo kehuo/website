@@ -22,7 +22,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
-    "browser": "^0.2.6",
+    "breakpoints-js": "^1.0.6",
     "cheerio": "^1.0.0-rc.3",
     "d3": "3.5",
     "highcharts": "^8.1.2",
