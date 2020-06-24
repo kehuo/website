@@ -4,7 +4,7 @@
     <!-- Header -->
     <header id="header">
       <div class="inner">
-        <a href="#" class="image avatar">
+        <a class="image avatar">
           <img src="./assets/images/avatar.jpg" alt="Avatar" />
         </a>
         <h1>
@@ -52,7 +52,7 @@
           <ul class="copyright">
             <li>&copy; ZHANG Ziliang</li>
             <li>
-              Design:
+              Inspired by:
               <a href="http://html5up.net">HTML5 UP</a>
             </li>
           </ul>
@@ -104,30 +104,30 @@
       </section>
 
       <!-- Two -->
-      <!-- <section id="two">
+      <section id="two">
         <h2>Recent Work</h2>
         <div class="row">
           <article class="col-6 col-12-xsmall work-item">
-            <a href="images/fulls/01.jpg" class="image fit thumb">
-              <img src="images/thumbs/01.jpg" alt />
+            <a :href="rootPath+'programming/prog-lang/overview.html'" class="image fit thumb">
+              <img :src="require('./assets/images/recent_work/programming.png')" />
             </a>
-            <h3>Magna sed consequat tempus</h3>
-            <p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+            <h3>Programming</h3>
+            <p>Here I wrote some notes about programming languages and algorithms.</p>
           </article>
           <article class="col-6 col-12-xsmall work-item">
-            <a href="images/fulls/02.jpg" class="image fit thumb">
-              <img src="images/thumbs/02.jpg" alt />
+            <a :href="rootPath+'ml/overview.html'" class="image fit thumb">
+              <img :src="require('./assets/images/recent_work/ml.jpg')" />
             </a>
-            <h3>Ultricies lacinia interdum</h3>
-            <p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+            <h3>ML &amp; DL</h3>
+            <p>Here I wrote some notes about machine learning and deep learning.</p>
           </article>
         </div>
-        <ul class="actions">
+        <!-- <ul class="actions">
           <li>
             <a href="#" class="button">Full Portfolio</a>
           </li>
-        </ul>
-      </section>-->
+        </ul>-->
+      </section>
 
       <!-- Three -->
       <!-- <section id="three">
@@ -242,12 +242,20 @@ export default {
       qrcode: false,
       isPreload: true,
       isTouch: true,
-      largeScreen: false
+      largeScreen: false,
+      bp: false
     };
   },
   computed: {
     pageData() {
       return this.$page.frontmatter;
+    },
+    rootPath() {
+      if (this.$page.frontmatter.lang === "EN") {
+        return "/";
+      } else {
+        return "/zh/";
+      }
     }
   },
   methods: {
@@ -289,7 +297,7 @@ export default {
     }, 100);
 
     import("breakpoints-js").then(Breakpoints => {
-      Breakpoints = Breakpoints.default;
+      that.bp = Breakpoints = Breakpoints.default;
       Breakpoints({
         small: {
           min: 0,
@@ -334,6 +342,11 @@ export default {
     pageData() {
       this.restartTyped();
     }
+  },
+  beforeDestroy() {
+    this.typed.destroy();
+    this.bp.off("medium");
+    this.bp.off("small"); // this may affect other usage
   }
 };
 </script>
