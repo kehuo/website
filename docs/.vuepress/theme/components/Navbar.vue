@@ -116,6 +116,14 @@ $navbar-horizontal-padding = 1.5rem
   src local('Sacramento'), local('Sacramento-Regular'), url('/fonts/Sacramento.woff2') format('woff2')
   unicode-range U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
 
+@font-face
+  font-family 'Slidefu'
+  font-style normal
+  font-weight 400
+  font-display swap
+  src url('/fonts/Slidefu-Regular.woff2') format('woff2')
+  unicode-range U+5F20, U+672C, U+4EBA
+
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
@@ -139,6 +147,11 @@ $navbar-horizontal-padding = 1.5rem
       font-family Sacramento, cursive
       font-size 1.8rem
       font-weight 1000
+
+    &.lang-cn
+      font-family Slidefu
+      font-size 2rem
+      font-weight 500
 
   .links
     padding-left 1.5rem
