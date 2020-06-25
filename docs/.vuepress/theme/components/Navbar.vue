@@ -13,7 +13,7 @@
         v-if="$siteTitle"
         ref="siteName"
         class="site-name"
-        :class="{ 'can-hide': $site.themeConfig.logo, 'lang-en': $lang==='EN', 'lang-cn': $lang==='CN' }"
+        :class="[{ 'can-hide': $site.themeConfig.logo }, langClass]"
       >{{ $siteTitle }}</span>
     </RouterLink>
 
@@ -60,9 +60,15 @@ export default {
         this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
       );
     },
-
     isAlgoliaSearch() {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName;
+    },
+    langClass() {
+      if (["EN", "en-US"].includes(this.$lang)) {
+        return "lang-en";
+      } else if (["CN", "zh-CN"].includes(this.$lang)) {
+        return "lang-cn";
+      }
     }
   },
 
