@@ -1,25 +1,34 @@
 <template>
   <div class="tiobe">
-    <a-spin size="large" tip="Loading..." :spinning="chartOptions.series.length<=0">
-      <highcharts v-if="chartOptions.series.length>0" :options="chartOptions"></highcharts>
+    <a-spin
+      size="large"
+      tip="Loading..."
+      :spinning="chartOptions.series.length<=0"
+      style="min-height:80px"
+    >
+      <div>
+        <highcharts v-if="chartOptions.series.length>0" :options="chartOptions"></highcharts>
+      </div>
     </a-spin>
     <Content slot-key="between" />
-    <a-spin size="large" tip="Loading..." :spinning="!top20.tbody">
-      <table v-if="top20.tbody" class="table-top20">
-        <thead v-html="top20.thead"></thead>
-        <tbody>
-          <tr v-for="(row, index) in top20.tbody" :key="index" @click="onClickTableRow(row.link)">
-            <td>{{row.now}}</td>
-            <td>{{row.pre}}</td>
-            <td>
-              <img v-if="row.changeIcon" :src="row.changeIcon" alt="change" />
-            </td>
-            <td>{{row.name}}</td>
-            <td>{{row.rating}}</td>
-            <td>{{row.change}}</td>
-          </tr>
-        </tbody>
-      </table>
+    <a-spin size="large" tip="Loading..." :spinning="!top20.tbody" style="min-height:80px">
+      <div class="table-wrapper">
+        <table v-if="top20.tbody" class="table-top20">
+          <thead v-html="top20.thead"></thead>
+          <tbody>
+            <tr v-for="(row, index) in top20.tbody" :key="index" @click="onClickTableRow(row.link)">
+              <td>{{row.now}}</td>
+              <td>{{row.pre}}</td>
+              <td>
+                <img v-if="row.changeIcon" :src="row.changeIcon" alt="change" />
+              </td>
+              <td>{{row.name}}</td>
+              <td>{{row.rating}}</td>
+              <td>{{row.change}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </a-spin>
   </div>
 </template>
@@ -167,6 +176,14 @@ export default {
 
 <style lang="scss" scoped>
 .tiobe {
+  .table-wrapper {
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+  }
+
   table.table-top20 {
     text-align: center;
 
