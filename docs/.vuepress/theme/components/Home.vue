@@ -301,10 +301,10 @@ export default {
       Breakpoints({
         small: {
           min: 0,
-          max: 736
+          max: 980
         },
         medium: {
-          min: 737,
+          min: 981,
           max: Infinity
         }
       });
@@ -356,24 +356,15 @@ export default {
 </style>
 
 <style lang="stylus">
-.home {
-  padding: $navbarHeight 0 0;
-  max-width: $homePageWidth;
-  margin: 0px auto;
-  display: block;
-}
+.home
+  padding $navbarHeight 0 0
+  max-width $homePageWidth
+  margin 0px auto
+  display block
 
-@media screen and (max-width: 1280px) {
-  .home #header {
-    padding-top: 6em + $navbarHeight;
-  }
-}
-
-@media screen and (max-width: 980px) {
-  .home #header {
-    padding-top: 6em + $navbarHeight;
-  }
-}
+  @media screen and (min-width: 737px)
+    #header
+      padding-top 6em + $navbarHeight
 </style>
 
 <style lang="scss" scoped>
