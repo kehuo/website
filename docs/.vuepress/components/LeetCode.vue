@@ -62,7 +62,7 @@ export default {
               ranking_data[0].values.push({
                 x: i,
                 y: parseInt(e[0]),
-                contest_title: data[2][i]
+                contest_title: data[1][i]
               });
             });
             break;
