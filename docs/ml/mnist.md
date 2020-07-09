@@ -12,7 +12,7 @@ MNIST[^mnist] is a dataset of handwritten digits, including 55,000 training samp
 | :----------------------------------------------------: |
 | _Sample images from MNIST test dataset_[^mnist_sample] |
 
-[^mnist_sample]: Image By Josef Steppan - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=64810040
+[^mnist_sample]: Image By Josef Steppan - Own work, CC BY-SA 4.0, <https://commons.wikimedia.org/w/index.php?curid=64810040>
 
 ## LeNet-5
 
