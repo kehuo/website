@@ -90,7 +90,7 @@ module.exports = {
         nav: [
           { text: "Programming", link: "/programming/prog-lang/overview" },
           { text: "Machine Learning", link: "/ml/overview" },
-          { text: "Projects", link: "/projects/" },
+          { text: "Misc", link: "/misc/apis" },
         ],
         sidebar: {
           "/programming/": [
@@ -120,15 +120,21 @@ module.exports = {
               children: [["/ml/overview", "Overview"], "/ml/mnist"],
             },
           ],
-          "/projects/": [
-            "/projects/werewolf",
-            // {
-            //     title: 'Games',
-            //     children: [
-            //         '/projects/games/werewolf',
-            //     ]
-            // },
+          "/misc/": [
+            {
+              title: "Misc",
+              children: ["/misc/apis"],
+            },
           ],
+          // "/projects/": [
+          //   "/projects/werewolf",
+          //   // {
+          //   //     title: 'Games',
+          //   //     children: [
+          //   //         '/projects/games/werewolf',
+          //   //     ]
+          //   // },
+          // ],
         },
         lastUpdated: "Last Updated",
       },
@@ -146,7 +152,7 @@ module.exports = {
         nav: [
           { text: "编程", link: "/zh/programming/prog-lang/overview" },
           { text: "机器学习", link: "/zh/ml/overview" },
-          { text: "其他项目", link: "/zh/projects/" },
+          { text: "杂项", link: "/zh/misc/apis" },
         ],
         sidebar: {
           // "/zh/programming/": [
