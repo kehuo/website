@@ -42,12 +42,13 @@ For the same example of fetching my contact on Google, in a REST API context, I 
 
 An advantage of REST API, comparing to RPC, is that it gets rid of documentations. You can get the instructions and metadata by accessing the root entry point. Those metadata and instructions may lead to other available resources on the server, just like how the web pages are connected. Although describing all the instructions in your APIs is hard to achieve and even really good REST APIs today don't always do that, REST API is designed to decouple the client and the server as much as possible. Another apparent advantage of REST APIs is that the resources are reusable. For example, we want another query to get the email of one of my contacts, who is the author of one of my favourite books. In an RPC API, we may have to build up a new function to return that exact information. But in REST API, the resources are already there. So the client is to get a resource from one endpoint, then follow the links to get another, as an example request flow shown below.
 
-```http
-GET /books
-GET /books/1
-GET /books/1/author
-GET /contacts/101
-```
+> GET /books
+>
+> GET /books/1
+>
+> GET /books/1/author
+>
+> GET /contacts/101
 
 By providing resources, as a designer, you don't have to know every single use case that a client might want to do in the future. You might build your API, and then five years later somebody makes a client that does something different that you weren't expecting. Still, they can do so because the necessary resources are already there available by accessing your REST APIs.
 
