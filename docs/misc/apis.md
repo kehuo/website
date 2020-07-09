@@ -72,11 +72,11 @@ GraphQL has many advantages as we said, excellent discoverability like REST does
 
 Returning to our original design consideration, each one of these styles, RPC, REST, and GraphQL make different decisions and different assumptions about which one of the following factors is most important to you.
 
-|     Styles     | Coupling | Chattiness | Client Complexity | Cognitive Complexity | Caching | Discoverability | Versioning |
-| :------------: | :------: | :--------: | :---------------: | :------------------: | :-----: | :-------------: | :--------: |
-| RPC Functions  |   High   |   Medium   |        Low        |         Low          | Custom  |       Bad       |    Hard    |
-| REST Resources |   Low    |    High    |        Low        |         Low          |  HTTP   |      Good       |    Easy    |
-| RPC Functions  |  Medium  |    Low     |       High        |         High         | Custom  |      Good       |     ?      |
+|     Styles      | Coupling | Chattiness | Client Complexity | Cognitive Complexity | Caching | Discoverability | Versioning |
+| :-------------: | :------: | :--------: | :---------------: | :------------------: | :-----: | :-------------: | :--------: |
+|  RPC Functions  |   High   |   Medium   |        Low        |         Low          | Custom  |       Bad       |    Hard    |
+| REST Resources  |   Low    |    High    |        Low        |         Low          |  HTTP   |      Good       |    Easy    |
+| GraphQL Queries |  Medium  |    Low     |       High        |         High         | Custom  |      Good       |    ???     |
 
 Instead of asking which API style is the best, we could make the choice by asking who uses my API. If you focus on objects or resources like a management API or CRUD API, and it's essential to have good discoverability and documentation for many varied clients like the case of public API services, you may consider REST API with schemas like HAL, JSON-API, and Ion. If your API focuses on sending commands to a remote system, is action-oriented and wants simple interactions, you may want to try RPC API. An excellent example of this is the Slack API. It's very command focused and all about actions like join a channel, leave a channel, or send a message. Another scenario that may fit RPC is internal microservices. In internal microservices, we would need to have a very high message and network performance, and we don't want to transmit a ton of metadata over the wire as a REST API does. So things like gRPC and Twirp are excellent cases for microservices. But if your goal is not as much high network performance but having a stable API contract between teams, sometimes REST might be a good choice here as well. Finally, if you are building APIs that are heavily used on mobile clients with potential terrible network connections, or they are very graph focused, you could check out GraphQL.
 
