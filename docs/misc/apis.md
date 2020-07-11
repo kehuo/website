@@ -6,7 +6,7 @@ This article will introduce three popular API design patterns, RPC, REST, and Gr
 
 ## RPC
 
-The implementation of RPC(Remote Procedure Call) can be traced back to the 1980s. Bruce Jay Nelson is generally credited with coining the term "remote procedure call" in 1981[^nelson]. In the context of RPC, servers provide functions to clients, and the purpose of sending HTTP requests is to call a remote function executed on another server as same as calling a local function. Therefore, the HTTP request is a command that expresses what action should be executed and expects the response or return value of this particular function. Apparently, the very fundamental unit of RPC is function.
+The implementation of RPC (Remote Procedure Call) can be traced back to the 1980s. Bruce Jay Nelson is generally credited with coining the term "remote procedure call" in 1981[^nelson]. In the context of RPC, servers provide functions to clients, and the purpose of sending HTTP requests is to call a remote function executed on another server as same as calling a local function. Therefore, the HTTP request is a command that expresses what action should be executed and expects the response or return value of this particular function. Apparently, the very fundamental unit of RPC is function.
 
 [^nelson]: Nelson, B. J. (1982). REMOTE PROCEDURE CALL.
 
@@ -16,7 +16,7 @@ RPC looks cool and easy to understand. However, RPC has some problems like tight
 
 ## REST
 
-The problem of RPC is that the APIs are too tightly coupled to the underlying system. Thus we can solve this by adding a better and stronger abstraction layer between them. That's precisely the goal of REST(Representational State Transfer), which was introduced and defined in 2000 by Roy Fielding in his doctoral dissertation[^fielding]. REST goes the very opposite way of RPC. Instead of modelling functions, REST APIs model resources, and the relationships between resources. By providing resources, REST API lets the end-user decide how to use and maintain the resources, leading to a compelling way of decoupling clients from servers.
+The problem of RPC is that the APIs are too tightly coupled to the underlying system. Thus we can solve this by adding a better and stronger abstraction layer between them. That's precisely the goal of REST (Representational State Transfer), which was introduced and defined in 2000 by Roy Fielding in his doctoral dissertation[^fielding]. REST goes the very opposite way of RPC. Instead of modelling functions, REST APIs model resources, and the relationships between resources. By providing resources, REST API lets the end-user decide how to use and maintain the resources, leading to a compelling way of decoupling clients from servers.
 
 [^fielding]: Fielding, R. T. (2000). REST: architectural styles and the design of network-based software architectures. Doctoral dissertation, University of California.
 
@@ -54,7 +54,7 @@ By providing resources, as a designer, you don't have to know every single use c
 
 Unfortunately, in our industry, the term REST API has been pretty severely overloaded. REST API reuses HTTP and expresses the intention of the request by the HTTP verbs. Someone may think that if I use HTTP verbs and return JSON, it's a REST API. However, a real REST API expresses a lot more than simple JSON over HTTP or just using HTTP verbs. Another problem is that, in practice, as programmers, it's easy to slip back to that comfortable calling function style. We end up somewhere between REST and RPC; we end up with kind of a RESTful procedure call type of API.
 
-The highest idea of REST is called HATEOAS(Hypermedia As The Engine Of Application State). It's to decouple the client and the server, therefore enables client and server to evolve independently as long as they agree on the standard structure of the communication. An excellent example of this is web pages per se, web servers and web browsers have evolved quite a bit. Still, because we all agree on the fundamental markup language HTML, we can keep everything working. This idea of using hypertext to describe the application state enables systems to be stable and have longevity over decades.
+The highest idea of REST is called HATEOAS (Hypermedia As The Engine Of Application State). It's to decouple the client and the server, therefore enables client and server to evolve independently as long as they agree on the standard structure of the communication. An excellent example of this is web pages per se, web servers and web browsers have evolved quite a bit. Still, because we all agree on the fundamental markup language HTML, we can keep everything working. This idea of using hypertext to describe the application state enables systems to be stable and have longevity over decades.
 
 The tools at the cutting edge of REST are to make it easier to model the response metadata. The specs and schemas like [HAL](http://stateless.co/hal_specification.html), [JSON-API](https://jsonapi.org/), [Ion](https://ionspec.org/), [Siren](https://github.com/kevinswiber/siren), and some others, are trying to build up some standard rules for your REST API, like the role of HTML between web browsers and web servers.
 
