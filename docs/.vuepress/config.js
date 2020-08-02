@@ -110,8 +110,12 @@ module.exports = {
               ],
             },
             {
-              title: "Algorithms",
-              children: [["/programming/algorithms/overview", "Overview"], "/programming/algorithms/np-hard/knapsack"],
+              title: "Data Structures and Algorithms",
+              children: [
+                ["/programming/algorithms/overview", "Overview"],
+                "/programming/algorithms/tree",
+                "/programming/algorithms/np-hard/knapsack",
+              ],
             },
           ],
           "/ml/": [
