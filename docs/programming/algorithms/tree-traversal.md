@@ -1,4 +1,4 @@
-# Tree
+# Tree Traversal
 
 ## Basics
 
@@ -170,4 +170,4 @@ def postorder_without_recursion(root: TreeNode) -> List[int]:
 
 ## Tests
 
-<iframe height="400px" width="100%" src="https://repl.it/@LucienZhang/tree?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="400px" width="100%" src="https://repl.it/@LucienZhang/binary-tree-traversal?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
