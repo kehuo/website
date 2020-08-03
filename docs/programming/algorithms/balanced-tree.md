@@ -6,6 +6,12 @@ A balanced binary tree or a self-balancing binary search tree is any node-based 
 
 ## AVL Tree
 
+| ![AVL Tree](@assets/img/algorithms/tree/avl-tree.png) |
+| :---------------------------------------------------: |
+|         _AVL tree with balance factors_[^avl]         |
+
+[^avl]: Image is from <https://www.javatpoint.com/avl-tree>
+
 Height difference tolerance: 1
 
 | Algorithm |   Average   | Worst case  |
@@ -178,6 +184,22 @@ class AVL_Tree(object):
 ```
 
 ## Red-Black Tree
+
+| ![Red-Black Tree](@assets/img/algorithms/tree/red-black-tree.png) |
+| :---------------------------------------------------------------: |
+|           _An example of a red–black tree_[^red-black]            |
+
+[^red-black]: By Cburnett - Own work, CC BY-SA 3.0, <https://commons.wikimedia.org/w/index.php?curid=1508398>
+
+In addition to the requirements imposed on a binary search tree the following must be satisfied by a red–black tree:[^red-black-requirements]
+
+1. Each node is either red or black.
+2. The root is black. This rule is sometimes omitted. Since the root can always be changed from red to black, but not necessarily vice versa, this rule has little effect on analysis.
+3. All leaves (NIL) are black.
+4. If a node is red, then both its children are black.
+5. Every path from a given node to any of its descendant NIL nodes goes through the same number of black nodes.
+
+[^red-black-requirements]: Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to algorithms. MIT press.
 
 Height difference tolerance: twice
 

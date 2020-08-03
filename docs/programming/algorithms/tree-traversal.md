@@ -1,5 +1,7 @@
 # Tree Traversal
 
+[comment]: # (# todo: add complexity analysis)
+
 ## Basics
 
 **Example**
