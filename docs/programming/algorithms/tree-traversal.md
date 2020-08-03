@@ -1,14 +1,12 @@
 # Tree Traversal
 
-[comment]: # (# todo: add complexity analysis)
+[comment]: # "# todo: add complexity analysis"
 
-## Basics
-
-**Example**
+Example
 
 ![Binary Tree](@assets/img/algorithms/tree/binary_tree.png)
 
-**Tree Node definition**
+Tree Node definition
 
 ```py
 class TreeNode:
