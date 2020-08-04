@@ -37,6 +37,8 @@ def dfs(root: TreeNode):
 ## BFS
 
 ```py
+from collections import deque
+
 def bfs(root: TreeNode):
     # queue
     q = deque([root])
@@ -55,6 +57,8 @@ def bfs(root: TreeNode):
 ## Level Order Traversal
 
 ```py
+from collections import deque
+
 def lot(root: TreeNode) -> int:
     # queue
     q = deque([root])
@@ -87,6 +91,8 @@ def preorder(root: TreeNode):
 ```
 
 ```py
+from typing import List
+
 def preorder_without_recursion(root: TreeNode) -> List[int]:
     ans = []
     stack = [root]
@@ -112,6 +118,8 @@ def inorder(root: TreeNode):
 ```
 
 ```py
+from typing import List
+
 def inorder_without_recursion(root: TreeNode) -> List[int]:
     ans = []
     stack = []
@@ -141,6 +149,8 @@ def postorder(root: TreeNode):
 ```
 
 ```py
+from typing import List
+
 def postorder_without_recursion(root: TreeNode) -> List[int]:
     if not root:
         return []

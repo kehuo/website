@@ -3,6 +3,8 @@
 ## Trie
 
 ```py
+from collections import defaultdict
+
 Trie = lambda: defaultdict(Trie)
 trie = Trie()
 for row in ['abc', 'ab', 'abcd']:

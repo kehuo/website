@@ -47,6 +47,8 @@ def dfs(matrix):
 ## BFS
 
 ```py
+from collections import deque
+
 def bfs(lists):
     # taking adjacency list
     q = deque([0])
@@ -65,6 +67,8 @@ def bfs(lists):
 ## Level Order Traversal
 
 ```py
+from collections import deque
+
 def lot(lists) -> int:
     # taking adjacency list
     q = deque([0])
