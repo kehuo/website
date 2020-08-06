@@ -5,4 +5,4 @@ Algorithm is the soul of programming, and the only way to learn it well is to pr
 <LeetCode />
 
 
-[comment]: # "# todo: merge sort, longest common subsequence, longest palindromic subsequence, longest palindromic substring, 正序对，逆序对，树状数组(bit)，线段树，单调队列，单调栈，回溯，dp， rmq, fenwich tree，SegmentTree"
+[comment]: # "# todo: merge sort, longest common subsequence, longest palindromic subsequence, longest palindromic substring, 正序对，逆序对，树状数组(bit)，线段树，单调队列，单调栈，回溯，dp， rmq, fenwich tree，SegmentTree, 环检测"
