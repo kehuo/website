@@ -51,7 +51,7 @@ def prim(matrix) -> List[List[int]]:
 
 ## Kruskal's Algorithm
 
-Based on [union-find algorithm](./disjoint-sets)
+Based on [union-find algorithm](./disjoint-sets.md)
 
 Time Complexity: $O(|E| \log |E|) $
 

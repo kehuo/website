@@ -6,6 +6,7 @@ Two optimization strategies:
 
 1. Path compression
 2. Union by rank
+
    Initially a set has one element and a rank of zero. If two sets are unioned and have the same rank, the resulting set's rank is one larger
 
 Amortized Complexity
@@ -16,7 +17,7 @@ Amortized Complexity
 |   Find    | $O(α(n))$ | $O(α(n))$  |
 |   Union   | $O(α(n))$ | $O(α(n))$  |
 
-$α(⋅)$ is [inverse Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function#Inverse), for the generally possible value n, α(n) is less than 5
+$α(⋅)$ is [inverse Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function#Inverse), for the generally possible value n, $α(n)$ is less than 5
 
 ```py
 class UnionFind(object):
