@@ -27,6 +27,7 @@ module.exports = {
       {
         color: "#757575",
         staticIcon: true,
+        selector: 'div[class*="language-"]',
       },
     ],
     ["tabs", {}],

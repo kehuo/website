@@ -1,0 +1,33 @@
+diff --git a/node_modules/vuepress-plugin-code-copy/CodeCopy.vue b/node_modules/vuepress-plugin-code-copy/CodeCopy.vue
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vuepress-plugin-code-copy/LICENSE b/node_modules/vuepress-plugin-code-copy/LICENSE
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vuepress-plugin-code-copy/README.md b/node_modules/vuepress-plugin-code-copy/README.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vuepress-plugin-code-copy/appFile.js b/node_modules/vuepress-plugin-code-copy/appFile.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vuepress-plugin-code-copy/clientRootMixin.js b/node_modules/vuepress-plugin-code-copy/clientRootMixin.js
+old mode 100644
+new mode 100755
+index 1729b06..37cac40
+--- a/node_modules/vuepress-plugin-code-copy/clientRootMixin.js
++++ b/node_modules/vuepress-plugin-code-copy/clientRootMixin.js
+@@ -23,7 +23,7 @@ export default {
+                         staticIcon: staticIcon
+                     }
+                     instance.options = { ...options }
+-                    instance.code = el.innerText
++                    instance.code = el.querySelector('pre').innerText
+                     instance.parent = el
+                     instance.$mount()
+                     el.classList.add('code-copy-added')
+diff --git a/node_modules/vuepress-plugin-code-copy/index.js b/node_modules/vuepress-plugin-code-copy/index.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vuepress-plugin-code-copy/style.css b/node_modules/vuepress-plugin-code-copy/style.css
+old mode 100644
+new mode 100755

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "check-md": "vuepress check-md docs"
+    "check-md": "vuepress check-md docs",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.4.0",
@@ -14,6 +15,8 @@
     "core-js": "^2.6.11",
     "markdown-it-footnote": "^3.0.2",
     "node-sass": "^4.13.1",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "sass-loader": "^8.0.2",
     "vuepress": "^1.4.0",
     "vuepress-plugin-check-md": "^0.0.2",

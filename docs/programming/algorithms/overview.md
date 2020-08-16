@@ -4,8 +4,8 @@ Algorithm is the soul of programming, and the only way to learn it well is to pr
 
 <LeetCode />
 
-[comment]: # "# todo: 分三、四块，基础算法，启发式算法，np-hard问题，数学"
-[comment]: # "# todo: merge sort, longest common subsequence, longest palindromic subsequence, longest palindromic substring, 正序对，逆序对，树状数组(bit)，线段树，单调队列，单调栈，回溯，dp， rmq, fenwich tree，SegmentTree, 环检测， 霍夫曼树， 斐波那契堆，卡塔兰数"
+[comment]: # "# todo: 分三、四块，基础算法，启发式算法，np-hard问题，数学，右下角copy不float"
+[comment]: # "# todo: merge sort, longest common subsequence, longest palindromic subsequence, longest palindromic substring, 正序对，逆序对，树状数组(bit)，线段树，单调队列，单调栈，回溯，dp， rmq, fenwich tree，SegmentTree, 环检测， 霍夫曼树， 斐波那契堆，卡塔兰数,floyd, 洗牌算法"
 
 ## Fundamental Algorithms
 

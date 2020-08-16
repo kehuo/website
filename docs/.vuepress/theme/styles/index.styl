@@ -52,6 +52,12 @@ div[class*='language-']
     height 0px
     overflow hidden
 
+    svg
+      z-index 9
+
+    span
+      line-height 18px
+
   .highlight-lines
     user-select none
     padding-top 0.9rem
@@ -72,7 +78,7 @@ div[class*='language-']
   &::before
     position absolute
     z-index 3
-    top 0.8em
+    top 0
     right 1em
     font-size 0.75rem
     color rgba(0, 0, 0, 0.54)
