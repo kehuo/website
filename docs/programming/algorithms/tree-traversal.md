@@ -1,6 +1,12 @@
 # Tree Traversal
 
-[comment]: # "# todo: add complexity analysis"
+|            Item             |     DFS      |      BFS      |
+| :-------------------------: | :----------: | :-----------: |
+|       Data Structure        |    Stack     |     Queue     |
+|        Vertex Order         | one sequence | two sequences |
+|       Time Complexity       |    $O(n)$    |    $O(n)$     |
+|      Space Complexity       | $O(height)$  |  $O(width)$   |
+| Worst-case Space Complexity |    $O(n)$    |    $O(n)$     |
 
 Example
 

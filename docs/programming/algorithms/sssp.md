@@ -20,6 +20,8 @@ Adjacency Matrix
 
 Require non-negative weights
 
+Time Complexity: $O((|E|+|V|) \log |V|)$ (use heap or priority queue) or $O(|E|+|V| \log |V|)$ (use Fibonacci heap min-priority queue)
+
 ```py
 from heapq import heappop, heappush
 
@@ -39,7 +41,6 @@ def dijkstra(matrix, source) -> dict:
 ```
 
 [comment]: # "# todo: 加改进版heap"
-[comment]: # "# todo: 加复杂度分析"
 
 ## Tests
 

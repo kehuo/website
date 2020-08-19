@@ -4,6 +4,12 @@
 
 Least Recently Used
 
+| Algorithm | Complexity |
+| :-------: | :--------: |
+|   Space   |   $O(n)$   |
+|    Get    |   $O(1)$   |
+|    Put    |   $O(1)$   |
+
 1. Implemented by OrderedDict
 
 ```py
@@ -98,6 +104,12 @@ class LRUCache2(object):
 ## LFU
 
 Least Frequently Used
+
+| Algorithm | Complexity |
+| :-------: | :--------: |
+|   Space   |   $O(n)$   |
+|    Get    |   $O(1)$   |
+|    Put    |   $O(1)$   |
 
 ```py
 class LFUNode(object):

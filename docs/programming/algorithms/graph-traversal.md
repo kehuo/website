@@ -1,5 +1,14 @@
 # Graph Traversal
 
+|                Item                |           DFS            |           BFS            |
+| :--------------------------------: | :----------------------: | :----------------------: |
+|           Data Structure           |          Stack           |          Queue           |
+|            Vertex Order            |       one sequence       |      two sequences       |
+|    Edge Type (Undirected Graph)    |   tree edge, back edge   |  tree edge, cross edge   |
+| Time Complexity (Adjacency Matrix) |    $O({ \| V \| }^2)$    |    $O({ \| V \| }^2)$    |
+|  Time Complexity (Adjacency List)  | $O( \| V \| + \| E \| )$ | $O( \| V \| + \| E \| )$ |
+|    Worst-case Space Complexity     |      $O( \| V \|)$       |      $O( \| V \|)$       |
+
 Example
 
 ![Graph](@assets/img/algorithms/graph/graph.png)

@@ -47,13 +47,12 @@ def prim(matrix) -> List[List[int]]:
 ```
 
 [comment]: # "# todo: 加改进版heap"
-[comment]: # "# todo: 加复杂度分析"
 
 ## Kruskal's Algorithm
 
 Based on [union-find algorithm](./disjoint-sets.md)
 
-Time Complexity: $O(|E| \log |E|) $
+Time Complexity: $O(|E| \log |E|)$
 
 ```py
 from typing import List

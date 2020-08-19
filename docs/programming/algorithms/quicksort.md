@@ -2,6 +2,14 @@
 
 ## Quick Sort
 
+|                    Item                     |                               Value                                |
+| :-----------------------------------------: | :----------------------------------------------------------------: |
+|               Data Structure                |                               Array                                |
+|         Worst-case Time Complexity          |                              $O(n^2)$                              |
+|          Best-case Time Complexity          |    $O(n \log n)$ or $O(n)$ (three-way partition and equal keys)    |
+|           Average Time Complexity           |                           $O(n \log n)$                            |
+| Worst-case Space Complexity (for recursion) | $O(n)$ auxiliary (naive) or $O(\log n)$ auxiliary (Sedgewick 1978) |
+
 ```py
 from typing import List
 import random
@@ -33,6 +41,18 @@ def quicksort(nums: List[int]) -> None:
 ```
 
 ## Quick Select
+
+|                    Item                     |    Value    |
+| :-----------------------------------------: | :---------: |
+|               Data Structure                |    Array    |
+|         Worst-case Time Complexity          |  $O(n^2)$   |
+|          Best-case Time Complexity          |   $O(n)$    |
+|           Average Time Complexity           |   $O(n)$    |
+| Worst-case Space Complexity (for recursion) |   $O(n)$    |
+| Best-case Space Complexity (for recursion)  |   $O(1)$    |
+|  Average Space Complexity (for recursion)   | $O(\log n)$ |
+
+Instead of recursing into both sides, as in quicksort, quickselect only recurses into one side – the side with the element it is searching for. This reduces the average complexity from $O(n \log n)$ to $O(n)$, with a worst case of $O(n^2)$.
 
 ```py
 from typing import List

@@ -1,5 +1,13 @@
 # Binary Search
 
+|            Item             |    Value    |
+| :-------------------------: | :---------: |
+|       Data Structure        |    Array    |
+| Worst-case Time Complexity  | $O(\log n)$ |
+|  Best-case Time Complexity  |   $O(1)$    |
+|   Average Time Complexity   | $O(\log n)$ |
+| Worst-case Space Complexity |   $O(1)$    |
+
 ## Unique Position
 
 Find the index of $x$ in $nums$, where all elements are unique.

@@ -5,13 +5,13 @@ Algorithm is the soul of programming, and the only way to learn it well is to pr
 <LeetCode />
 
 [comment]: # "# todo: 分三、四块，基础算法，启发式算法，np-hard问题，数学，右下角copy不float"
-[comment]: # "# todo: merge sort, longest common subsequence, longest palindromic subsequence, longest palindromic substring, 正序对，逆序对，树状数组(bit)，线段树，单调队列，单调栈，回溯，dp， rmq, fenwich tree，SegmentTree, 环检测， 霍夫曼树， 斐波那契堆，卡塔兰数,floyd, 洗牌算法"
+[comment]: # "# todo: merge sort, longest common subsequence, longest palindromic subsequence, longest palindromic substring, 正序对，逆序对，树状数组(bit)，线段树，单调队列，单调栈，回溯，dp， rmq, fenwich tree，SegmentTree, 环检测， 霍夫曼树， 斐波那契堆，卡塔兰数,floyd, 洗牌算法, 马拉车，KMP"
 
 ## Fundamental Algorithms
 
 This section includes an introduction to some commonly used data structures. Algorithms such as sorting and searching are presented in the form of Python best practices.
 
-## NP-Hard Problem and Advanced Algorithms
+## NP-Hard Problems and Advanced Algorithms
 
 This part contains an introduction to the NP-hard problems and some advanced algorithms, including approximation algorithms, online algorithms and other heuristic algorithms.
 
