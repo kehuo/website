@@ -7,6 +7,17 @@ Algorithm is the soul of programming, and the only way to learn it well is to pr
 [comment]: # "# todo: 分三、四块，基础算法，启发式算法，np-hard问题，数学，右下角copy不float"
 [comment]: # "# todo: merge sort, longest common subsequence, longest palindromic subsequence, longest palindromic substring, 正序对，逆序对，树状数组(bit)，单调队列，单调栈，回溯，dp， rmq, fenwich tree，SegmentTree, 环检测， 霍夫曼树， 斐波那契堆，卡塔兰数,floyd, 洗牌算法, 马拉车，KMP"
 
+<!-- ## Array Representation of Binary Tree starting from 0
+
+For a binary tree with `n` nodes, it can be represented by an array `T`.
+
+1. The index of `T` is from 0 to n-1
+1. The root of the tree is located at `T[0]`
+1. The parent nodes are located at `T[:n//2]`
+1. The leaf nodes are located at `T[n//2:]`
+1. for `i < n//2`, its children are located at `T[2*i+1]` and `T[2*i+2]` (may not exist)
+1. for `0 < i < n`, its parent node is located at `T[(i-1)//2]` -->
+
 ## Fundamental Algorithms
 
 This section includes an introduction to some commonly used data structures. Algorithms such as sorting and searching are presented in the form of Python best practices.

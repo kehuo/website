@@ -117,6 +117,7 @@ module.exports = {
                 "/programming/algorithms/tree-traversal",
                 "/programming/algorithms/balanced-tree",
                 "/programming/algorithms/heap",
+                "/programming/algorithms/segment-tree",
                 "/programming/algorithms/tree-misc",
                 "/programming/algorithms/disjoint-sets",
                 "/programming/algorithms/graph-traversal",

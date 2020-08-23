@@ -15,6 +15,13 @@ For a binary tree with `n` nodes, it can be represented by an array `T`.
 
 for an array of length n, we need 2n space to store the segment tree, which contains 2n-1 values.
 
+| Algorithm | Complexity  |
+| :-------: | :---------: |
+|   Space   |   $O(n)$    |
+| Construct |   $O(n)$    |
+|  Update   | $O(\log n)$ |
+|   Query   | $O(\log n)$ |
+
 ```py
 from typing import List
 
