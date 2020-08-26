@@ -35,6 +35,8 @@ There are two base interfaces in Java's Collections Framework, **Collection** (`
 |                  TreeMap (red black tree)                   |                                                           |
 |                                                             |                  java.util.concurrent.\*                  |
 
+---
+
 <Jupyter filePath="collections/java.ipynb" />
 
 :::
