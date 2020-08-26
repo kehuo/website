@@ -22,13 +22,11 @@ For a binary tree with `n` nodes, it can be represented by an array `T`.
 
 ## Fundamental Algorithms
 
-This section includes an introduction to some commonly used data structures. Algorithms such as sorting and searching are presented in the form of Python best practices.
+This section includes an introduction to some commonly used data structures. Algorithms such as sorting and searching are presented in the form of the best practices.
 
 ## NP-Hard Problems and Advanced Algorithms
 
-This part contains an introduction to the NP-hard problems and some advanced algorithms, including approximation algorithms, online algorithms and other heuristic algorithms.
-
-[comment]: # "# todo: thanks to vorapong"
+This part contains an introduction to the NP-hard problems and some advanced algorithms, including approximation algorithms, online algorithms and other heuristic algorithms. Part of the content here is derived from the courses given by [Dr. Vorapong Suppakitpaisarn](http://www.vorapong-sup.net/)
 
 ### Linear Programming
 
