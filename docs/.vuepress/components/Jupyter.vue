@@ -26,22 +26,23 @@ export default {
   props: {
     filePath: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      spinning: true
+      spinning: true,
     };
   },
   methods: {
     resizeIframe(event) {
-      let e = event.path[0];
+      let path = event.path || (event.composedPath && event.composedPath());
+      let e = path[0];
       e.style.height =
         e.contentWindow.document.documentElement.scrollHeight + "px";
       this.spinning = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
