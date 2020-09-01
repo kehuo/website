@@ -1,5 +1,11 @@
 # Graph Traversal
 
+| ![Edge Type](@assets/img/algorithms/graph/edges.jpg) |
+| :--------------------------------------------------: |
+|               _Types of Edges_[^edges]               |
+
+[^edges]: Image is from <https://www.geeksforgeeks.org/tarjan-algorithm-find-strongly-connected-components/>
+
 |                Item                |           DFS            |           BFS            |
 | :--------------------------------: | :----------------------: | :----------------------: |
 |           Data Structure           |          Stack           |          Queue           |

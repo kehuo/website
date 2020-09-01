@@ -5,7 +5,7 @@ Algorithm is the soul of programming, and the only way to learn it well is to pr
 <LeetCode />
 
 [comment]: # "# todo: 分三、四块，基础算法，启发式算法，np-hard问题，数学，右下角copy不float"
-[comment]: # "# todo: merge sort, longest common subsequence, longest palindromic subsequence, longest palindromic substring, 正序对，逆序对，树状数组(bit)，st表，可持久化线段树，单调队列，单调栈，回溯，dp， rmq, fenwich tree，SegmentTree, 环检测， 霍夫曼树， 斐波那契堆，卡塔兰数,floyd, 洗牌算法, 马拉车，KMP，关联数组 多重关连数组，双端队列，双端优先队列，多重集，环形缓冲器，哈希数组树，稀疏矩阵，关联表，跳跃列表（跳表），松散链表异或链表，AA树，伸展树，左偏树，二项堆，R树 R*树R+树Hilbert R树，哈希树（墨克树），二元决策图，确定性非循环有限自动机，ac自动机，二分图的最大匹配、完美匹配和匈牙利算法，morris遍历"
+[comment]: # "# todo: merge sort, longest common subsequence, longest palindromic subsequence, longest palindromic substring, 正序对，逆序对，树状数组(bit)，st表，可持久化线段树，单调队列，单调栈，回溯，dp， rmq, fenwich tree，SegmentTree, 环检测， 霍夫曼树， 斐波那契堆，卡塔兰数,floyd, 洗牌算法, 马拉车，KMP，关联数组 多重关连数组，双端队列，双端优先队列，多重集，环形缓冲器，哈希数组树，稀疏矩阵，关联表，跳跃列表（跳表），松散链表异或链表，AA树，伸展树，左偏树，二项堆，R树 R*树R+树Hilbert R树，哈希树（墨克树），二元决策图，确定性非循环有限自动机，ac自动机，二分图的最大匹配、完美匹配和匈牙利算法，morris遍历, 最近公共祖先（LCA）问题(Tarjan's off-line lowest common ancestors algorithm )、双连通分量 问题, Tarjan 算法, Splay, Toptree"
 [comment]: # "# todo: https://oi-wiki.org/"
 [comment]: # "# todo: https://www.geeksforgeeks.org/"
 
