@@ -123,6 +123,8 @@ module.exports = {
                 "/programming/algorithms/graph-traversal",
                 "/programming/algorithms/mst",
                 "/programming/algorithms/sssp",
+                "/programming/algorithms/scc",
+                "/programming/algorithms/cut",
                 "/programming/algorithms/cache",
                 "/programming/algorithms/binary-search",
                 "/programming/algorithms/quicksort",
