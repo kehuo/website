@@ -9,14 +9,12 @@
       </a>
     </p>
     <a-spin size="large" tip="Loading..." :spinning="spinning">
-      <lazy-component>
-        <iframe
-          frameborder="no"
-          scrolling="no"
-          :src="'/nbviewer/localfile/'+filePath"
-          @load="resizeIframe"
-        ></iframe>
-      </lazy-component>
+      <iframe
+        frameborder="no"
+        scrolling="no"
+        :src="'/nbviewer/localfile/'+filePath"
+        @load="resizeIframe"
+      ></iframe>
     </a-spin>
   </div>
 </template>

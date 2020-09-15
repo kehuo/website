@@ -30,7 +30,7 @@ module.exports = {
         selector: 'div[class*="language-"]',
       },
     ],
-    ["tabs", {}],
+    ["vuepress-plugin-element-tabs", {}],
     ["check-md", {}],
   ],
   chainWebpack: (config, isServer) => {
