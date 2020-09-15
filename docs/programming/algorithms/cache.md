@@ -10,7 +10,13 @@ Least Recently Used
 |    Get    |   $O(1)$   |
 |    Put    |   $O(1)$   |
 
-1. Implemented by OrderedDict
+1. Implemented by Built-in Structures
+
+:::: tabs
+
+::: tab python
+
+Implemented by OrderedDict
 
 ```py
 from collections import OrderedDict
@@ -34,7 +40,25 @@ class LRUCache(OrderedDict):
             self.popitem(last=False)
 ```
 
+:::
+
+::: tab java
+
+Implemented by LinkedHashMap
+
+```java
+
+```
+
+:::
+
+::::
+
 2. Implemented by hash table and doubly linked list
+
+:::: tabs
+
+::: tab python
 
 ```py
 class LRUNode(object):
@@ -101,6 +125,18 @@ class LRUCache2(object):
                 self.pop_first()
 ```
 
+:::
+
+::: tab java
+
+```java
+
+```
+
+:::
+
+::::
+
 ## LFU
 
 Least Frequently Used
@@ -110,6 +146,10 @@ Least Frequently Used
 |   Space   |   $O(n)$   |
 |    Get    |   $O(1)$   |
 |    Put    |   $O(1)$   |
+
+:::: tabs
+
+::: tab python
 
 ```py
 class LFUNode(object):
@@ -189,6 +229,30 @@ class LFUCache(object):
             self.lists[1].append(node)
 ```
 
+:::
+
+::: tab java
+
+```java
+
+```
+
+:::
+
+::::
+
 ## Tests
 
+:::: tabs
+
+::: tab python
+
 <iframe height="400px" width="100%" src="https://repl.it/@LucienZhang/cache?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+:::
+
+::: tab java
+
+:::
+
+::::

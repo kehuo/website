@@ -19,6 +19,10 @@ Amortized Complexity
 
 $α(⋅)$ is [inverse Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function#Inverse), for the generally possible value n, $α(n)$ is less than 5
 
+:::: tabs
+
+::: tab python
+
 ```py
 class UnionFind(object):
     def __init__(self):
@@ -49,6 +53,68 @@ class UnionFind(object):
             self.parent[x_root] = y_root
 ```
 
+:::
+
+::: tab java
+
+```java
+class UnionFind {
+    Map<Integer, Integer> parent = new HashMap<>();
+    Map<Integer, Integer> rank = new HashMap<>();
+
+    public void makeSet(int x) {
+        parent.put(x, x);
+        rank.put(x, 0);
+    }
+
+    public int find(int x) {
+        int p = parent.get(x);
+        if (p != x) {
+            parent.put(x, find(p));
+        }
+        return parent.get(x);
+    }
+
+    public void union(int x, int y) {
+        int xRoot = find(x);
+        int yRoot = find(y);
+        if (xRoot == yRoot) {
+            return;
+        }
+
+        int xRank = rank.get(xRoot);
+        int yRank = rank.get(yRoot);
+
+        if (xRank == yRank) {
+            parent.put(yRoot, xRoot);
+            rank.put(xRoot, xRank + 1);
+        } else if (xRank > yRank) {
+            parent.put(yRoot, xRoot);
+        } else {
+            parent.put(xRoot, yRoot);
+        }
+    }
+}
+```
+
+:::
+
+::::
+
 ## Tests
 
+:::: tabs
+
+::: tab python
+
 <iframe height="400px" width="100%" src="https://repl.it/@LucienZhang/disjoint-sets?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+:::
+
+::: tab java
+
+<iframe height="400px" width="100%" src="https://repl.it/@LucienZhang/disjoint-sets-java?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+:::
+
+::::
