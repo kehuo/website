@@ -6,7 +6,7 @@ A vertex in an undirected connected graph is an articulation point (or cut verte
 
 An edge in an undirected connected graph is a bridge iff removing it disconnects the graph. For a disconnected undirected graph, definition is similar, a bridge is an edge removing which increases number of disconnected components.
 
-Like Articulation Points, bridges represent vulnerabilities in a connected network and are useful for designing reliable networks. [^bridge] A graph is 2-edge-connected iff it doesn't have bridge. 2-edge-connectivity is transitive, i.e., if X, Y, and Z are three vertices in the graph, X is 2-edge-connected with Y, and Y is 2-edge-connected with Z, then X is 2-edge-connected with Z.
+Like Articulation Points, bridges represent vulnerabilities in a connected network and are useful for designing reliable networks. [^bridge] A graph is _2-edge-connected_ iff it doesn't have bridge. 2-edge-connectivity is transitive, i.e., if X, Y, and Z are three vertices in the graph, X is 2-edge-connected with Y, and Y is 2-edge-connected with Z, then X is 2-edge-connected with Z.
 
 [^bridge]: https://www.geeksforgeeks.org/bridge-in-a-graph/
 
