@@ -114,6 +114,7 @@ module.exports = {
               title: "Data Structures and Algorithms",
               children: [
                 ["/programming/algorithms/overview", "Overview"],
+                "/programming/algorithms/math",
                 "/programming/algorithms/tree-traversal",
                 "/programming/algorithms/balanced-tree",
                 "/programming/algorithms/heap",

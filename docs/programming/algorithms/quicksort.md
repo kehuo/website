@@ -10,12 +10,16 @@
 |           Average Time Complexity           |                           $O(n \log n)$                            |
 | Worst-case Space Complexity (for recursion) | $O(n)$ auxiliary (naive) or $O(\log n)$ auxiliary (Sedgewick 1978) |
 
+:::: tabs
+
+::: tab python
+
 ```py
 from typing import List
 import random
 
 
-def partition(nums: List[int], left: int, right: int) -> int:
+def randomized_partition(nums: List[int], left: int, right: int) -> int:
     pivot = random.randint(left, right)
     nums[pivot], nums[right] = nums[right], nums[pivot]
     i = j = left
@@ -31,7 +35,7 @@ def partition(nums: List[int], left: int, right: int) -> int:
 def randomized_quicksort(nums: List[int], left: int, right: int) -> None:
     if left >= right:
         return
-    mid = partition(nums, left, right)
+    mid = randomized_partition(nums, left, right)
     randomized_quicksort(nums, left, mid - 1)
     randomized_quicksort(nums, mid + 1, right)
 
@@ -39,6 +43,18 @@ def randomized_quicksort(nums: List[int], left: int, right: int) -> None:
 def quicksort(nums: List[int]) -> None:
     randomized_quicksort(nums, 0, len(nums) - 1)
 ```
+
+:::
+
+::: tab java
+
+```java
+
+```
+
+:::
+
+::::
 
 ## Quick Select
 
@@ -54,12 +70,16 @@ def quicksort(nums: List[int]) -> None:
 
 Instead of recursing into both sides, as in quicksort, quickselect only recurses into one side – the side with the element it is searching for. This reduces the average complexity from $O(n \log n)$ to $O(n)$, with a worst case of $O(n^2)$.
 
+:::: tabs
+
+::: tab python
+
 ```py
 from typing import List
 import random
 
 
-def partition(nums: List[int], left: int, right: int) -> int:
+def randomized_partition(nums: List[int], left: int, right: int) -> int:
     pivot = random.randint(left, right)
     nums[pivot], nums[right] = nums[right], nums[pivot]
     i = j = left
@@ -74,7 +94,7 @@ def partition(nums: List[int], left: int, right: int) -> int:
 
 def randomized_quickselect(nums: List[int], left: int, right: int,
                            index: int) -> int:
-    mid = partition(nums, left, right)
+    mid = randomized_partition(nums, left, right)
     if mid == index:
         return nums[mid]
     elif mid < index:
@@ -89,6 +109,32 @@ def quickselect(nums: List[int], index: int) -> int:
     return randomized_quickselect(nums, 0, len(nums) - 1, index)
 ```
 
+:::
+
+::: tab java
+
+```java
+
+```
+
+:::
+
+::::
+
 ## Tests
 
+:::: tabs
+
+::: tab python
+
 <iframe height="400px" width="100%" src="https://repl.it/@LucienZhang/quicksort?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+:::
+
+::: tab java
+
+<iframe height="400px" width="100%" src="https://repl.it/@LucienZhang/quicksort-java?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+:::
+
+::::
