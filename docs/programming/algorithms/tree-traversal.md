@@ -54,17 +54,13 @@ class TreeNode {
 
 ```py
 def dfs(root: TreeNode):
-    # stack
     stack = [root]
     while stack:
         node = stack.pop()
-        # do something
         print(node.val)
         if node.left:
-            # do something
             stack.append(node.left)
         if node.right:
-            # do something
             stack.append(node.right)
 ```
 
@@ -103,17 +99,13 @@ void dfs(TreeNode root) {
 from collections import deque
 
 def bfs(root: TreeNode):
-    # queue
     q = deque([root])
     while q:
         node = q.popleft()
-        # do something
         print(node.val)
         if node.left:
-            # do something
             q.append(node.left)
         if node.right:
-            # do something
             q.append(node.right)
 ```
 
@@ -152,7 +144,6 @@ void bfs(TreeNode root) {
 from collections import deque
 
 def lot(root: TreeNode) -> int:
-    # queue
     q = deque([root])
     lv = 0
     while q:
@@ -160,13 +151,10 @@ def lot(root: TreeNode) -> int:
         print(f'level {lv}')
         for _ in range(len(q)):
             node = q.popleft()
-            # do something
             print(node.val)
             if node.left:
-                # do something
                 q.append(node.left)
             if node.right:
-                # do something
                 q.append(node.right)
     return lv
 ```
