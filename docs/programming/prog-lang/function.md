@@ -14,4 +14,10 @@
 
 :::
 
+::: tab scala
+
+<Jupyter filePath="function/scala.ipynb" />
+
+:::
+
 ::::

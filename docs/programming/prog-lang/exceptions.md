@@ -14,4 +14,10 @@
 
 :::
 
+::: tab scala
+
+<Jupyter filePath="exceptions/scala.ipynb" />
+
+:::
+
 ::::

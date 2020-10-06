@@ -41,4 +41,10 @@ There are two base interfaces in Java's Collections Framework, **Collection** (`
 
 :::
 
+::: tab scala
+
+<Jupyter filePath="collections/scala.ipynb" />
+
+:::
+
 ::::
