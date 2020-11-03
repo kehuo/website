@@ -12,7 +12,7 @@ MNIST[^mnist]是一个手写体数字数据集，包含 55,000 个训练样本�
 | :----------------------------------------------------: |
 | _Sample images from MNIST test dataset_[^mnist_sample] |
 
-[^mnist_sample]: Image By Josef Steppan - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=64810040
+[^mnist_sample]: Image By Josef Steppan - Own work, CC BY-SA 4.0, <https://commons.wikimedia.org/w/index.php?curid=64810040>
 
 ## LeNet-5
 

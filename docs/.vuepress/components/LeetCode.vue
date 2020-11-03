@@ -1,6 +1,7 @@
 <template>
   <div class="leetcode">
     <a-spin size="large" tip="Loading..." :spinning="!ranking">
+      <p v-if="rating" id="rating">{{ ratingName }}: {{ rating }}</p>
       <p v-if="ranking" id="ranking">{{ rankingName }}: {{ ranking }}</p>
       <div id="chart">
         <svg />
@@ -11,7 +12,7 @@
 
 <script>
 import axios from "axios";
-import cheerio from "cheerio";
+// import cheerio from "cheerio";
 
 require("d3");
 require("nvd3");
@@ -26,6 +27,9 @@ export default {
   computed: {
     rankingName() {
       return this.lang === "CN" ? "全球排名" : "Global Ranking";
+    },
+    ratingName() {
+      return this.lang === "CN" ? "竞赛积分" : "Rating";
     },
   },
   data() {
@@ -129,7 +133,13 @@ export default {
   #ranking {
     font-weight: bold;
     font-size: 1.3em;
-    color: #5cb85c;
+    color: #ef4743;
+  }
+
+  #rating {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: rgb(255, 127, 14);
   }
 
   #chart svg {
