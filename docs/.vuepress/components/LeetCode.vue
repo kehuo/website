@@ -1,8 +1,11 @@
 <template>
   <div class="leetcode">
     <a-spin size="large" tip="Loading..." :spinning="!ranking">
-      <p v-if="rating" id="rating">{{ ratingName }}: {{ rating }}</p>
-      <p v-if="ranking" id="ranking">{{ rankingName }}: {{ ranking }}</p>
+      <p v-if="rating" class="rating">{{ ratingName }}: {{ rating }}</p>
+      <p v-if="CNranking" class="ranking">
+        {{ CNrankingName }}: {{ CNranking }}
+      </p>
+      <p v-if="ranking" class="ranking">{{ rankingName }}: {{ ranking }}</p>
       <div id="chart">
         <svg />
       </div>
@@ -28,6 +31,9 @@ export default {
     rankingName() {
       return this.lang === "CN" ? "全球排名" : "Global Ranking";
     },
+    CNrankingName() {
+      return this.lang === "CN" ? "中国排名" : "China Ranking";
+    },
     ratingName() {
       return this.lang === "CN" ? "竞赛积分" : "Rating";
     },
@@ -36,9 +42,11 @@ export default {
     return {
       ranking: null,
       rating: null,
+      CNranking: null,
     };
   },
   mounted() {
+    // ranking details from global site
     axios
       .post(
         "https://cors-anywhere.herokuapp.com/leetcode.com/graphql",
@@ -122,6 +130,37 @@ export default {
       .catch((res) => {
         console.log(res);
       });
+
+    // CN ranking from CN site
+    axios
+      .post(
+        "https://cors-anywhere.herokuapp.com/leetcode-cn.com/graphql",
+        {
+          operationName: "userContest",
+          variables: { userSlug: "lucien_z" },
+          query:
+            "query userContest($userSlug: String!) {\n  userContestRanking(userSlug: $userSlug) {\n    currentRatingRanking\n    __typename\n  }\n}\n",
+        },
+        {
+          headers: {
+            authority: "leetcode.com",
+            accept: "*/*",
+            "content-type": "application/json",
+            // origin: "https://leetcode.com",
+            // "sec-fetch-site": "same-origin",
+            // "sec-fetch-mode": "cors",
+            // "sec-fetch-dest": "empty",
+            // referer: "https://leetcode.com/lucienzhang/",
+            "accept-language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+          },
+        }
+      )
+      .then((res) => {
+        this.CNranking = res.data.data.userContestRanking.currentRatingRanking;
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   },
 };
 </script>
@@ -130,13 +169,13 @@ export default {
 @import url("https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.css");
 
 .leetcode {
-  #ranking {
+  .ranking {
     font-weight: bold;
     font-size: 1.3em;
     color: #ef4743;
   }
 
-  #rating {
+  .rating {
     font-weight: bold;
     font-size: 1.3em;
     color: rgb(255, 127, 14);
