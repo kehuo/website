@@ -1,7 +1,7 @@
 <template>
   <div class="leetcode">
     <a-spin size="large" tip="Loading..." :spinning="!ranking">
-      <p v-if="ranking" id="ranking">{{rankingName}}: {{ranking}}</p>
+      <p v-if="ranking" id="ranking">{{ rankingName }}: {{ ranking }}</p>
       <div id="chart">
         <svg />
       </div>
@@ -20,56 +20,61 @@ export default {
   props: {
     lang: {
       type: String,
-      required: false
-    }
+      required: false,
+    },
   },
   computed: {
     rankingName() {
       return this.lang === "CN" ? "全球排名" : "Global Ranking";
-    }
+    },
   },
   data() {
     return {
-      ranking: null
+      ranking: null,
+      rating: null,
     };
   },
   mounted() {
-    //crawl LeetCode data
     axios
-      .get("https://cors-anywhere.herokuapp.com/leetcode.com/lucienzhang/")
-      .then(res => {
-        let $ = cheerio.load(res.data);
-        let panel = $("#base_content ul li").get();
-        for (const li of panel) {
-          if (li.children[4].data.includes("Global Ranking")) {
-            this.ranking = li.children[1].children[0].data.trim();
-            break;
-          }
+      .post(
+        "https://cors-anywhere.herokuapp.com/leetcode.com/graphql",
+        {
+          operationName: "getContentRankingData",
+          variables: { username: "lucienzhang" },
+          query:
+            "query getContentRankingData($username: String!) {\n  userContestRanking(username: $username) {\n    attendedContestsCount\n    rating\n    globalRanking\n    __typename\n  }\n  userContestRankingHistory(username: $username) {\n    contest {\n      title\n      startTime\n      __typename\n    }\n    rating\n    ranking\n    __typename\n  }\n}\n",
+        },
+        {
+          headers: {
+            authority: "leetcode.com",
+            accept: "*/*",
+            "content-type": "application/json",
+            // origin: "https://leetcode.com",
+            // "sec-fetch-site": "same-origin",
+            // "sec-fetch-mode": "cors",
+            // "sec-fetch-dest": "empty",
+            // referer: "https://leetcode.com/lucienzhang/",
+            "accept-language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+          },
         }
+      )
+      .then((res) => {
+        let data = res.data.data;
+        this.ranking = data.userContestRanking.globalRanking;
+        this.rating = parseInt(data.userContestRanking.rating);
 
         let ranking_data = [{ values: [], key: "Rating", color: "#ff7f0e" }];
 
-        let dataNodeList = $(".puiblic-profile-base").get();
-        for (const dataNode of dataNodeList) {
-          if (
-            dataNode.attribs["ng-controller"] ===
-            "PublicProfileController as pc"
-          ) {
-            let data = JSON.parse(
-              "[" + dataNode.attribs["ng-init"].match(/\[\[[^\)]*/)[0] + "]"
-            );
-            data[0].forEach(function(e, i) {
-              ranking_data[0].values.push({
-                x: i,
-                y: parseInt(e[0]),
-                contest_title: data[1][i]
-              });
-            });
-            break;
-          }
-        }
+        data.userContestRankingHistory.forEach(function (node, i) {
+          ranking_data[0].values.push({
+            x: i,
+            y: parseInt(node.rating),
+            contest_title: node.contest.title,
+            ranking: node.ranking,
+          });
+        });
 
-        nv.addGraph(function() {
+        nv.addGraph(function () {
           let chart = nv.models
             .lineChart()
             .useInteractiveGuideline(false)
@@ -82,33 +87,38 @@ export default {
             .tickFormat(d3.format(".00f"))
             .axisLabelDistance(-10);
 
-          chart.tooltip.contentGenerator(function(e) {
+          chart.tooltip.contentGenerator(function (e) {
+            let ranking =
+              '<p style="text-align: left;">Ranking: <strong>' +
+              e.point.ranking +
+              "</strong></p>";
+            if (e.point.ranking == 0) {
+              ranking = '<p style="text-align: left;">Not Attended</p>';
+            }
             return (
               '<div><p style="text-align: left;">' +
               e.point.contest_title +
-              '</p></div><div><p style="text-align: left;">' +
-              "Rating: " +
-              "<strong>" +
+              '</p></div><div><p style="text-align: left;">Rating: <strong>' +
               e.point.y +
-              "</strong></p></div>"
+              "</strong></p>" +
+              ranking +
+              "</div>"
             );
           });
 
-          d3.select("#chart svg")
-            .datum(ranking_data)
-            .call(chart);
+          d3.select("#chart svg").datum(ranking_data).call(chart);
 
           //Update the chart when window resizes.
-          nv.utils.windowResize(function() {
+          nv.utils.windowResize(function () {
             chart.update();
           });
           return chart;
         });
       })
-      .catch(res => {
+      .catch((res) => {
         console.log(res);
       });
-  }
+  },
 };
 </script>
 

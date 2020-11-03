@@ -2,13 +2,13 @@
 
 A vertex in an undirected connected graph is an articulation point (or cut vertex) iff removing it (and edges through it) disconnects the graph. Articulation points represent vulnerabilities in a connected network – single points whose failure would split the network into 2 or more components. They are useful for designing reliable networks. [^cut-vertex] A graph is _Biconnected_ iff it doesn't have cut vertex. biconnectivity is NOT transitive.
 
-[^cut-vertex]: https://www.geeksforgeeks.org/articulation-points-or-cut-vertices-in-a-graph/
+[^cut-vertex]: <https://www.geeksforgeeks.org/articulation-points-or-cut-vertices-in-a-graph/>
 
 An edge in an undirected connected graph is a bridge iff removing it disconnects the graph. For a disconnected undirected graph, definition is similar, a bridge is an edge removing which increases number of disconnected components.
 
 Like Articulation Points, bridges represent vulnerabilities in a connected network and are useful for designing reliable networks. [^bridge] A graph is _2-edge-connected_ iff it doesn't have bridge. 2-edge-connectivity is transitive, i.e., if X, Y, and Z are three vertices in the graph, X is 2-edge-connected with Y, and Y is 2-edge-connected with Z, then X is 2-edge-connected with Z.
 
-[^bridge]: https://www.geeksforgeeks.org/bridge-in-a-graph/
+[^bridge]: <https://www.geeksforgeeks.org/bridge-in-a-graph/>
 
 Both of these problems can be solved by Tarjan's algorithm. It only runs DFS once. For a graph represented by adjacency list, its worst-case time complexity is $O( | V | + | E | )$.
 

@@ -18,13 +18,13 @@ There are two base interfaces in Java's Collections Framework, **Collection** (`
 | :----------------------------------------------------------------------------------: |
 |                _Hierarchy of Java Collection framework_[^collection]                 |
 
-[^collection]: https://www.javatpoint.com/collections-in-java
+[^collection]: <https://www.javatpoint.com/collections-in-java>
 
 | ![Java Map Hierarchy](@assets/img/java/map-hierarchy.png) |
 | :-------------------------------------------------------: |
 |                _Java Map Hierarchy_[^map]                 |
 
-[^map]: https://www.javatpoint.com/java-map
+[^map]: <https://www.javatpoint.com/java-map>
 
 |                        Thread Unsafe                        |                        Thread Safe                        |
 | :---------------------------------------------------------: | :-------------------------------------------------------: |
@@ -42,6 +42,8 @@ There are two base interfaces in Java's Collections Framework, **Collection** (`
 :::
 
 ::: tab scala
+
+<https://docs.scala-lang.org/overviews/collections/overview.html>
 
 <Jupyter filePath="collections/scala.ipynb" />
 
