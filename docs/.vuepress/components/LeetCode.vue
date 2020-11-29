@@ -49,7 +49,7 @@ export default {
     // ranking details from global site
     axios
       .post(
-        "https://cors-anywhere.herokuapp.com/leetcode.com/graphql",
+        "https://cors-anywhere.herokuapp.com/https://leetcode.com/graphql",
         {
           operationName: "getContentRankingData",
           variables: { username: "lucienzhang" },
@@ -134,7 +134,7 @@ export default {
     // CN ranking from CN site
     axios
       .post(
-        "https://cors-anywhere.herokuapp.com/leetcode-cn.com/graphql",
+        "https://cors-anywhere.herokuapp.com/https://leetcode-cn.com/graphql/",
         {
           operationName: "userContest",
           variables: { userSlug: "lucien_z" },
@@ -143,7 +143,7 @@ export default {
         },
         {
           headers: {
-            authority: "leetcode.com",
+            authority: "leetcode-cn.com",
             accept: "*/*",
             "content-type": "application/json",
             // origin: "https://leetcode.com",

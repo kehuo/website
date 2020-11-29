@@ -119,7 +119,7 @@ export default {
     // CORS proxy server:
     // https://thingproxy.freeboard.io/fetch/https://www.tiobe.com/tiobe-index/
     axios
-      .get("https://cors-anywhere.herokuapp.com/www.tiobe.com/tiobe-index/") // To get rid of CORS error
+      .get("https://cors-anywhere.herokuapp.com/https://www.tiobe.com/tiobe-index/") // To get rid of CORS error
       .then(res => {
         let $ = cheerio.load(res.data);
         // highcharts
