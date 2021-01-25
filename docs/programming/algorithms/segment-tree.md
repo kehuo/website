@@ -138,7 +138,7 @@ class SegmentTree {
 
 Range update, range query, lazy propagation, top down
 
-for an array of length n, we need 2n space to store the segment tree, which contains 2n-1 values. Moreover, we need 4n space to store the span of each node.
+for an array of length n, we need 2n space to store the segment tree, which contains 2n-1 values. Moreover, we need some space to cache the result of calculating the range of a given index.
 
 |    Algorithm    | Complexity  |
 | :-------------: | :---------: |
@@ -153,27 +153,36 @@ for an array of length n, we need 2n space to store the segment tree, which cont
 
 ```py
 from typing import List
+from functools import lru_cache
 
 
 class SegmentTreeTopDown(object):
     def __init__(self, arr: List[int]) -> None:
         n = len(arr)
         tree = [0] * (2 * n)
-        span = [None] * (2 * n)
         for i in range(n):
             tree[i + n] = arr[i]
-            span[i + n] = (i, i)
         for i in range(n - 1, 0, -1):
             # The merging may be different for different problems
             l = i << 1
             r = i << 1 | 1
             tree[i] = tree[l] + tree[r]
-            span[i] = (span[l][0], span[r][1])
 
         self.n = n
         self.tree = tree
-        self.span = span
         self.lazy = [None] * (2 * n)
+
+    @lru_cache(None)
+    def span(self, cur: int) -> Tuple[int, int]:
+        n = self.n
+
+        left = right = cur
+        while right < n:
+            left <<= 1
+            right = right << 1 | 1
+        if left < n:
+            left <<= 1
+        return left - n, right - n
 
     def update(self, left: int, right: int, value: int) -> None:
         n = self.n
@@ -187,12 +196,12 @@ class SegmentTreeTopDown(object):
                     tree[cur] = lazy[cur]
                     lazy[cur] = None
 
-                pos, _ = span[cur]
+                pos, _ = span(cur)
                 if left <= pos <= right:
                     tree[cur] = value
                 return
 
-            cur_left, cur_right = span[cur]
+            cur_left, cur_right = span(cur)
 
             if lazy[cur] is not None:
                 tree[cur] = lazy[cur] * (cur_right - cur_left + 1)
@@ -230,12 +239,12 @@ class SegmentTreeTopDown(object):
                     tree[cur] = lazy[cur]
                     lazy[cur] = None
 
-                pos, _ = span[cur]
+                pos, _ = span(cur)
                 if left <= pos <= right:
                     return tree[cur]
                 return 0
 
-            cur_left, cur_right = span[cur]
+            cur_left, cur_right = span(cur)
 
             if lazy[cur] is not None:
                 tree[cur] = lazy[cur] * (cur_right - cur_left + 1)
@@ -275,26 +284,35 @@ class SegmentTreeTopDown {
 
     int n;
     int[] tree;
-    Range[] span;
     Integer[] lazy;
 
     SegmentTreeTopDown(int[] arr) {
         n = arr.length;
         tree = new int[2 * n];
-        span = new Range[2 * n];
         lazy = new Integer[2 * n];
 
         for (int i = 0; i < n; i++) {
             tree[i + n] = arr[i];
-            span[i + n] = new Range(i, i);
         }
         for (int i = n - 1; i > 0; i--) {
             // The merging may be different for different problems
             int l = i << 1;
             int r = i << 1 | 1;
             tree[i] = tree[l] + tree[r];
-            span[i] = new Range(span[l].left, span[r].right);
         }
+    }
+
+    private Range span(int cur) {
+        int left = cur;
+        int right = cur;
+        while (right < n) {
+            left <<= 1;
+            right = right << 1 | 1;
+        }
+        if (left < n) {
+            left <<= 1;
+        }
+        return new Range(left - n, right - n);
     }
 
     private void node_update(int left, int right, int value, int cur) {
@@ -304,15 +322,16 @@ class SegmentTreeTopDown {
                 lazy[cur] = null;
 
             }
-            int pos = span[cur].left;
+            int pos = span(cur).left;
             if (left <= pos && pos <= right) {
                 tree[cur] = value;
             }
             return;
         }
 
-        int cur_left = span[cur].left;
-        int cur_right = span[cur].right;
+        Range r = span(cur);
+        int cur_left = r.left;
+        int cur_right = r.right;
 
         if (lazy[cur] != null) {
             tree[cur] = lazy[cur] * (cur_right - cur_left + 1);
@@ -349,15 +368,16 @@ class SegmentTreeTopDown {
                 lazy[cur] = null;
 
             }
-            int pos = span[cur].left;
+            int pos = span(cur).left;
             if (left <= pos && pos <= right) {
                 return tree[cur];
             }
             return 0;
         }
 
-        int cur_left = span[cur].left;
-        int cur_right = span[cur].right;
+        Range r = span(cur);
+        int cur_left = r.left;
+        int cur_right = r.right;
 
         if (lazy[cur] != null) {
             tree[cur] = lazy[cur] * (cur_right - cur_left + 1);
