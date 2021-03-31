@@ -115,6 +115,7 @@ module.exports = {
               children: [
                 ["/programming/algorithms/overview", "Overview"],
                 "/programming/algorithms/math",
+                "/programming/algorithms/misc",
                 "/programming/algorithms/tree-traversal",
                 "/programming/algorithms/balanced-tree",
                 "/programming/algorithms/heap",
