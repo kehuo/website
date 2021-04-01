@@ -7,16 +7,9 @@
 ::: tab python
 
 ```py
+if __name__ == '__main__':
     print('{:0>10b}'.format(37))
     print(int('0000100101', 2))
-
-    # bitset
-    b = 0  # The empty bitset
-    b |= 1 << 5  # Set
-    b &= ~(1 << 5)  # Reset
-    b & 1 << 5  # Test
-    b ^= 1 << 5  # Flip
-    b = ~b  # Flip all
 ```
 
 :::

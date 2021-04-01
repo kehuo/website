@@ -182,6 +182,55 @@ def pre_different(arr):
             ans[i] = j
             i -= 1
     return ans
+
+
+class Bitset():
+    def __init__(self, b=None):
+        if b is None:
+            self.b = 0
+        elif type(b) is int:
+            self.b = b
+        else:
+            self.b = int(b, 2)
+
+    def __repr__(self):
+        return f'Bitset({self.b})'
+
+    def set(self, pos=None):
+        if pos is None:
+            self.b = -1
+        else:
+            self.b |= 1 << pos
+
+    def reset(self, pos=None):
+        if pos is None:
+            self.b = 0
+        else:
+            self.b &= ~(1 << pos)
+
+    def flip(self, pos=None):
+        if pos is None:
+            self.b = ~self.b
+        else:
+            self.b ^= 1 << pos
+
+    def check(self, pos=None):
+        if pos is None:
+            return self.b != 0
+        else:
+            return bool(self.b & 1 << pos)
+
+    def __call__(self, pos=None):
+        return self.check(pos)
+
+    def __bool__(self):
+        return self.b != 0
+
+    def __hash__(self):
+        return self.b
+
+    def __eq__(self, other):
+        return self.b == other.b
 ```
 
 :::
