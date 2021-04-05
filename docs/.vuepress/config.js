@@ -116,6 +116,7 @@ module.exports = {
                 ["/programming/algorithms/overview", "Overview"],
                 "/programming/algorithms/math",
                 "/programming/algorithms/misc",
+                "/programming/algorithms/string",
                 "/programming/algorithms/tree-traversal",
                 "/programming/algorithms/balanced-tree",
                 "/programming/algorithms/heap",
