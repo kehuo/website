@@ -1,4 +1,4 @@
-# Math
+# Math Code
 
 [comment]: # "# todo: 约瑟夫环，环入口检测"
 
@@ -251,13 +251,13 @@ class Bitset():
 
 ::: tab python
 
-<iframe height="400px" width="100%" src="https://repl.it/@LucienZhang/math?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://repl.it/@LucienZhang/math?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals" loading="lazy"></iframe>
 
 :::
 
 ::: tab java
 
-<!-- <iframe height="400px" width="100%" src="https://repl.it/@LucienZhang/math-java?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe> -->
+<!-- <iframe height="600px" width="100%" src="https://repl.it/@LucienZhang/math-java?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe> -->
 
 :::
 

@@ -58,6 +58,7 @@ module.exports = {
     extendMarkdown: (md) => {
       md.use(require("markdown-it-footnote"));
       md.use(require("markdown-it-pangu"));
+      md.use(require("markdown-it-multimd-table"), { headerless: true });
     },
   },
   locales: {
@@ -114,7 +115,8 @@ module.exports = {
               title: "Data Structures and Algorithms",
               children: [
                 ["/programming/algorithms/overview", "Overview"],
-                "/programming/algorithms/math",
+                "/programming/algorithms/math-formula",
+                "/programming/algorithms/math-code",
                 "/programming/algorithms/misc",
                 "/programming/algorithms/string",
                 "/programming/algorithms/tree-traversal",
