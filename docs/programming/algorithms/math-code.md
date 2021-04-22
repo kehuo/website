@@ -50,7 +50,7 @@ def inv(a, mod=int(1e9 + 7)):
     a and mod must be relatively prime
     '''
     d, x, _ = extgcd(a, mod)
-    assert d == 1, 'a and mod must be relatively prime '
+    assert d == 1, f'a and mod must be relatively prime, but got {a=}, {mod=}'
     return (x + mod) % mod
 
 

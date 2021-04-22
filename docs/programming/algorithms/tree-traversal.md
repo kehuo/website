@@ -44,6 +44,19 @@ class TreeNode {
 
 :::
 
+::: tab cpp
+
+```cpp
+class TreeNode {
+   public:
+    int val;
+    TreeNode *left, *right;
+    TreeNode(int v) : val(v), left(nullptr), right(nullptr) {}
+};
+```
+
+:::
+
 ::::
 
 ## DFS
@@ -80,6 +93,27 @@ void dfs(TreeNode root) {
         }
         if (node.right != null) {
             stack.push(node.right);
+        }
+    }
+}
+```
+
+:::
+
+::: tab cpp
+
+```cpp
+void dfs(TreeNode* root) {
+    vector<TreeNode*> stack{root};
+    while (!stack.empty()) {
+        auto node = stack.back();
+        stack.pop_back();
+        cout << node->val << endl;
+        if (node->left) {
+            stack.push_back(node->left);
+        }
+        if (node->right) {
+            stack.push_back(node->right);
         }
     }
 }
@@ -125,6 +159,27 @@ void bfs(TreeNode root) {
         }
         if (node.right != null) {
             q.add(node.right);
+        }
+    }
+}
+```
+
+:::
+
+::: tab cpp
+
+```cpp
+void bfs(TreeNode* root) {
+    deque<TreeNode*> q{root};
+    while (!q.empty()) {
+        auto node = q.front();
+        q.pop_front();
+        cout << node->val << endl;
+        if (node->left) {
+            q.push_back(node->left);
+        }
+        if (node->right) {
+            q.push_back(node->right);
         }
     }
 }
@@ -180,6 +235,33 @@ int lot(TreeNode root) {
             }
             if (node.right != null) {
                 q.add(node.right);
+            }
+        }
+    }
+    return lv;
+}
+```
+
+:::
+
+::: tab cpp
+
+```cpp
+int lot(TreeNode* root) {
+    deque<TreeNode*> q{root};
+    int lv = 0;
+    while (!q.empty()) {
+        ++lv;
+        cout << "level " << lv << endl;
+        for (int i = 0, n = q.size(); i < n; ++i) {
+            auto node = q.front();
+            q.pop_front();
+            cout << node->val << endl;
+            if (node->left) {
+                q.push_back(node->left);
+            }
+            if (node->right) {
+                q.push_back(node->right);
             }
         }
     }
@@ -257,6 +339,39 @@ List<Integer> preorderWithoutRecursion(TreeNode root) {
 
 :::
 
+::: tab cpp
+
+```cpp
+void preorder(TreeNode* root) {
+    if (!root) {
+        return;
+    }
+    cout << root->val << endl;
+    preorder(root->left);
+    preorder(root->right);
+}
+```
+
+```cpp
+vector<int> preorder_without_recursion(TreeNode* root) {
+    vector<int> ans;
+    vector<TreeNode*> stack{root};
+    while (!stack.empty()) {
+        auto node = stack.back();
+        stack.pop_back();
+        if (!node) {
+            continue;
+        }
+        ans.push_back(node->val);
+        stack.push_back(node->right);
+        stack.push_back(node->left);
+    }
+    return ans;
+}
+```
+
+:::
+
 ::::
 
 ## Inorder Traversal
@@ -323,6 +438,42 @@ List<Integer> inorderWithoutRecursion(TreeNode root) {
             TreeNode node = stack.pop();
             ans.add(node.val);
             cur = node.right;
+        }
+    }
+    return ans;
+}
+```
+
+:::
+
+::: tab cpp
+
+```cpp
+void inorder(TreeNode* root) {
+    if (!root) {
+        return;
+    }
+    inorder(root->left);
+    cout << root->val << endl;
+    inorder(root->right);
+}
+```
+
+```cpp
+vector<int> inorder_without_recursion(TreeNode* root) {
+    vector<int> ans;
+    vector<TreeNode*> stack;
+    TreeNode* cur = root;
+    while (!stack.empty() || cur) {
+        if (cur) {
+            stack.push_back(cur);
+            cur = cur->left;
+            continue;
+        } else {
+            auto node = stack.back();
+            stack.pop_back();
+            ans.push_back(node->val);
+            cur = node->right;
         }
     }
     return ans;
@@ -428,6 +579,55 @@ List<Integer> postorderWithoutRecursion(TreeNode root) {
 
 :::
 
+::: tab cpp
+
+```cpp
+void postorder(TreeNode* root) {
+    if (!root) {
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->val << endl;
+}
+```
+
+```cpp
+vector<int> postorder_without_recursion(TreeNode* root) {
+    if (!root) {
+        return {};
+    }
+    vector<int> ans;
+    vector<TreeNode*> stack;
+    TreeNode* cur = root;
+    while (true) {
+        while (cur) {
+            if (cur->right) {
+                stack.push_back(cur->right);
+            }
+            stack.push_back(cur);
+            cur = cur->left;
+        }
+        cur = stack.back();
+        stack.pop_back();
+        if (!stack.empty() && stack.back() == cur->right) {
+            stack.pop_back();
+            stack.push_back(cur);
+            cur = cur->right;
+        } else {
+            ans.push_back(cur->val);
+            cur = nullptr;
+        }
+        if (stack.empty()) {
+            break;
+        }
+    }
+    return ans;
+}
+```
+
+:::
+
 ::::
 
 ## Tests
@@ -443,6 +643,12 @@ List<Integer> postorderWithoutRecursion(TreeNode root) {
 ::: tab java
 
 <iframe height="600px" width="100%" src="https://repl.it/@LucienZhang/binary-tree-traversal-java?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals" loading="lazy"></iframe>
+
+:::
+
+::: tab cpp
+
+<iframe height="600px" width="100%" src="https://repl.it/@LucienZhang/binary-tree-traversal-cpp?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals" loading="lazy"></iframe>
 
 :::
 
