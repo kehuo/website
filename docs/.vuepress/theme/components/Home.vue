@@ -55,6 +55,7 @@
               Inspired by:
               <a href="http://html5up.net">HTML5 UP</a>
             </li>
+            <li><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20008417</a></li>
           </ul>
         </div>
       </footer>
@@ -210,9 +211,10 @@
         <ul class="copyright">
           <li>&copy; ZHANG Ziliang</li>
           <li>
-            Design:
+            Inspired by:
             <a href="http://html5up.net">HTML5 UP</a>
           </li>
+          <li><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20008417</a></li>
         </ul>
       </div>
     </footer>
