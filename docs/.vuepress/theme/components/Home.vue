@@ -55,7 +55,7 @@
               Inspired by:
               <a href="http://html5up.net">HTML5 UP</a>
             </li>
-            <li><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20008417</a></li>
+            <li><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20008417号</a></li>
           </ul>
         </div>
       </footer>
@@ -214,7 +214,7 @@
             Inspired by:
             <a href="http://html5up.net">HTML5 UP</a>
           </li>
-          <li><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20008417</a></li>
+          <li><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20008417号</a></li>
         </ul>
       </div>
     </footer>
