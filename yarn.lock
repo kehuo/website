@@ -8022,6 +8022,16 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+three-mesh-bvh@^0.5.2:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/three-mesh-bvh/-/three-mesh-bvh-0.5.3.tgz#d69f57d6f053346f012b2c558bc2702215f9151a"
+  integrity sha512-LxrUg6jKcCKsGons3YxEu2k8zkcr3UFNXWExv6lfbbqX1BlT2VRKnBSoSpKZjbl2HCg2yJYQj3uLNdI8U7YEBw==
+
+three@^0.136.0:
+  version "0.136.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.136.0.tgz#b1504db021b46398ef468aa7849f3dcabb814f50"
+  integrity sha512-+fEMX7nYLz2ZesVP/dyifli5Jf8gR3XPAnFJveQ80aMhibFduzrADnjMbARXh8+W9qLK7rshJCjAIL/6cDxC+A==
+
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -8649,6 +8659,19 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+web-ifc-three@^0.0.102:
+  version "0.0.102"
+  resolved "https://registry.yarnpkg.com/web-ifc-three/-/web-ifc-three-0.0.102.tgz#198ffdb860cd6e74d6bda7ad4d44ff2bb69cf289"
+  integrity sha512-Mxx4tN89Lb4dZd/NKlKdiBaruhOt1MBfWZ20fx69cWrj0pWf+qLF1JuBcbM991+1+cgJKW4dvCGTmLgdzhnRog==
+  dependencies:
+    three-mesh-bvh "^0.5.2"
+    web-ifc "^0.0.32"
+
+web-ifc@^0.0.32:
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/web-ifc/-/web-ifc-0.0.32.tgz#8eae1ae2e56b83883a9b6a16923abe1d2a07d639"
+  integrity sha512-EYPhzIXaZ0qW7fOrfds97qpP2MWaCYljfeMpJRAZP+qa2TNqWDu2egZXf03WIt+v39ymd/PFU+RBHZxVM3EEtQ==
 
 webpack-chain@^4.9.0:
   version "4.12.1"
