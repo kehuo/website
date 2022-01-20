@@ -54,6 +54,14 @@ def quicksort(nums: List[int]) -> None:
 
 :::
 
+::: tab cpp
+
+```cpp
+
+```
+
+:::
+
 ::::
 
 ## Quick Select
@@ -119,6 +127,14 @@ def quickselect(nums: List[int], index: int) -> int:
 
 :::
 
+::: tab cpp
+
+```cpp
+
+```
+
+:::
+
 ::::
 
 ## Tests
@@ -134,6 +150,12 @@ def quickselect(nums: List[int], index: int) -> int:
 ::: tab java
 
 <iframe height="600px" width="100%" src="https://repl.it/@LucienZhang/quicksort-java?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals" loading="lazy"></iframe>
+
+:::
+
+::: tab cpp
+
+<iframe height="600px" width="100%" src="https://repl.it/@LucienZhang/quicksort-cpp?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals" loading="lazy"></iframe>
 
 :::
 
