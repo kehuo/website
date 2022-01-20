@@ -30,7 +30,7 @@
     "breakpoints-js": "^1.0.6",
     "cheerio": "^1.0.0-rc.3",
     "d3": "3.5",
-    "highcharts": "^8.1.2",
+    "highcharts": "^9.0.0",
     "highcharts-vue": "^1.3.5",
     "markdown-it-pangu": "^1.0.2",
     "nvd3": "^1.8.6",
