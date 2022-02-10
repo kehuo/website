@@ -15,7 +15,7 @@
     "core-js": "^2.6.11",
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-multimd-table": "^4.0.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "patch-package": "^6.2.2",
     "postinstall-postinstall": "^2.1.0",
     "sass-loader": "^8.0.2",
