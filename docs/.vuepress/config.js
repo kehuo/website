@@ -151,7 +151,7 @@ module.exports = {
           "/misc/": [
             {
               title: "Misc",
-              children: ["/misc/apis", "/misc/bim"],
+              children: ["/misc/apis", "/misc/bim", "/misc/pixel-streaming"],
             },
           ],
           // "/projects/": [
